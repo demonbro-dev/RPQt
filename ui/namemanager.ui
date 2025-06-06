@@ -45,20 +45,20 @@
    </property>
    <widget class="QMenu" name="menuUnlock">
     <property name="title">
-     <string>Unlock</string>
+     <string>Unlock(&amp;U)</string>
     </property>
     <addaction name="actionUnlock"/>
    </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>File</string>
+     <string>File(&amp;F)</string>
     </property>
     <addaction name="actionSave"/>
     <addaction name="actionReload"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
-     <string>Edit</string>
+     <string>Edit(&amp;E)</string>
     </property>
     <addaction name="actionAddList"/>
     <addaction name="actionRemoveList"/>

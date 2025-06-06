@@ -33,7 +33,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="204"/>
-        <location filename="../src/mainwindow.cpp" line="215"/>
+        <location filename="../src/mainwindow.cpp" line="194"/>
         <source>Start</source>
         <translation>开始抽选</translation>
     </message>
@@ -46,21 +46,6 @@
         <location filename="../ui/mainwindow.ui" line="268"/>
         <source>Topmost</source>
         <translation>置于顶层</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="294"/>
-        <source>Features</source>
-        <translation>功能</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="303"/>
-        <source>Help</source>
-        <translation>帮助</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="319"/>
-        <source>Settings</source>
-        <translation>设置</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="323"/>
@@ -88,9 +73,24 @@
         <translation>RPWeb</translation>
     </message>
     <message>
+        <location filename="../ui/mainwindow.ui" line="294"/>
+        <source>Features(&amp;F)</source>
+        <translation>功能(&amp;F)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="303"/>
+        <source>Help(&amp;H)</source>
+        <translation>帮助(&amp;H)</translation>
+    </message>
+    <message>
         <location filename="../ui/mainwindow.ui" line="310"/>
-        <source>InPick</source>
-        <translation>抽选内功能</translation>
+        <source>InPick(&amp;I)</source>
+        <translation>抽选内功能(&amp;I)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="319"/>
+        <source>Settings(&amp;S)</source>
+        <translation>设置(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="343"/>
@@ -99,7 +99,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="348"/>
-        <location filename="../src/mainwindow.cpp" line="84"/>
+        <location filename="../src/mainwindow.cpp" line="73"/>
         <source>About Qt</source>
         <translation>关于 Qt</translation>
     </message>
@@ -129,42 +129,42 @@
         <translation>历史记录</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="168"/>
+        <location filename="../src/mainwindow.cpp" line="147"/>
         <source>Info</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="168"/>
+        <location filename="../src/mainwindow.cpp" line="147"/>
         <source>Namelist not found. Default namelist will be created.</source>
         <translation>未发现名单文件，将创建默认名单文件.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="173"/>
+        <location filename="../src/mainwindow.cpp" line="152"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="173"/>
+        <location filename="../src/mainwindow.cpp" line="152"/>
         <source>Failed to create default namelist file: %1</source>
         <translation>创建默认名单文件失败: %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="182"/>
+        <location filename="../src/mainwindow.cpp" line="161"/>
         <source>Failed to load</source>
         <translation>加载失败</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="208"/>
+        <location filename="../src/mainwindow.cpp" line="187"/>
         <source>Stop</source>
         <translation>停止抽选</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="143"/>
+        <location filename="../src/mainwindow.cpp" line="124"/>
         <source>Picked Names Cleared</source>
         <translation>已清理已抽选名字</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="144"/>
+        <location filename="../src/mainwindow.cpp" line="125"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
         <translation>已抽选名字列表现已被重置.
@@ -175,25 +175,29 @@ All names are now available for picking again.</source>
     <name>NameManager</name>
     <message>
         <location filename="../ui/namemanager.ui" line="17"/>
-        <location filename="../src/namemanager.cpp" line="51"/>
+        <location filename="../src/namemanager.cpp" line="50"/>
         <source>RPQt Namelist Manager</source>
         <translation>RPQt 名单管理器</translation>
     </message>
     <message>
         <location filename="../ui/namemanager.ui" line="48"/>
-        <location filename="../ui/namemanager.ui" line="78"/>
-        <source>Unlock</source>
-        <translation>解锁</translation>
+        <source>Unlock(&amp;U)</source>
+        <translation>解锁(&amp;U)</translation>
     </message>
     <message>
         <location filename="../ui/namemanager.ui" line="54"/>
-        <source>File</source>
-        <translation>文件</translation>
+        <source>File(&amp;F)</source>
+        <translation>文件(&amp;F)</translation>
     </message>
     <message>
         <location filename="../ui/namemanager.ui" line="61"/>
-        <source>Edit</source>
-        <translation>编辑</translation>
+        <source>Edit(&amp;E)</source>
+        <translation>编辑(&amp;E)</translation>
+    </message>
+    <message>
+        <location filename="../ui/namemanager.ui" line="78"/>
+        <source>Unlock</source>
+        <translation>解锁</translation>
     </message>
     <message>
         <location filename="../ui/namemanager.ui" line="86"/>
@@ -216,154 +220,154 @@ All names are now available for picking again.</source>
         <translation>重载</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="36"/>
+        <location filename="../src/namemanager.cpp" line="35"/>
         <source>RPQt Namelist Manager [Locked]</source>
         <translation>RPQt 名单管理器 [已锁定]</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="105"/>
-        <location filename="../src/namemanager.cpp" line="138"/>
-        <location filename="../src/namemanager.cpp" line="390"/>
-        <location filename="../src/namemanager.cpp" line="420"/>
+        <location filename="../src/namemanager.cpp" line="103"/>
+        <location filename="../src/namemanager.cpp" line="135"/>
+        <location filename="../src/namemanager.cpp" line="382"/>
+        <location filename="../src/namemanager.cpp" line="411"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
         <location filename="../ui/namemanager.ui" line="104"/>
-        <location filename="../src/namemanager.cpp" line="242"/>
-        <location filename="../src/namemanager.cpp" line="281"/>
+        <location filename="../src/namemanager.cpp" line="235"/>
+        <location filename="../src/namemanager.cpp" line="274"/>
         <source>Add List</source>
         <translation>添加名单</translation>
     </message>
     <message>
         <location filename="../ui/namemanager.ui" line="109"/>
-        <location filename="../src/namemanager.cpp" line="243"/>
+        <location filename="../src/namemanager.cpp" line="236"/>
         <source>Remove List</source>
         <translation>移除名单</translation>
     </message>
     <message>
         <location filename="../ui/namemanager.ui" line="114"/>
-        <location filename="../src/namemanager.cpp" line="261"/>
+        <location filename="../src/namemanager.cpp" line="254"/>
         <source>Add Member</source>
         <translation>添加成员</translation>
     </message>
     <message>
         <location filename="../ui/namemanager.ui" line="119"/>
-        <location filename="../src/namemanager.cpp" line="262"/>
+        <location filename="../src/namemanager.cpp" line="255"/>
         <source>Remove Member</source>
         <translation>移除成员</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="281"/>
+        <location filename="../src/namemanager.cpp" line="274"/>
         <source>Please type the name of new list:</source>
         <translation>请输入新名单名称:</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="207"/>
-        <location filename="../src/namemanager.cpp" line="285"/>
+        <location filename="../src/namemanager.cpp" line="202"/>
+        <location filename="../src/namemanager.cpp" line="278"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="285"/>
+        <location filename="../src/namemanager.cpp" line="278"/>
         <source>This list exists!</source>
         <translation>该名单已存在!</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="304"/>
+        <location filename="../src/namemanager.cpp" line="297"/>
         <source>Confirm Removal</source>
         <translation>确认移除</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="304"/>
+        <location filename="../src/namemanager.cpp" line="297"/>
         <source>Are you sure to remove list &apos;%1&apos;?</source>
         <translation>确定要移除名单&apos;%1&apos;吗?</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="322"/>
+        <location filename="../src/namemanager.cpp" line="315"/>
         <source>New Member</source>
         <translation>新成员</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="165"/>
-        <location filename="../src/namemanager.cpp" line="364"/>
-        <location filename="../src/namemanager.cpp" line="374"/>
-        <location filename="../src/namemanager.cpp" line="443"/>
+        <location filename="../src/namemanager.cpp" line="162"/>
+        <location filename="../src/namemanager.cpp" line="357"/>
+        <location filename="../src/namemanager.cpp" line="367"/>
+        <location filename="../src/namemanager.cpp" line="433"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="165"/>
+        <location filename="../src/namemanager.cpp" line="162"/>
         <source>Namelists have been reloaded successfully.</source>
         <translation>名单已被成功重载.</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="207"/>
+        <location filename="../src/namemanager.cpp" line="202"/>
         <source>This list name already exists!</source>
         <translation>该列表名已存在!</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="244"/>
+        <location filename="../src/namemanager.cpp" line="237"/>
         <source>Rename List</source>
         <translation>重命名名单</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="263"/>
+        <location filename="../src/namemanager.cpp" line="256"/>
         <source>Rename Member</source>
         <translation>重命名成员</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="364"/>
+        <location filename="../src/namemanager.cpp" line="357"/>
         <source>Your passphrase has been edited!</source>
         <translation>你的密码已被修改!</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="372"/>
+        <location filename="../src/namemanager.cpp" line="365"/>
         <source>Failed to save.</source>
         <translation>保存失败.</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="374"/>
+        <location filename="../src/namemanager.cpp" line="367"/>
         <source>The namelist has been saved!</source>
         <translation>名单已被保存!</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="384"/>
+        <location filename="../src/namemanager.cpp" line="376"/>
         <source>Import TXT File</source>
         <translation>导入TXT文件</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="384"/>
+        <location filename="../src/namemanager.cpp" line="376"/>
         <source>Text Files (*.txt)</source>
         <translation>文本文件 (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="390"/>
+        <location filename="../src/namemanager.cpp" line="382"/>
         <source>Could not open file!</source>
         <translation>不能打开文件!</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="399"/>
+        <location filename="../src/namemanager.cpp" line="391"/>
         <source>Imported List</source>
         <translation>导入名单</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="404"/>
+        <location filename="../src/namemanager.cpp" line="396"/>
         <source>Confirm Overwrite</source>
         <translation>确认覆盖</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="405"/>
+        <location filename="../src/namemanager.cpp" line="397"/>
         <source>A list named &apos;%1&apos; already exists. Overwrite?</source>
         <translation>一个叫&quot;%1&quot;的名单已经存在.确定覆盖?</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="420"/>
+        <location filename="../src/namemanager.cpp" line="411"/>
         <source>No valid names found in the file!</source>
         <translation>文件中无可用名字!</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="444"/>
+        <location filename="../src/namemanager.cpp" line="434"/>
         <source>Imported %1 names to list &apos;%2&apos;</source>
         <translation>已对名单&quot;%2&quot;导入了&quot;%1&quot;个名字</translation>
     </message>
@@ -537,12 +541,12 @@ Address: http://%1:%2</source>
         <translation>开始倒计时</translation>
     </message>
     <message>
-        <location filename="../src/scheduledpickdialog.cpp" line="37"/>
+        <location filename="../src/scheduledpickdialog.cpp" line="36"/>
         <source>Invalid Time</source>
         <translation>无效时间</translation>
     </message>
     <message>
-        <location filename="../src/scheduledpickdialog.cpp" line="37"/>
+        <location filename="../src/scheduledpickdialog.cpp" line="36"/>
         <source>Please set a valid countdown time.</source>
         <translation>请设置一个有效的倒计时.</translation>
     </message>
