@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandPicker Web</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title"><span class="r">R</span>andPicker <span class="qt">Web</span></h1>
+        
+        <div class="name-display" id="nameDisplay">点击开始</div>
+        
+        <div class="controls">
+            <button class="pick-button" id="startButton">Start</button>
+            <button class="import-button" id="importButton">Import</button>
+            <input type="file" id="fileInput" accept=".txt" style="display: none;">
+        </div>
+    </div>
+
+    <script>
+        let names = [];
+        let interval;
+        let isRunning = false;
+        const nameDisplay = document.getElementById('nameDisplay');
+        const startButton = document.getElementById('startButton');
+        const importButton = document.getElementById('importButton');
+        const fileInput = document.getElementById('fileInput');
+
+        function getRandomName() {
+            if (names.length === 0) {
+                return "请先导入名单";
+            }
+            return names[Math.floor(Math.random() * names.length)];
+        }
+
+        function startRolling() {
+            if (names.length === 0) {
+                nameDisplay.textContent = "请先导入名单";
+                return;
+            }
+
+            if (isRunning) {
+                clearInterval(interval);
+                startButton.textContent = 'Start';
+                nameDisplay.innerHTML = `<span class="selected">${nameDisplay.textContent}</span>`;
+            } else {
+                interval = setInterval(() => {
+                    nameDisplay.textContent = getRandomName();
+                }, 100);
+                startButton.textContent = 'Stop';
+            }
+            isRunning = !isRunning;
+        }
+
+        function handleFileImport(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const content = e.target.result;
+                // 支持空格、换行、逗号、分号分隔的名字
+                names = content.split(/[\s\n,;]+/).filter(name => name.trim() !== '');
+                if (names.length > 0) {
+                    nameDisplay.textContent = `已导入 ${names.length} 个名字，点击开始`;
+                } else {
+                    nameDisplay.textContent = "未找到有效名字，请检查文件内容";
+                }
+                fileInput.value = '';
+            };
+            reader.readAsText(file);
+        }
+
+        startButton.addEventListener('click', startRolling);
+        importButton.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', handleFileImport);
+        
+        // 响应式调整
+        function handleResize() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize();
+    </script>
+</body>
+</html>

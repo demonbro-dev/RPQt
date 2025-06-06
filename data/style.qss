@@ -1,0 +1,27 @@
+QMenuBar {
+    background-color: #404142; /* 设置背景色，跟随背景色 */
+}
+
+QMenuBar::selected {
+    background-color: #5D5E5F; /* 设置选中背景色 */
+}
+
+QListWidget {
+    background-color: #2E2F30;
+}
+
+QListWidget::Item::hover {
+    background-color: #5D5E5F;
+}
+
+QListWidget::Item::selected {
+    background-color: #1D545C;
+}
+
+/*
+QToolTip {
+    color: #ffffff;
+    background-color: #0f0f0f;
+    border: 1px solid white;
+}
+*/

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NameManager</class>
+ <widget class="QMainWindow" name="NameManager">
+  <property name="windowModality">
+   <enum>Qt::WindowModality::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>RPQt Namelist Manager</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QListWidget" name="listWidget">
+      <property name="verticalScrollMode">
+       <enum>QAbstractItemView::ScrollMode::ScrollPerItem</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QListWidget" name="memberListWidget">
+      <property name="verticalScrollMode">
+       <enum>QAbstractItemView::ScrollMode::ScrollPerItem</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuUnlock">
+    <property name="title">
+     <string>Unlock</string>
+    </property>
+    <addaction name="actionUnlock"/>
+   </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionSave"/>
+    <addaction name="actionReload"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionAddList"/>
+    <addaction name="actionRemoveList"/>
+    <addaction name="separator"/>
+    <addaction name="actionAddMember"/>
+    <addaction name="actionRemoveMember"/>
+    <addaction name="separator"/>
+    <addaction name="actionImport"/>
+    <addaction name="actionChangePassphrase"/>
+   </widget>
+   <addaction name="menuUnlock"/>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+  </widget>
+  <action name="actionUnlock">
+   <property name="text">
+    <string>Unlock</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::DocumentSave"/>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionChangePassphrase">
+   <property name="text">
+    <string>Edit Passphrase</string>
+   </property>
+  </action>
+  <action name="actionImport">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::DocumentOpen"/>
+   </property>
+   <property name="text">
+    <string>Import</string>
+   </property>
+  </action>
+  <action name="actionAddList">
+   <property name="text">
+    <string>Add List</string>
+   </property>
+  </action>
+  <action name="actionRemoveList">
+   <property name="text">
+    <string>Remove List</string>
+   </property>
+  </action>
+  <action name="actionAddMember">
+   <property name="text">
+    <string>Add Member</string>
+   </property>
+  </action>
+  <action name="actionRemoveMember">
+   <property name="text">
+    <string>Remove Member</string>
+   </property>
+  </action>
+  <action name="actionReload">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::EditUndo"/>
+   </property>
+   <property name="text">
+    <string>Reload</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PassphraseDialog</class>
+ <widget class="QDialog" name="PassphraseDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>300</width>
+    <height>150</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PassphraseDialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Type your passphrase:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="echoMode">
+      <enum>QLineEdit::EchoMode::Password</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="submitButton">
+     <property name="text">
+      <string>OK</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
