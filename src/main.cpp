@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     darkPalette.setColor(QPalette::WindowText, Qt::white);
     darkPalette.setColor(QPalette::Base, QColor(46,47,48));
     darkPalette.setColor(QPalette::AlternateBase, QColor(53,53,53));
-    darkPalette.setColor(QPalette::ToolTipBase, Qt::white);
+    darkPalette.setColor(QPalette::ToolTipBase, QColor(46,47,48));
     darkPalette.setColor(QPalette::ToolTipText, Qt::white);
     darkPalette.setColor(QPalette::Text, Qt::white);
     darkPalette.setColor(QPalette::Button, QColor(33,33,33));

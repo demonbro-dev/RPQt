@@ -170,6 +170,9 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="toolTip">
+             <string>Select a list</string>
+            </property>
            </widget>
           </item>
          </layout>

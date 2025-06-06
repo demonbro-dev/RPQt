@@ -32,99 +32,104 @@
         <translation>抽选人数: </translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="204"/>
+        <location filename="../ui/mainwindow.ui" line="207"/>
         <location filename="../src/mainwindow.cpp" line="194"/>
         <source>Start</source>
         <translation>开始抽选</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="245"/>
+        <location filename="../ui/mainwindow.ui" line="248"/>
         <source>Instant Pick</source>
         <translation>立即抽选模式</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="268"/>
+        <location filename="../ui/mainwindow.ui" line="271"/>
         <source>Topmost</source>
         <translation>置于顶层</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="323"/>
+        <location filename="../ui/mainwindow.ui" line="326"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="404"/>
+        <location filename="../ui/mainwindow.ui" line="407"/>
         <source>Global Drag Tracking</source>
         <translation>全局拖动事件追踪</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="412"/>
+        <location filename="../ui/mainwindow.ui" line="415"/>
         <source>Clear Picked Names</source>
         <translation>清理已抽选名字</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="420"/>
+        <location filename="../ui/mainwindow.ui" line="423"/>
         <source>Scheduled Pick</source>
         <translation>计时抽选</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="428"/>
+        <location filename="../ui/mainwindow.ui" line="431"/>
         <source>RPWeb</source>
         <translation>RPWeb</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="294"/>
+        <location filename="../ui/mainwindow.ui" line="297"/>
         <source>Features(&amp;F)</source>
         <translation>功能(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="303"/>
+        <location filename="../ui/mainwindow.ui" line="174"/>
+        <source>Select a list</source>
+        <translation>选择一个名单</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="306"/>
         <source>Help(&amp;H)</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="310"/>
+        <location filename="../ui/mainwindow.ui" line="313"/>
         <source>InPick(&amp;I)</source>
         <translation>抽选内功能(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="319"/>
+        <location filename="../ui/mainwindow.ui" line="322"/>
         <source>Settings(&amp;S)</source>
         <translation>设置(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="343"/>
+        <location filename="../ui/mainwindow.ui" line="346"/>
         <source>Open Namelist Manager</source>
         <translation>打开名单管理器</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="348"/>
+        <location filename="../ui/mainwindow.ui" line="351"/>
         <location filename="../src/mainwindow.cpp" line="73"/>
         <source>About Qt</source>
         <translation>关于 Qt</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="359"/>
+        <location filename="../ui/mainwindow.ui" line="362"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="364"/>
+        <location filename="../ui/mainwindow.ui" line="367"/>
         <source>Follow System</source>
         <translation>跟随系统</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="382"/>
+        <location filename="../ui/mainwindow.ui" line="385"/>
         <source>RPSideShortcut</source>
         <translation>切换至侧边栏</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="385"/>
+        <location filename="../ui/mainwindow.ui" line="388"/>
         <source>Sidebar</source>
         <translation>侧边栏</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="396"/>
+        <location filename="../ui/mainwindow.ui" line="399"/>
         <source>History</source>
         <translation>历史记录</translation>
     </message>
