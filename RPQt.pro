@@ -56,15 +56,5 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-JSON_FILE = $$PWD/data/namelist.json
-DEST_DIR = $$OUT_PWD
-
-win32 {
-    WIN_JSON_PATH = $$replace(JSON_FILE, /, \\\\)
-    WIN_DEST_PATH = $$replace(DEST_DIR, /, \\\\)
-
-    QMAKE_POST_LINK += cmd /c copy /Y \"$$WIN_JSON_PATH\" \"$$WIN_DEST_PATH\\\"
-}
-
 TRANSLATIONS += translations/RPQt_zh_CN.ts \
                 translations/RPQt_en_US.ts
