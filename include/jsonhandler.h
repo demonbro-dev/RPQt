@@ -5,10 +5,19 @@
 #include <QObject>
 #include <QMap>
 #include <QStringList>
+#include <QStandardPaths>
+#include <QtSystemDetection>
+
+#ifdef Q_OS_WIN
+#define NAMELIST_PATH QCoreApplication::applicationDirPath() + "/namelist.json"
+#else
+#define NAMELIST_PATH QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/namelist.json"
+#endif
 
 class JsonHandler : public QObject
 {
     Q_OBJECT
+
 public:
     explicit JsonHandler(QObject *parent = nullptr);
 
@@ -24,7 +33,6 @@ public:
     bool createDefaultNamelist(const QString &filePath, QString &error);
 
 private:
-    QString defaultFileName = "namelist.json";
     QByteArray b64Control(const QByteArray &data, bool encode, QString &error);
     QJsonDocument parseJsonData(const QByteArray &data, QString &error);
     bool writeJsonToFile(const QString &filePath, const QJsonDocument &doc, QString &error);

@@ -86,7 +86,7 @@ void NameManager::setupUI()
 
 void NameManager::unlockApplication()
 {
-    currentFilePath = QCoreApplication::applicationDirPath() + "/namelist.json";
+    currentFilePath = NAMELIST_PATH;
     PassphraseDialog dialog(currentFilePath, PassphraseDialog::InputMode, this);
     if (dialog.exec() == QDialog::Accepted) {
         setupUnlockedUI();

@@ -167,7 +167,7 @@ void MainWindow::setupConnections()
 void MainWindow::loadNameLists()
 {
     QString error;
-    QString filePath = QCoreApplication::applicationDirPath() + "/namelist.json";
+    QString filePath = NAMELIST_PATH;
 
     QFile file(filePath);
     if (!file.exists()) {
