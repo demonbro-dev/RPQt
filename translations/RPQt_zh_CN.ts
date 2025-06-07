@@ -213,7 +213,7 @@
     <message>
         <location filename="../src/mainwindow.cpp" line="350"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
-        <translation>已导入具有 %1 个名字的零食名单&quot;%2&quot;</translation>
+        <translation>已导入具有 %1 个名字的临时名单&quot;%2&quot;</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="151"/>
