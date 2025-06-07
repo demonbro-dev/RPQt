@@ -56,6 +56,7 @@ private:
     void updateFontSize();
     void setupNameListCombo();
     void onNameListComboActivated(int index);
+    void onImportTempList();
     void showMainWindow();
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;

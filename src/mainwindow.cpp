@@ -7,6 +7,8 @@
 #include <QMessageBox>
 #include <QResizeEvent>
 #include <QFile>
+#include <QFileInfo>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -142,6 +144,7 @@ void MainWindow::setupConnections()
         historyDialog->raise();
         historyDialog->activateWindow();
     });
+    connect(ui->actionImportTemp, &QAction::triggered, this, &MainWindow::onImportTempList);
     connect(ui->actionClearPicked, &QAction::triggered, this, [this]() {
         pickerLogic->resetPickedNames();
         ui->nameLabel->clear();
@@ -300,6 +303,51 @@ void MainWindow::onNamesPicked(const QStringList &names)
     if (historyDialog) {
         historyDialog->updateHistory(pickHistory);
     }
+}
+
+void MainWindow::onImportTempList()
+{
+    QString dir = QCoreApplication::applicationDirPath();
+    QString fileName = QFileDialog::getOpenFileName(this,tr("Import Temporary Namelist"), dir, tr("Text Files (*.txt)"));
+
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, tr("Error"), tr("Could not open file!"));
+        return;
+    }
+
+    QTextStream in(&file);
+    QString content = in.readAll();
+    file.close();
+
+    QStringList names = content.split(QRegularExpression("\\s+"), Qt::SkipEmptyParts);
+
+    if (names.isEmpty()) {
+        QMessageBox::warning(this, tr("Error"), tr("No valid names found in the file."));
+        return;
+    }
+
+    QFileInfo fileInfo(fileName);
+    QString listName = fileInfo.baseName();
+
+    if (nameGroups.contains(listName)) {
+        QMessageBox::warning(this, tr("Warning"), tr("This list exists!"));
+        return;
+    }
+
+    nameGroups.insert(listName, names);
+    ui->nameListCombo->addItem(listName);
+    ui->nameListCombo->setCurrentText(listName);
+    currentNames = names;
+    pickerLogic->setNames(currentNames);
+    pickerLogic->resetPickedNames();
+    ui->nameLabel->clear();
+
+    QMessageBox::information(this,tr("Success"),tr("Imported %1 names as temporary list '%2'").arg(names.size()).arg(listName));
 }
 
 void MainWindow::showSideButton()

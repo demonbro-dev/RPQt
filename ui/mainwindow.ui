@@ -317,6 +317,7 @@ QCheckBox::indicator {
     <addaction name="actionScheduledPick"/>
     <addaction name="actionHistory"/>
     <addaction name="separator"/>
+    <addaction name="actionImportTemp"/>
     <addaction name="actionClearPicked"/>
    </widget>
    <widget class="QMenu" name="menuSettings">
@@ -436,6 +437,14 @@ QCheckBox::indicator {
   <action name="actionHidetoTray">
    <property name="text">
     <string>Hide to Tray</string>
+   </property>
+  </action>
+  <action name="actionImportTemp">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::DocumentOpen"/>
+   </property>
+   <property name="text">
+    <string>Import Temporary List</string>
    </property>
   </action>
  </widget>

@@ -33,7 +33,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="207"/>
-        <location filename="../src/mainwindow.cpp" line="218"/>
+        <location filename="../src/mainwindow.cpp" line="221"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
@@ -48,27 +48,27 @@
         <translation>Topmost</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="328"/>
+        <location filename="../ui/mainwindow.ui" line="329"/>
         <source>Language</source>
         <translation>Language</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="409"/>
+        <location filename="../ui/mainwindow.ui" line="410"/>
         <source>Global Drag Tracking</source>
         <translation>Global Drag Tracking</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="417"/>
+        <location filename="../ui/mainwindow.ui" line="418"/>
         <source>Clear Picked Names</source>
         <translation>Clear Picked Names</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="425"/>
+        <location filename="../ui/mainwindow.ui" line="426"/>
         <source>Scheduled Pick</source>
         <translation>Scheduled Pick</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="433"/>
+        <location filename="../ui/mainwindow.ui" line="434"/>
         <source>RPWeb</source>
         <translation>RPWeb</translation>
     </message>
@@ -93,98 +93,145 @@
         <translation>InPick(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="324"/>
+        <location filename="../ui/mainwindow.ui" line="325"/>
         <source>Settings(&amp;S)</source>
         <translation>Settings(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="348"/>
+        <location filename="../ui/mainwindow.ui" line="349"/>
         <source>Open Namelist Manager</source>
         <translation>Open Namelist Manager</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="353"/>
-        <location filename="../src/mainwindow.cpp" line="97"/>
+        <location filename="../ui/mainwindow.ui" line="354"/>
+        <location filename="../src/mainwindow.cpp" line="99"/>
         <source>About Qt</source>
         <translation>About Qt</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="364"/>
+        <location filename="../ui/mainwindow.ui" line="365"/>
         <source>About</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="369"/>
+        <location filename="../ui/mainwindow.ui" line="370"/>
         <source>Follow System</source>
         <translation>Follow System</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="387"/>
+        <location filename="../ui/mainwindow.ui" line="388"/>
         <source>RPSideShortcut</source>
         <translation>Switch to SideBar</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="390"/>
+        <location filename="../ui/mainwindow.ui" line="391"/>
         <source>Sidebar</source>
         <translation>Sidebar</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="401"/>
+        <location filename="../ui/mainwindow.ui" line="402"/>
         <source>History</source>
         <translation>History</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="438"/>
+        <location filename="../ui/mainwindow.ui" line="439"/>
         <source>Hide to Tray</source>
         <translation>Hide to Tray</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="171"/>
+        <location filename="../ui/mainwindow.ui" line="447"/>
+        <source>Import Temporary List</source>
+        <translation>Import Temporary List</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="174"/>
         <source>Info</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="171"/>
+        <location filename="../src/mainwindow.cpp" line="174"/>
         <source>Namelist not found. Default namelist will be created.</source>
         <translation>Namelist not found. Default namelist will be created.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="176"/>
+        <location filename="../src/mainwindow.cpp" line="179"/>
+        <location filename="../src/mainwindow.cpp" line="319"/>
+        <location filename="../src/mainwindow.cpp" line="330"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="176"/>
+        <location filename="../src/mainwindow.cpp" line="179"/>
         <source>Failed to create default namelist file: %1</source>
         <translation>Failed to create default namelist file: %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="185"/>
+        <location filename="../src/mainwindow.cpp" line="188"/>
         <source>Failed to load</source>
         <translation>Failed to load</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="211"/>
+        <location filename="../src/mainwindow.cpp" line="214"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="148"/>
+        <location filename="../src/mainwindow.cpp" line="311"/>
+        <source>Import Temporary Namelist</source>
+        <translation>Import Temporary Namelist</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="319"/>
+        <source>Could not open file!</source>
+        <translation>Could not open file!</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="338"/>
+        <source>Warning</source>
+        <translation>Warning</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="338"/>
+        <source>This list exists!</source>
+        <translation>This list exists!</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="311"/>
+        <source>Text Files (*.txt)</source>
+        <translation>Text Files (*.txt)</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="330"/>
+        <source>No valid names found in the file.</source>
+        <translation>No valid names found in the file.</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="350"/>
+        <source>Success</source>
+        <translation>Success</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="350"/>
+        <source>Imported %1 names as temporary list &apos;%2&apos;</source>
+        <translation>Imported %1 names as temporary list &apos;%2&apos;</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="151"/>
         <source>Picked Names Cleared</source>
         <translation>Picked Names Cleared</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="72"/>
+        <location filename="../src/mainwindow.cpp" line="74"/>
         <source>Show</source>
         <translation>Show</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="76"/>
+        <location filename="../src/mainwindow.cpp" line="78"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="149"/>
+        <location filename="../src/mainwindow.cpp" line="152"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
         <translation>The list of picked names has been reset.
