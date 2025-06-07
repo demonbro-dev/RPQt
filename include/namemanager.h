@@ -43,8 +43,6 @@ private:
 
     void loadNameLists();
     void setupUI();
-    void setupLockedUI();
-    void setupUnlockedUI();
     void refreshMemberList(const QStringList &members);
     void setupContextMenus();
     void addNameGroup();

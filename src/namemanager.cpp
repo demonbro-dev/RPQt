@@ -21,7 +21,8 @@ NameManager::NameManager(QWidget *parent) :
     connect(ui->actionChangePassphrase, &QAction::triggered, this, &NameManager::changePassphrase);
     connect(ui->actionImport, &QAction::triggered, this, &NameManager::importFromTxt);
 
-    setupLockedUI();
+    resize(800, 600);
+    setupUI();
 }
 
 NameManager::~NameManager()
@@ -30,58 +31,38 @@ NameManager::~NameManager()
     disconnect();
 }
 
-void NameManager::setupLockedUI()
-{
-    setWindowTitle(tr("RPQt Namelist Manager [Locked]"));
-    resize(800, 600);
-
-    // 禁用列表控件
-    ui->listWidget->setEnabled(false);
-    ui->memberListWidget->setEnabled(false);
-
-    // 只显示解锁菜单
-    ui->menuFile->menuAction()->setVisible(false);
-    ui->menuEdit->menuAction()->setVisible(false);
-    ui->menuUnlock->menuAction()->setVisible(true);
-}
-
-void NameManager::setupUnlockedUI()
-{
-    setWindowTitle(tr("RPQt Namelist Manager"));
-    isUnlocked = true;
-
-    // 启用列表控件
-    ui->listWidget->setEnabled(true);
-    ui->memberListWidget->setEnabled(true);
-
-    // 显示完整菜单
-    ui->menuUnlock->menuAction()->setVisible(false);
-    ui->menuFile->menuAction()->setVisible(true);
-    ui->menuEdit->menuAction()->setVisible(true);
-
-    setupUI();
-    setupContextMenus();
-    loadNameLists();
-}
-
 void NameManager::setupUI()
 {
-    // 左侧名单
-    ui->listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-    ui->listWidget->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed);
+    setWindowTitle(isUnlocked ? tr("RPQt Namelist Manager") : tr("RPQt Namelist Manager [Locked]"));
 
-    // 右侧成员
-    ui->memberListWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
-    ui->memberListWidget->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed);
+    ui->menuUnlock->menuAction()->setVisible(!isUnlocked);
+    ui->menuFile->menuAction()->setVisible(isUnlocked);
+    ui->menuEdit->menuAction()->setVisible(isUnlocked);
 
-    connect(ui->listWidget, &QListWidget::currentRowChanged, this, &NameManager::onListSelected);
-    connect(ui->listWidget, &QListWidget::itemChanged, this, &NameManager::onListItemChanged);
-    connect(ui->memberListWidget, &QListWidget::itemChanged, this, &NameManager::onMemberItemChanged);
+    ui->listWidget->setEnabled(isUnlocked);
+    ui->memberListWidget->setEnabled(isUnlocked);
 
-    connect(ui->actionAddList, &QAction::triggered, this, &NameManager::addNameGroup);
-    connect(ui->actionRemoveList, &QAction::triggered, this, &NameManager::removeNameGroup);
-    connect(ui->actionAddMember, &QAction::triggered, this, &NameManager::addMember);
-    connect(ui->actionRemoveMember, &QAction::triggered, this, &NameManager::removeMember);
+    if (isUnlocked) {
+        // 左侧名单
+        ui->listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+        ui->listWidget->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed);
+
+        // 右侧成员
+        ui->memberListWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
+        ui->memberListWidget->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed);
+
+        connect(ui->listWidget, &QListWidget::currentRowChanged, this, &NameManager::onListSelected);
+        connect(ui->listWidget, &QListWidget::itemChanged, this, &NameManager::onListItemChanged);
+        connect(ui->memberListWidget, &QListWidget::itemChanged, this, &NameManager::onMemberItemChanged);
+
+        connect(ui->actionAddList, &QAction::triggered, this, &NameManager::addNameGroup);
+        connect(ui->actionRemoveList, &QAction::triggered, this, &NameManager::removeNameGroup);
+        connect(ui->actionAddMember, &QAction::triggered, this, &NameManager::addMember);
+        connect(ui->actionRemoveMember, &QAction::triggered, this, &NameManager::removeMember);
+
+        setupContextMenus();
+        loadNameLists();
+    }
 }
 
 void NameManager::unlockApplication()
@@ -89,7 +70,8 @@ void NameManager::unlockApplication()
     currentFilePath = NAMELIST_PATH;
     PassphraseDialog dialog(currentFilePath, PassphraseDialog::InputMode, this);
     if (dialog.exec() == QDialog::Accepted) {
-        setupUnlockedUI();
+        isUnlocked = true;
+        setupUI();
     }
 }
 
