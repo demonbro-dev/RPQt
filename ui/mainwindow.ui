@@ -297,7 +297,9 @@ QCheckBox::indicator {
      <string>Features(&amp;F)</string>
     </property>
     <addaction name="actionNameManager"/>
+    <addaction name="separator"/>
     <addaction name="actionSidebar"/>
+    <addaction name="actionHidetoTray"/>
     <addaction name="separator"/>
     <addaction name="actionRPWeb"/>
    </widget>
@@ -429,6 +431,11 @@ QCheckBox::indicator {
    </property>
    <property name="text">
     <string>RPWeb</string>
+   </property>
+  </action>
+  <action name="actionHidetoTray">
+   <property name="text">
+    <string>Hide to Tray</string>
    </property>
   </action>
  </widget>

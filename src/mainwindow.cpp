@@ -15,7 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
     pickerLogic(new PickerLogic(this)),
     sideButton(nullptr),
     historyDialog(nullptr),
-    m_globalTrackingEnabled(false)
+    m_globalTrackingEnabled(false),
+    m_trayIcon(nullptr)
 {
     ui->setupUi(this);
 
@@ -61,6 +62,29 @@ void MainWindow::setupConnections()
         nameManager->activateWindow();
     });
     connect(ui->actionSidebar, &QAction::triggered, this, &MainWindow::showSideButton);
+    connect(ui->actionHidetoTray, &QAction::triggered, this, [this]() {
+        if (!m_trayIcon) {
+            m_trayIcon = new QSystemTrayIcon(this);
+            m_trayIcon->setIcon(QIcon(":/data/RandPickerLogo.ico"));
+            m_trayIcon->setToolTip("RandPicker Qt");
+
+            QMenu *trayMenu = new QMenu(this);
+            trayMenu->addAction(tr("Show"), this, [this]() {
+                showMainWindow();
+            });
+            trayMenu->addSeparator();
+            trayMenu->addAction(tr("Exit"), qApp, &QApplication::quit);
+
+            m_trayIcon->setContextMenu(trayMenu);
+            connect(m_trayIcon, &QSystemTrayIcon::activated, this, [this](QSystemTrayIcon::ActivationReason reason) {
+                if (reason == QSystemTrayIcon::Trigger) {
+                    showMainWindow();
+                }
+            });
+        }
+        m_trayIcon->show();
+        hide();
+    });
     connect(ui->actionRPWeb, &QAction::triggered, this, [this]() {
         RPWeb *rpwDialog = new RPWeb(this);
         rpwDialog->setAttribute(Qt::WA_DeleteOnClose);
@@ -306,6 +330,9 @@ void MainWindow::showMainWindow()
     if (sideButton) {
         sideButton->deleteLater();
         sideButton = nullptr;
+    }
+    if (m_trayIcon) {
+        m_trayIcon->hide();
     }
 }
 

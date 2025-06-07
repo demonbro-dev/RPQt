@@ -5,6 +5,7 @@
 #include <QStringList>
 #include <QMap>
 #include <QTranslator>
+#include <QSystemTrayIcon>
 #include "jsonhandler.h"
 #include "namemanager.h"
 #include "pickhistorydialog.h"
@@ -48,6 +49,7 @@ private:
     QList<QStringList> pickHistory;
     bool m_globalTrackingEnabled;
     QPoint m_dragPosition;
+    QSystemTrayIcon *m_trayIcon;
 
     void loadNameLists();
     void setupConnections();
