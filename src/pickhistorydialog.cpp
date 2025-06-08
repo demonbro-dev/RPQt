@@ -8,6 +8,8 @@ PickHistoryDialog::PickHistoryDialog(const QList<QStringList> &history, QWidget 
     ui->setupUi(this);
     historyListWidget = ui->historyListWidget;
     populateList(history);
+
+    connect(ui->ClearButton, &QPushButton::clicked, this, &PickHistoryDialog::clearHistory);
 }
 
 PickHistoryDialog::~PickHistoryDialog()
@@ -33,4 +35,11 @@ void PickHistoryDialog::populateList(const QList<QStringList> &history)
 void PickHistoryDialog::updateHistory(const QList<QStringList> &history)
 {
     populateList(history);
+}
+
+void PickHistoryDialog::clearHistory()
+{
+    historyListWidget->clear();
+    historyListWidget->addItem(tr("No history entries yet"));
+    emit ClearHistory();
 }

@@ -33,7 +33,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="207"/>
-        <location filename="../src/mainwindow.cpp" line="221"/>
+        <location filename="../src/mainwindow.cpp" line="220"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
@@ -104,7 +104,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="354"/>
-        <location filename="../src/mainwindow.cpp" line="99"/>
+        <location filename="../src/mainwindow.cpp" line="95"/>
         <source>About Qt</source>
         <translation>About Qt</translation>
     </message>
@@ -144,94 +144,94 @@
         <translation>Import Temporary List</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="174"/>
+        <location filename="../src/mainwindow.cpp" line="173"/>
         <source>Info</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="174"/>
+        <location filename="../src/mainwindow.cpp" line="173"/>
         <source>Namelist not found. Default namelist will be created.</source>
         <translation>Namelist not found. Default namelist will be created.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="179"/>
-        <location filename="../src/mainwindow.cpp" line="319"/>
-        <location filename="../src/mainwindow.cpp" line="330"/>
+        <location filename="../src/mainwindow.cpp" line="178"/>
+        <location filename="../src/mainwindow.cpp" line="318"/>
+        <location filename="../src/mainwindow.cpp" line="329"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="179"/>
+        <location filename="../src/mainwindow.cpp" line="178"/>
         <source>Failed to create default namelist file: %1</source>
         <translation>Failed to create default namelist file: %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="188"/>
+        <location filename="../src/mainwindow.cpp" line="187"/>
         <source>Failed to load</source>
         <translation>Failed to load</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="214"/>
+        <location filename="../src/mainwindow.cpp" line="213"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="311"/>
+        <location filename="../src/mainwindow.cpp" line="310"/>
         <source>Import Temporary Namelist</source>
         <translation>Import Temporary Namelist</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="319"/>
+        <location filename="../src/mainwindow.cpp" line="318"/>
         <source>Could not open file!</source>
         <translation>Could not open file!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="338"/>
+        <location filename="../src/mainwindow.cpp" line="337"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="338"/>
+        <location filename="../src/mainwindow.cpp" line="337"/>
         <source>This list exists!</source>
         <translation>This list exists!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="311"/>
+        <location filename="../src/mainwindow.cpp" line="310"/>
         <source>Text Files (*.txt)</source>
         <translation>Text Files (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="330"/>
+        <location filename="../src/mainwindow.cpp" line="329"/>
         <source>No valid names found in the file.</source>
         <translation>No valid names found in the file.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="350"/>
+        <location filename="../src/mainwindow.cpp" line="349"/>
         <source>Success</source>
         <translation>Success</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="350"/>
+        <location filename="../src/mainwindow.cpp" line="349"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
         <translation>Imported %1 names as temporary list &apos;%2&apos;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="151"/>
+        <location filename="../src/mainwindow.cpp" line="150"/>
         <source>Picked Names Cleared</source>
         <translation>Picked Names Cleared</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="74"/>
+        <location filename="../src/mainwindow.cpp" line="70"/>
         <source>Show</source>
         <translation>Show</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="78"/>
+        <location filename="../src/mainwindow.cpp" line="74"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="152"/>
+        <location filename="../src/mainwindow.cpp" line="151"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
         <translation>The list of picked names has been reset.
@@ -242,7 +242,7 @@ All names are now available for picking again.</translation>
     <name>NameManager</name>
     <message>
         <location filename="../ui/namemanager.ui" line="17"/>
-        <location filename="../src/namemanager.cpp" line="50"/>
+        <location filename="../src/namemanager.cpp" line="36"/>
         <source>RPQt Namelist Manager</source>
         <translation>RPQt Namelist Manager</translation>
     </message>
@@ -287,154 +287,154 @@ All names are now available for picking again.</translation>
         <translation>Reload</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="35"/>
+        <location filename="../src/namemanager.cpp" line="36"/>
         <source>RPQt Namelist Manager [Locked]</source>
         <translation>RPQt Namelist Manager [Locked]</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="103"/>
-        <location filename="../src/namemanager.cpp" line="135"/>
-        <location filename="../src/namemanager.cpp" line="382"/>
-        <location filename="../src/namemanager.cpp" line="411"/>
+        <location filename="../src/namemanager.cpp" line="85"/>
+        <location filename="../src/namemanager.cpp" line="117"/>
+        <location filename="../src/namemanager.cpp" line="364"/>
+        <location filename="../src/namemanager.cpp" line="393"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
         <location filename="../ui/namemanager.ui" line="104"/>
-        <location filename="../src/namemanager.cpp" line="235"/>
-        <location filename="../src/namemanager.cpp" line="274"/>
+        <location filename="../src/namemanager.cpp" line="217"/>
+        <location filename="../src/namemanager.cpp" line="256"/>
         <source>Add List</source>
         <translation>Add List</translation>
     </message>
     <message>
         <location filename="../ui/namemanager.ui" line="109"/>
-        <location filename="../src/namemanager.cpp" line="236"/>
+        <location filename="../src/namemanager.cpp" line="218"/>
         <source>Remove List</source>
         <translation>Remove List</translation>
     </message>
     <message>
         <location filename="../ui/namemanager.ui" line="114"/>
-        <location filename="../src/namemanager.cpp" line="254"/>
+        <location filename="../src/namemanager.cpp" line="236"/>
         <source>Add Member</source>
         <translation>Add Member</translation>
     </message>
     <message>
         <location filename="../ui/namemanager.ui" line="119"/>
-        <location filename="../src/namemanager.cpp" line="255"/>
+        <location filename="../src/namemanager.cpp" line="237"/>
         <source>Remove Member</source>
         <translation>Remove Member</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="274"/>
+        <location filename="../src/namemanager.cpp" line="256"/>
         <source>Please type the name of new list:</source>
         <translation>Please type the name of new list:</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="202"/>
-        <location filename="../src/namemanager.cpp" line="278"/>
+        <location filename="../src/namemanager.cpp" line="184"/>
+        <location filename="../src/namemanager.cpp" line="260"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="278"/>
+        <location filename="../src/namemanager.cpp" line="260"/>
         <source>This list exists!</source>
         <translation>This list exists!</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="297"/>
+        <location filename="../src/namemanager.cpp" line="279"/>
         <source>Confirm Removal</source>
         <translation>Confirm Removal</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="297"/>
+        <location filename="../src/namemanager.cpp" line="279"/>
         <source>Are you sure to remove list &apos;%1&apos;?</source>
         <translation>Are you sure to remove list &apos;%1&apos;?</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="315"/>
+        <location filename="../src/namemanager.cpp" line="297"/>
         <source>New Member</source>
         <translation>New Member</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="162"/>
-        <location filename="../src/namemanager.cpp" line="357"/>
-        <location filename="../src/namemanager.cpp" line="367"/>
-        <location filename="../src/namemanager.cpp" line="433"/>
+        <location filename="../src/namemanager.cpp" line="144"/>
+        <location filename="../src/namemanager.cpp" line="339"/>
+        <location filename="../src/namemanager.cpp" line="349"/>
+        <location filename="../src/namemanager.cpp" line="415"/>
         <source>Success</source>
         <translation>Success</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="162"/>
+        <location filename="../src/namemanager.cpp" line="144"/>
         <source>Namelists have been reloaded successfully.</source>
         <translation>Namelists have been reloaded successfully.</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="202"/>
+        <location filename="../src/namemanager.cpp" line="184"/>
         <source>This list name already exists!</source>
         <translation>This list name already exists!</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="237"/>
+        <location filename="../src/namemanager.cpp" line="219"/>
         <source>Rename List</source>
         <translation>Rename List</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="256"/>
+        <location filename="../src/namemanager.cpp" line="238"/>
         <source>Rename Member</source>
         <translation>Rename Member</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="357"/>
+        <location filename="../src/namemanager.cpp" line="339"/>
         <source>Your passphrase has been edited!</source>
         <translation>Your passphrase has been edited!</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="365"/>
+        <location filename="../src/namemanager.cpp" line="347"/>
         <source>Failed to save.</source>
         <translation>Failed to save.</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="367"/>
+        <location filename="../src/namemanager.cpp" line="349"/>
         <source>The namelist has been saved!</source>
         <translation>The namelist has been saved!</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="376"/>
+        <location filename="../src/namemanager.cpp" line="358"/>
         <source>Import TXT File</source>
         <translation>Import TXT File</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="376"/>
+        <location filename="../src/namemanager.cpp" line="358"/>
         <source>Text Files (*.txt)</source>
         <translation>Text Files (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="382"/>
+        <location filename="../src/namemanager.cpp" line="364"/>
         <source>Could not open file!</source>
         <translation>Could not open file!</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="391"/>
+        <location filename="../src/namemanager.cpp" line="373"/>
         <source>Imported List</source>
         <translation>Imported List</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="396"/>
+        <location filename="../src/namemanager.cpp" line="378"/>
         <source>Confirm Overwrite</source>
         <translation>Confirm Overwrite</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="397"/>
+        <location filename="../src/namemanager.cpp" line="379"/>
         <source>A list named &apos;%1&apos; already exists. Overwrite?</source>
         <translation>A list named &apos;%1&apos; already exists. Overwrite?</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="411"/>
+        <location filename="../src/namemanager.cpp" line="393"/>
         <source>No valid names found in the file!</source>
         <translation>No valid names found in the file!</translation>
     </message>
     <message>
-        <location filename="../src/namemanager.cpp" line="434"/>
+        <location filename="../src/namemanager.cpp" line="416"/>
         <source>Imported %1 names to list &apos;%2&apos;</source>
         <translation>Imported %1 names to list &apos;%2&apos;</translation>
     </message>
@@ -457,56 +457,56 @@ All names are now available for picking again.</translation>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="20"/>
+        <location filename="../src/passphrasedialog.cpp" line="19"/>
         <source>Type Passphrase</source>
         <translation>Type Passphrase</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="21"/>
+        <location filename="../src/passphrasedialog.cpp" line="20"/>
         <source>Please type your passphrase:</source>
         <translation>Please type your passphrase:</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="28"/>
-        <location filename="../src/passphrasedialog.cpp" line="61"/>
-        <location filename="../src/passphrasedialog.cpp" line="90"/>
+        <location filename="../src/passphrasedialog.cpp" line="27"/>
+        <location filename="../src/passphrasedialog.cpp" line="60"/>
+        <location filename="../src/passphrasedialog.cpp" line="89"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="28"/>
+        <location filename="../src/passphrasedialog.cpp" line="27"/>
         <source>Cannot load passphrase config:</source>
         <translation>Cannot load passphrase config:</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="32"/>
+        <location filename="../src/passphrasedialog.cpp" line="31"/>
         <source>Set new passphrase</source>
         <translation>Set new passphrase</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="33"/>
+        <location filename="../src/passphrasedialog.cpp" line="32"/>
         <source>Type your new passphrase:</source>
         <translation>Type your new passphrase:</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="61"/>
+        <location filename="../src/passphrasedialog.cpp" line="60"/>
         <source>Incorrect passphrase!</source>
         <translation>Incorrect passphrase!</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="69"/>
+        <location filename="../src/passphrasedialog.cpp" line="68"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="70"/>
+        <location filename="../src/passphrasedialog.cpp" line="69"/>
         <source>You are setting an empty passphrase.
 Are you sure to continue?</source>
         <translation>You are setting an empty passphrase.
 Are you sure to continue?</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="90"/>
+        <location filename="../src/passphrasedialog.cpp" line="89"/>
         <source>Failed to save passphrase:</source>
         <translation>Failed to save passphrase:</translation>
     </message>
@@ -519,7 +519,13 @@ Are you sure to continue?</translation>
         <translation>Pick History</translation>
     </message>
     <message>
-        <location filename="../src/pickhistorydialog.cpp" line="23"/>
+        <location filename="../ui/pickhistorydialog.ui" line="23"/>
+        <source>Clear History</source>
+        <translation>Clear History</translation>
+    </message>
+    <message>
+        <location filename="../src/pickhistorydialog.cpp" line="25"/>
+        <location filename="../src/pickhistorydialog.cpp" line="43"/>
         <source>No history entries yet</source>
         <translation>No history entries yet</translation>
     </message>
@@ -593,7 +599,7 @@ Address: http://%1:%2</translation>
     <name>ScheduledPickDialog</name>
     <message>
         <location filename="../ui/scheduledpickdialog.ui" line="17"/>
-        <location filename="../src/scheduledpickdialog.cpp" line="12"/>
+        <location filename="../src/scheduledpickdialog.cpp" line="11"/>
         <source>Scheduled Pick</source>
         <translation>Scheduled Pick</translation>
     </message>
@@ -608,12 +614,12 @@ Address: http://%1:%2</translation>
         <translation>Start Countdown</translation>
     </message>
     <message>
-        <location filename="../src/scheduledpickdialog.cpp" line="36"/>
+        <location filename="../src/scheduledpickdialog.cpp" line="35"/>
         <source>Invalid Time</source>
         <translation>Invalid Time</translation>
     </message>
     <message>
-        <location filename="../src/scheduledpickdialog.cpp" line="36"/>
+        <location filename="../src/scheduledpickdialog.cpp" line="35"/>
         <source>Please set a valid countdown time.</source>
         <translation>Please set a valid countdown time.</translation>
     </message>

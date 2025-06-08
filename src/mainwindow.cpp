@@ -135,6 +135,9 @@ void MainWindow::setupConnections()
             connect(historyDialog, &PickHistoryDialog::destroyed, this, [this]() {
                 historyDialog = nullptr;
             });
+            connect(historyDialog, &PickHistoryDialog::ClearHistory, this, [this]() {
+                pickHistory.clear();
+            });
         }
         historyDialog->show();
         historyDialog->raise();

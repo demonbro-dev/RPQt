@@ -17,6 +17,13 @@
    <item>
     <widget class="QListWidget" name="historyListWidget"/>
    </item>
+   <item>
+    <widget class="QPushButton" name="ClearButton">
+     <property name="text">
+      <string>Clear History</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
