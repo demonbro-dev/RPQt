@@ -33,7 +33,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="207"/>
-        <location filename="../src/mainwindow.cpp" line="220"/>
+        <location filename="../src/mainwindow.cpp" line="230"/>
         <source>Start</source>
         <translation>开始抽选</translation>
     </message>
@@ -104,7 +104,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="354"/>
-        <location filename="../src/mainwindow.cpp" line="95"/>
+        <location filename="../src/mainwindow.cpp" line="100"/>
         <source>About Qt</source>
         <translation>关于 Qt</translation>
     </message>
@@ -144,94 +144,99 @@
         <translation>导入临时名单</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="173"/>
+        <location filename="../src/mainwindow.cpp" line="183"/>
         <source>Info</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="173"/>
+        <location filename="../src/mainwindow.cpp" line="183"/>
         <source>Namelist not found. Default namelist will be created.</source>
         <translation>未发现名单文件，将创建默认名单文件.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="178"/>
-        <location filename="../src/mainwindow.cpp" line="318"/>
-        <location filename="../src/mainwindow.cpp" line="329"/>
+        <location filename="../src/mainwindow.cpp" line="188"/>
+        <location filename="../src/mainwindow.cpp" line="332"/>
+        <location filename="../src/mainwindow.cpp" line="343"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="178"/>
+        <location filename="../src/mainwindow.cpp" line="188"/>
         <source>Failed to create default namelist file: %1</source>
         <translation>创建默认名单文件失败: %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="187"/>
+        <location filename="../src/mainwindow.cpp" line="197"/>
         <source>Failed to load</source>
         <translation>加载失败</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="213"/>
+        <location filename="../src/mainwindow.cpp" line="223"/>
         <source>Stop</source>
         <translation>停止抽选</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="310"/>
+        <location filename="../src/mainwindow.cpp" line="324"/>
         <source>Import Temporary Namelist</source>
         <translation>导入临时名单</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="318"/>
+        <location filename="../src/mainwindow.cpp" line="332"/>
         <source>Could not open file!</source>
         <translation>不能打开文件!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="337"/>
+        <location filename="../src/mainwindow.cpp" line="351"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="337"/>
+        <location filename="../src/mainwindow.cpp" line="351"/>
         <source>This list exists!</source>
         <translation>该名单已存在!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="310"/>
+        <location filename="../src/mainwindow.cpp" line="324"/>
         <source>Text Files (*.txt)</source>
         <translation>文本文件 (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="329"/>
+        <location filename="../src/mainwindow.cpp" line="171"/>
+        <source>Topmost is not available on your system.</source>
+        <translation>&quot;置于顶层&quot;当前在您的系统上不可用.</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="343"/>
         <source>No valid names found in the file.</source>
         <translation>未在文件中找到可用名单.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="349"/>
+        <location filename="../src/mainwindow.cpp" line="363"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="349"/>
+        <location filename="../src/mainwindow.cpp" line="363"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
         <translation>已导入具有 %1 个名字的临时名单&quot;%2&quot;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="150"/>
+        <location filename="../src/mainwindow.cpp" line="155"/>
         <source>Picked Names Cleared</source>
         <translation>已清理已抽选名字</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="70"/>
+        <location filename="../src/mainwindow.cpp" line="75"/>
         <source>Show</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="74"/>
+        <location filename="../src/mainwindow.cpp" line="79"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="151"/>
+        <location filename="../src/mainwindow.cpp" line="156"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
         <translation>已抽选名字列表现已被重置.
@@ -457,56 +462,56 @@ All names are now available for picking again.</source>
         <translation>提交</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="19"/>
+        <location filename="../src/passphrasedialog.cpp" line="20"/>
         <source>Type Passphrase</source>
         <translation>密码输入</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="20"/>
+        <location filename="../src/passphrasedialog.cpp" line="21"/>
         <source>Please type your passphrase:</source>
         <translation>请输入密码:</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="27"/>
-        <location filename="../src/passphrasedialog.cpp" line="60"/>
-        <location filename="../src/passphrasedialog.cpp" line="89"/>
+        <location filename="../src/passphrasedialog.cpp" line="28"/>
+        <location filename="../src/passphrasedialog.cpp" line="61"/>
+        <location filename="../src/passphrasedialog.cpp" line="90"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="27"/>
+        <location filename="../src/passphrasedialog.cpp" line="28"/>
         <source>Cannot load passphrase config:</source>
         <translation>无法加载密码配置:</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="31"/>
+        <location filename="../src/passphrasedialog.cpp" line="32"/>
         <source>Set new passphrase</source>
         <translation>设置新密码</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="32"/>
+        <location filename="../src/passphrasedialog.cpp" line="33"/>
         <source>Type your new passphrase:</source>
         <translation>输入新密码:</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="60"/>
+        <location filename="../src/passphrasedialog.cpp" line="61"/>
         <source>Incorrect passphrase!</source>
         <translation>密码错误!</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="68"/>
+        <location filename="../src/passphrasedialog.cpp" line="69"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="69"/>
+        <location filename="../src/passphrasedialog.cpp" line="70"/>
         <source>You are setting an empty passphrase.
 Are you sure to continue?</source>
         <translation>你正在设定一个空密码.
 确定要继续吗?</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="89"/>
+        <location filename="../src/passphrasedialog.cpp" line="90"/>
         <source>Failed to save passphrase:</source>
         <translation>保存密码失败:</translation>
     </message>
@@ -599,7 +604,7 @@ Address: http://%1:%2</source>
     <name>ScheduledPickDialog</name>
     <message>
         <location filename="../ui/scheduledpickdialog.ui" line="17"/>
-        <location filename="../src/scheduledpickdialog.cpp" line="11"/>
+        <location filename="../src/scheduledpickdialog.cpp" line="12"/>
         <source>Scheduled Pick</source>
         <translation>计时抽选</translation>
     </message>
@@ -614,12 +619,12 @@ Address: http://%1:%2</source>
         <translation>开始倒计时</translation>
     </message>
     <message>
-        <location filename="../src/scheduledpickdialog.cpp" line="35"/>
+        <location filename="../src/scheduledpickdialog.cpp" line="36"/>
         <source>Invalid Time</source>
         <translation>无效时间</translation>
     </message>
     <message>
-        <location filename="../src/scheduledpickdialog.cpp" line="35"/>
+        <location filename="../src/scheduledpickdialog.cpp" line="36"/>
         <source>Please set a valid countdown time.</source>
         <translation>请设置一个有效的倒计时.</translation>
     </message>

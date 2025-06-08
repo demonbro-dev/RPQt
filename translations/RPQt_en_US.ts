@@ -33,7 +33,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="207"/>
-        <location filename="../src/mainwindow.cpp" line="220"/>
+        <location filename="../src/mainwindow.cpp" line="230"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
@@ -104,7 +104,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="354"/>
-        <location filename="../src/mainwindow.cpp" line="95"/>
+        <location filename="../src/mainwindow.cpp" line="100"/>
         <source>About Qt</source>
         <translation>About Qt</translation>
     </message>
@@ -144,94 +144,99 @@
         <translation>Import Temporary List</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="173"/>
+        <location filename="../src/mainwindow.cpp" line="183"/>
         <source>Info</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="173"/>
+        <location filename="../src/mainwindow.cpp" line="183"/>
         <source>Namelist not found. Default namelist will be created.</source>
         <translation>Namelist not found. Default namelist will be created.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="178"/>
-        <location filename="../src/mainwindow.cpp" line="318"/>
-        <location filename="../src/mainwindow.cpp" line="329"/>
+        <location filename="../src/mainwindow.cpp" line="188"/>
+        <location filename="../src/mainwindow.cpp" line="332"/>
+        <location filename="../src/mainwindow.cpp" line="343"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="178"/>
+        <location filename="../src/mainwindow.cpp" line="188"/>
         <source>Failed to create default namelist file: %1</source>
         <translation>Failed to create default namelist file: %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="187"/>
+        <location filename="../src/mainwindow.cpp" line="197"/>
         <source>Failed to load</source>
         <translation>Failed to load</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="213"/>
+        <location filename="../src/mainwindow.cpp" line="223"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="310"/>
+        <location filename="../src/mainwindow.cpp" line="324"/>
         <source>Import Temporary Namelist</source>
         <translation>Import Temporary Namelist</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="318"/>
+        <location filename="../src/mainwindow.cpp" line="332"/>
         <source>Could not open file!</source>
         <translation>Could not open file!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="337"/>
+        <location filename="../src/mainwindow.cpp" line="351"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="337"/>
+        <location filename="../src/mainwindow.cpp" line="351"/>
         <source>This list exists!</source>
         <translation>This list exists!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="310"/>
+        <location filename="../src/mainwindow.cpp" line="324"/>
         <source>Text Files (*.txt)</source>
         <translation>Text Files (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="329"/>
+        <location filename="../src/mainwindow.cpp" line="171"/>
+        <source>Topmost is not available on your system.</source>
+        <translation>Topmost is not available on your system.</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="343"/>
         <source>No valid names found in the file.</source>
         <translation>No valid names found in the file.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="349"/>
+        <location filename="../src/mainwindow.cpp" line="363"/>
         <source>Success</source>
         <translation>Success</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="349"/>
+        <location filename="../src/mainwindow.cpp" line="363"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
         <translation>Imported %1 names as temporary list &apos;%2&apos;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="150"/>
+        <location filename="../src/mainwindow.cpp" line="155"/>
         <source>Picked Names Cleared</source>
         <translation>Picked Names Cleared</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="70"/>
+        <location filename="../src/mainwindow.cpp" line="75"/>
         <source>Show</source>
         <translation>Show</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="74"/>
+        <location filename="../src/mainwindow.cpp" line="79"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="151"/>
+        <location filename="../src/mainwindow.cpp" line="156"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
         <translation>The list of picked names has been reset.
@@ -457,56 +462,56 @@ All names are now available for picking again.</translation>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="19"/>
+        <location filename="../src/passphrasedialog.cpp" line="20"/>
         <source>Type Passphrase</source>
         <translation>Type Passphrase</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="20"/>
+        <location filename="../src/passphrasedialog.cpp" line="21"/>
         <source>Please type your passphrase:</source>
         <translation>Please type your passphrase:</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="27"/>
-        <location filename="../src/passphrasedialog.cpp" line="60"/>
-        <location filename="../src/passphrasedialog.cpp" line="89"/>
+        <location filename="../src/passphrasedialog.cpp" line="28"/>
+        <location filename="../src/passphrasedialog.cpp" line="61"/>
+        <location filename="../src/passphrasedialog.cpp" line="90"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="27"/>
+        <location filename="../src/passphrasedialog.cpp" line="28"/>
         <source>Cannot load passphrase config:</source>
         <translation>Cannot load passphrase config:</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="31"/>
+        <location filename="../src/passphrasedialog.cpp" line="32"/>
         <source>Set new passphrase</source>
         <translation>Set new passphrase</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="32"/>
+        <location filename="../src/passphrasedialog.cpp" line="33"/>
         <source>Type your new passphrase:</source>
         <translation>Type your new passphrase:</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="60"/>
+        <location filename="../src/passphrasedialog.cpp" line="61"/>
         <source>Incorrect passphrase!</source>
         <translation>Incorrect passphrase!</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="68"/>
+        <location filename="../src/passphrasedialog.cpp" line="69"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="69"/>
+        <location filename="../src/passphrasedialog.cpp" line="70"/>
         <source>You are setting an empty passphrase.
 Are you sure to continue?</source>
         <translation>You are setting an empty passphrase.
 Are you sure to continue?</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="89"/>
+        <location filename="../src/passphrasedialog.cpp" line="90"/>
         <source>Failed to save passphrase:</source>
         <translation>Failed to save passphrase:</translation>
     </message>
@@ -599,7 +604,7 @@ Address: http://%1:%2</translation>
     <name>ScheduledPickDialog</name>
     <message>
         <location filename="../ui/scheduledpickdialog.ui" line="17"/>
-        <location filename="../src/scheduledpickdialog.cpp" line="11"/>
+        <location filename="../src/scheduledpickdialog.cpp" line="12"/>
         <source>Scheduled Pick</source>
         <translation>Scheduled Pick</translation>
     </message>
@@ -614,12 +619,12 @@ Address: http://%1:%2</translation>
         <translation>Start Countdown</translation>
     </message>
     <message>
-        <location filename="../src/scheduledpickdialog.cpp" line="35"/>
+        <location filename="../src/scheduledpickdialog.cpp" line="36"/>
         <source>Invalid Time</source>
         <translation>Invalid Time</translation>
     </message>
     <message>
-        <location filename="../src/scheduledpickdialog.cpp" line="35"/>
+        <location filename="../src/scheduledpickdialog.cpp" line="36"/>
         <source>Please set a valid countdown time.</source>
         <translation>Please set a valid countdown time.</translation>
     </message>

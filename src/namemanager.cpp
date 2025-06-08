@@ -22,6 +22,7 @@ NameManager::NameManager(QWidget *parent) :
     connect(ui->actionImport, &QAction::triggered, this, &NameManager::importFromTxt);
 
     resize(800, 600);
+    setWindowFlags(windowFlags() &~ Qt::WindowMinMaxButtonsHint);
     setupUI();
 }
 
@@ -354,8 +355,11 @@ void NameManager::importFromTxt()
 {
     if (!isUnlocked) return;
 
-    QString fileName = QFileDialog::getOpenFileName(this,
-                                                    tr("Import TXT File"), "", tr("Text Files (*.txt)"));
+#ifdef Q_OS_WIN
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Import TXT File"), "", tr("Text Files (*.txt)"));
+#else
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Import TXT File"), QDir::homePath(), tr("Text Files (*.txt)"));
+#endif
 
     if (fileName.isEmpty()) return;
 

@@ -257,6 +257,9 @@ QCheckBox::indicator {
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="toolTip">
+             <string/>
+            </property>
             <property name="styleSheet">
              <string notr="true">QCheckBox {
    color: #FFFFFF;
@@ -286,7 +289,7 @@ QCheckBox::indicator {
      <x>0</x>
      <y>0</y>
      <width>650</width>
-     <height>24</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFeatures">

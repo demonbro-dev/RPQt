@@ -163,8 +163,13 @@ void MainWindow::setupConnections()
                 currentNames = nameGroups.value(groupName);
                 pickerLogic->setNames(currentNames);
             });
+#ifdef Q_OS_WIN
     connect(ui->topmostRadio, &QCheckBox::toggled,
             this, &MainWindow::onTopmostToggled);
+#else
+    ui->topmostRadio->setCheckable(false);
+    ui->topmostRadio->setToolTip(tr("Topmost is not available on your system."));
+#endif
 }
 
 
@@ -290,7 +295,9 @@ bool MainWindow::loadTranslation(const QLocale& locale)
     }
 
     ui->retranslateUi(this);
-
+#ifndef Q_OS_WIN
+    ui->topmostRadio->setToolTip(tr("Topmost is not available on your system."));
+#endif
     return appLoaded;
 }
 
