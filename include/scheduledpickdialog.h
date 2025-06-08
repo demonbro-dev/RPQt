@@ -26,7 +26,7 @@ private slots:
 private:
     Ui::ScheduledPickDialog *ui;
     QTimer *countdownTimer;
-    int remainingSeconds;
+    int remainingSeconds = 0;
 };
 
 #endif // SCHEDULEDPICKDIALOG_H

@@ -47,7 +47,7 @@ private:
     QTranslator qtTranslator;
     QTranslator appTranslator;
     QList<QStringList> pickHistory;
-    bool m_globalTrackingEnabled;
+    bool m_globalTrackingEnabled = false;
     QPoint m_dragPosition;
     QSystemTrayIcon *m_trayIcon;
 
