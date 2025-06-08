@@ -9,6 +9,7 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QFileDialog>
+#include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -310,7 +311,11 @@ void MainWindow::onNamesPicked(const QStringList &names)
 
 void MainWindow::onImportTempList()
 {
+#ifdef Q_OS_WIN
     QString dir = QCoreApplication::applicationDirPath();
+#else
+    QString dir = QDir::homePath();
+#endif
     QString fileName = QFileDialog::getOpenFileName(this,tr("Import Temporary Namelist"), dir, tr("Text Files (*.txt)"));
 
     if (fileName.isEmpty()) {
