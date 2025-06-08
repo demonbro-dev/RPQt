@@ -13,8 +13,12 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::MainWindow),
+    nameManager(nullptr),
     pickerLogic(new PickerLogic(this)),
-    sideButton(nullptr)
+    sideButton(nullptr),
+    historyDialog(nullptr),
+    m_globalTrackingEnabled(false),
+    m_trayIcon(nullptr)
 {
     ui->setupUi(this);
 

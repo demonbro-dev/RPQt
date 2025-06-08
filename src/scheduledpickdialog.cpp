@@ -5,7 +5,8 @@
 ScheduledPickDialog::ScheduledPickDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ScheduledPickDialog),
-    countdownTimer(new QTimer(this))
+    countdownTimer(new QTimer(this)),
+    remainingSeconds(0)
 {
     ui->setupUi(this);
     setWindowTitle(tr("Scheduled Pick"));

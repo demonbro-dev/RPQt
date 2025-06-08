@@ -9,6 +9,7 @@ PassphraseDialog::PassphraseDialog(const QString &jsonFilePath,
     QDialog(parent),
     ui(new Ui::PassphraseDialog),
     jsonFilePath(jsonFilePath),
+    jsonHandler(),
     currentMode(mode)
 {
     ui->setupUi(this);
