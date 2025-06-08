@@ -395,6 +395,7 @@ void MainWindow::showMainWindow()
     }
     if (m_trayIcon) {
         m_trayIcon->hide();
+        m_trayIcon = nullptr;
     }
 }
 
