@@ -362,7 +362,6 @@ void MainWindow::showSideButton()
 {
     hide();
 
-    // 创建并显示侧边按钮
     if (!sideButton) {
         sideButton = new SideButton();
         sideButton->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);

@@ -6,6 +6,7 @@ SideButton::SideButton(QWidget *parent)
     : QPushButton(parent)
 {
     setFixedSize(30, 60);
+    setWindowOpacity(0.85);
     setStyleSheet("background-color: #353535; color: white; border: none;");
     connect(this, &SideButton::clicked, this, &SideButton::clickedToShowMain);
 }
