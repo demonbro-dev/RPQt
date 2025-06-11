@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
                                   QCoreApplication::applicationName();
 
         if (isAlreadyRunning(uniqueKey)) {
-            QMessageBox::critical(nullptr, "Error", "A RandPicker Qt instance is already running.", QMessageBox::Ok);
+            QMessageBox::critical(nullptr, "Error", "A RandPicker instance is already running.", QMessageBox::Ok);
             return 1;
         }
     }
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
     darkPalette.setColor(QPalette::ButtonText, Qt::white);
     darkPalette.setColor(QPalette::BrightText, Qt::red);
     darkPalette.setColor(QPalette::Link, QColor(42,130,218));
-    darkPalette.setColor(QPalette::Highlight, QColor(29,84,92));
+    darkPalette.setColor(QPalette::Highlight, QColor(112,128,144));
     darkPalette.setColor(QPalette::HighlightedText, Qt::white);
 
     a.setPalette(darkPalette);

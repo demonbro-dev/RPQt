@@ -34,7 +34,7 @@ NameManager::~NameManager()
 
 void NameManager::setupUI()
 {
-    setWindowTitle(isUnlocked ? tr("RPQt Namelist Manager") : tr("RPQt Namelist Manager [Locked]"));
+    setWindowTitle(isUnlocked ? tr("RandPicker Namelist Manager") : tr("RandPicker Namelist Manager [Locked]"));
 
     ui->menuUnlock->menuAction()->setVisible(!isUnlocked);
     ui->menuFile->menuAction()->setVisible(isUnlocked);
@@ -446,6 +446,7 @@ bool NameManager::loadTranslation(const QLocale &locale)
     }
 
     ui->retranslateUi(this);
+    setWindowTitle(isUnlocked ? tr("RandPicker Namelist Manager") : tr("RandPicker Namelist Manager [Locked]"));
     return appLoaded;
 }
 
