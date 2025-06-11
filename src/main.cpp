@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
     darkPalette.setColor(QPalette::Button, QColor(33,33,33));
     darkPalette.setColor(QPalette::ButtonText, Qt::white);
     darkPalette.setColor(QPalette::BrightText, Qt::red);
-    darkPalette.setColor(QPalette::Link, QColor(42,130,218));
+    darkPalette.setColor(QPalette::Link, QColor(38,191,102));
     darkPalette.setColor(QPalette::Highlight, QColor(112,128,144));
     darkPalette.setColor(QPalette::HighlightedText, Qt::white);
 

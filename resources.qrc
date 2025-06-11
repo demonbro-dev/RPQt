@@ -6,5 +6,6 @@
         <file>data/style.qss</file>
         <file>data/license.md</file>
         <file>web/index.html</file>
+        <file>data/commit.md</file>
     </qresource>
 </RCC>

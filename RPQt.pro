@@ -58,3 +58,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 TRANSLATIONS += translations/RPQt_zh_CN.ts \
                 translations/RPQt_en_US.ts
+
+win32 {
+    QMAKE_EXTRA_TARGETS += write_git_commit
+    PRE_TARGETDEPS += write_git_commit
+    write_git_commit.commands = @echo Built on commit: [$$system(git rev-parse --short=8 HEAD)]\(https://github.com/demonbro-dev/RPQt/commit/$$system(git rev-parse HEAD)\) > $$PWD/data/commit.md || echo. > $$PWD/data/commit.md
+}
