@@ -7,8 +7,8 @@ INCLUDEPATH += include
 
 RC_ICONS = $$PWD/data/RandPickerLogo.ico
 QMAKE_TARGET_COMPANY = "demonbro"
-QMAKE_TARGET_PRODUCT = "RandPicker Qt"
-QMAKE_TARGET_DESCRIPTION = "RandPicker Qt"
+QMAKE_TARGET_PRODUCT = "RandPicker"
+QMAKE_TARGET_DESCRIPTION = "RandPicker"
 VERSION= "1.0.0.0"
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
