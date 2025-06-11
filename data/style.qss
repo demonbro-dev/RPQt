@@ -1,9 +1,9 @@
 QMenuBar {
-    background-color: #404142; /* 设置背景色，跟随背景色 */
+    background-color: #404142;
 }
 
 QMenuBar::selected {
-    background-color: #5D5E5F; /* 设置选中背景色 */
+    background-color: #5D5E5F;
 }
 
 QListWidget {
@@ -15,7 +15,7 @@ QListWidget::Item::hover {
 }
 
 QListWidget::Item::selected {
-    background-color: #1D545C;
+    background-color: #708090;
 }
 
 /*
