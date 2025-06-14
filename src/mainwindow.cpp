@@ -10,6 +10,7 @@
 #include <QFileInfo>
 #include <QFileDialog>
 #include <QDir>
+#include <QtConcurrent>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -176,37 +177,46 @@ void MainWindow::setupConnections()
 #endif
 }
 
-
 void MainWindow::loadNameLists()
 {
-    QString error;
-    QString filePath = NAMELIST_PATH;
+    QFuture<void> future = QtConcurrent::run([this]() {
+        QString error;
+        QString filePath = NAMELIST_PATH;
 
-    QFile file(filePath);
-    if (!file.exists()) {
-        QMessageBox::information(this, tr("Info"), QString(tr("Namelist not found. Default namelist will be created.")));
+        QFile file(filePath);
+        if (!file.exists()) {
+            QMetaObject::invokeMethod(this, [this]() {
+                QMessageBox::information(this, tr("Info"), QString(tr("Namelist not found. Default namelist will be created.")));
+            }, Qt::BlockingQueuedConnection);
 
-        // 使用JsonHandler创建默认文件
-        bool createDefaultNamelist = jsonHandler.createDefaultNamelist(filePath, error);
-        if (!createDefaultNamelist) {
-            QMessageBox::warning(this, tr("Error"), QString(tr("Failed to create default namelist file: %1")).arg(error));
-            nameGroups["Default1"] = {"12", "34", "56"};
-            return;
+            // 使用JsonHandler创建默认文件
+            bool createDefaultNamelist = jsonHandler.createDefaultNamelist(filePath, error);
+            if (!createDefaultNamelist) {
+                QMetaObject::invokeMethod(this, [this, error]() {
+                    QMessageBox::warning(this, tr("Error"), QString(tr("Failed to create default namelist file: %1")).arg(error));
+                }, Qt::BlockingQueuedConnection);
+                nameGroups["Default1"] = {"12", "34", "56"};
+                return;
+            }
         }
-    }
 
-    nameGroups = jsonHandler.loadFromFile(filePath, error);
+        auto loadedGroups = jsonHandler.loadFromFile(filePath, error);
 
-    if (!error.isEmpty()) {
-        QMessageBox::warning(this, tr("Failed to load"), error);
-        nameGroups["Default1"] = {"12", "34", "56"};
-    }
+        QMetaObject::invokeMethod(this, [this, loadedGroups, error]() {
+            if (!error.isEmpty()) {
+                QMessageBox::warning(this, tr("Failed to load"), error);
+                nameGroups["Default1"] = {"12", "34", "56"};
+            } else {
+                nameGroups = loadedGroups;
+            }
 
-    if (!nameGroups.isEmpty()) {
-        currentNames = nameGroups.first();
-        pickerLogic->setNames(currentNames);
-        ui->nameListCombo->addItems(nameGroups.keys());
-    }
+            if (!nameGroups.isEmpty()) {
+                currentNames = nameGroups.first();
+                pickerLogic->setNames(currentNames);
+                ui->nameListCombo->addItems(nameGroups.keys());
+            }
+        }, Qt::BlockingQueuedConnection);
+    });
 }
 
 void MainWindow::onPickButtonClicked()
