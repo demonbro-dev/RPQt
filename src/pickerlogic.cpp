@@ -1,5 +1,6 @@
 #include "pickerlogic.h"
 #include <QRandomGenerator>
+#include <QtConcurrent>
 
 PickerLogic::PickerLogic(QObject *parent) : QObject(parent), timer(new QTimer(this))
 {
@@ -13,7 +14,7 @@ void PickerLogic::setNames(const QStringList &names)
     resetPickedNames();
 }
 
-QStringList PickerLogic::pickNames(int count)
+QStringList PickerLogic::pickNames(int count, bool parallelPick)
 {
     QStringList result;
 
@@ -24,7 +25,11 @@ QStringList PickerLogic::pickNames(int count)
 
     // 从可用名单中随机选取
     QStringList shuffled = availableNames;
-    shuffleNames(shuffled);
+    if (parallelPick) {
+        shuffleNamesParallel(shuffled);
+    } else {
+        shuffleNames(shuffled);
+    }
 
     // 取前count个名字
     int takeCount = qMin(count, shuffled.size());
@@ -74,10 +79,11 @@ bool PickerLogic::isRunning() const
     return m_isRunning;
 }
 
-void PickerLogic::startPicking()
+void PickerLogic::startPicking(bool parallelPick)
 {
     if (!m_isRunning) {
         refreshAvailableNames();
+        m_parallelPick = parallelPick;
         timer->start(30);
         m_isRunning = true;
     }
@@ -89,7 +95,7 @@ void PickerLogic::stopPicking()
         timer->stop();
         m_isRunning = false;
 
-        QStringList finalResult = pickNames(m_pickCount);
+        QStringList finalResult = pickNames(m_pickCount, m_parallelPick);
         emit namesPicked(finalResult);
     }
 }
@@ -109,7 +115,11 @@ void PickerLogic::updateSelection()
 {
     // 动态抽选时从全部名字中随机显示
     QStringList shuffled = currentNames;
-    shuffleNames(shuffled);
+    if (m_parallelPick) {
+        shuffleNamesParallel(shuffled);
+    } else {
+        shuffleNames(shuffled);
+    }
 
     // 取前m_pickCount个名字用于预览
     QStringList preview;
@@ -138,4 +148,26 @@ void PickerLogic::shuffleNames(QStringList &names)
         shuffled << names.at(indexes[i]);
     }
     names = shuffled;
+}
+
+void PickerLogic::shuffleNamesParallel(QStringList &names)
+{
+    int chunkSize = names.size() / QThread::idealThreadCount();
+    if (chunkSize < 1) chunkSize = 1;
+
+    QVector<QStringList> chunks;
+    for (int i = 0; i < names.size(); i += chunkSize) {
+        chunks.append(names.mid(i, chunkSize));
+    }
+
+    QtConcurrent::blockingMap(chunks, [this](QStringList &chunk) {
+        shuffleNames(chunk);
+    });
+
+    names.clear();
+    for (const QStringList &chunk : chunks) {
+        names += chunk;
+    }
+
+    shuffleNames(names);
 }

@@ -336,6 +336,7 @@ QCheckBox::indicator {
      <addaction name="actionzhCN"/>
     </widget>
     <addaction name="actionGlobalTracking"/>
+    <addaction name="actionDisableParallelPick"/>
     <addaction name="separator"/>
     <addaction name="menuLanguage"/>
    </widget>
@@ -448,6 +449,14 @@ QCheckBox::indicator {
    </property>
    <property name="text">
     <string>Import Temporary List</string>
+   </property>
+  </action>
+  <action name="actionDisableParallelPick">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Disable Parallel Pick</string>
    </property>
   </action>
  </widget>

@@ -1,4 +1,4 @@
-QT       += core gui network httpserver
+QT       += core gui network httpserver concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

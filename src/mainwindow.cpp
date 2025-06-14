@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     sideButton(nullptr),
     historyDialog(nullptr),
     m_globalTrackingEnabled(false),
+    m_parallelPickEnabled(true),
     m_trayIcon(nullptr)
 {
     ui->setupUi(this);
@@ -69,7 +70,7 @@ void MainWindow::setupConnections()
         if (!m_trayIcon) {
             m_trayIcon = new QSystemTrayIcon(this);
             m_trayIcon->setIcon(QIcon(":/data/RandPickerLogo.ico"));
-            m_trayIcon->setToolTip("RandPicker Qt");
+            m_trayIcon->setToolTip("RandPicker");
 
             QMenu *trayMenu = new QMenu(this);
             trayMenu->addAction(tr("Show"), this, [this]() {
@@ -95,6 +96,9 @@ void MainWindow::setupConnections()
     });
     connect(ui->actionGlobalTracking, &QAction::toggled, this, [this](bool checked) {
         m_globalTrackingEnabled = checked;
+    });
+    connect(ui->actionDisableParallelPick, &QAction::toggled, this, [this](bool checked) {
+        m_parallelPickEnabled = !checked;
     });
     connect(ui->actionAboutQt, &QAction::triggered, this, [this]() {
         QMessageBox::aboutQt(this, tr("About Qt"));
@@ -125,7 +129,7 @@ void MainWindow::setupConnections()
     connect(ui->actionScheduledPick, &QAction::triggered, this, [this]() {
         ScheduledPickDialog *dialog = new ScheduledPickDialog(this);
         connect(dialog, &ScheduledPickDialog::timeElapsed, this, [this]() {
-            QStringList picked = pickerLogic->pickNames(ui->countSpin->value());
+            QStringList picked = pickerLogic->pickNames(ui->countSpin->value(), m_parallelPickEnabled);
             ui->nameLabel->setText(pickerLogic->formatNamesWithLineBreak(picked));
             pickHistory.append(picked);
             if (historyDialog) historyDialog->updateHistory(pickHistory);
@@ -209,7 +213,7 @@ void MainWindow::onPickButtonClicked()
 {
     if (ui->instantModeRadio->isChecked()) {
         // 立即抽选模式
-        QStringList picked = pickerLogic->pickNames(ui->countSpin->value());
+        QStringList picked = pickerLogic->pickNames(ui->countSpin->value(), m_parallelPickEnabled);
         ui->nameLabel->setText(pickerLogic->formatNamesWithLineBreak(picked));
         pickHistory.append(picked);
         if (historyDialog) {
@@ -219,7 +223,7 @@ void MainWindow::onPickButtonClicked()
         // 动态抽选模式
         if (!pickerLogic->isRunning()) {
             pickerLogic->setPickCount(ui->countSpin->value());
-            pickerLogic->startPicking();
+            pickerLogic->startPicking(m_parallelPickEnabled);
             ui->pickButton->setText(tr("Stop"));
             ui->instantModeRadio->setCheckable(false);
             ui->nameListCombo->setEnabled(false);

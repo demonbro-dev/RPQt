@@ -13,11 +13,11 @@ public:
     explicit PickerLogic(QObject *parent = nullptr);
 
     void setNames(const QStringList &names);
-    QStringList pickNames(int count);
+    QStringList pickNames(int count, bool parallelPick);
     QString formatNamesWithLineBreak(const QStringList &names);
 
     bool isRunning() const;
-    void startPicking();
+    void startPicking(bool parallelPick);
     void stopPicking();
     void setPickCount(int count);
     void resetPickedNames();
@@ -36,8 +36,10 @@ private:
     QStringList availableNames;
     int m_pickCount = 1;
     bool m_isRunning = false;
+    bool m_parallelPick = true;
 
     void shuffleNames(QStringList &names);
+    void shuffleNamesParallel(QStringList &names);
     void refreshAvailableNames();
 };
 

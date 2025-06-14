@@ -9,12 +9,12 @@
         <translation>关于 RandPicker</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="97"/>
+        <location filename="../ui/aboutdialog.ui" line="123"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../ui/aboutdialog.ui" line="134"/>
+        <location filename="../ui/aboutdialog.ui" line="160"/>
         <source>License</source>
         <translation>许可证</translation>
     </message>
@@ -28,7 +28,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="207"/>
-        <location filename="../src/mainwindow.cpp" line="230"/>
+        <location filename="../src/mainwindow.cpp" line="234"/>
         <source>Start</source>
         <translation>开始抽选</translation>
     </message>
@@ -48,22 +48,22 @@
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="413"/>
+        <location filename="../ui/mainwindow.ui" line="414"/>
         <source>Global Drag Tracking</source>
         <translation>全局拖动事件追踪</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="421"/>
+        <location filename="../ui/mainwindow.ui" line="422"/>
         <source>Clear Picked Names</source>
         <translation>清理已抽选名字</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="429"/>
+        <location filename="../ui/mainwindow.ui" line="430"/>
         <source>Scheduled Pick</source>
         <translation>计时抽选</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="437"/>
+        <location filename="../ui/mainwindow.ui" line="438"/>
         <source>RPWeb</source>
         <translation>RPWeb</translation>
     </message>
@@ -98,146 +98,151 @@
         <translation>设置(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="352"/>
+        <location filename="../ui/mainwindow.ui" line="353"/>
         <source>Open Namelist Manager</source>
         <translation>打开名单管理器</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="357"/>
-        <location filename="../src/mainwindow.cpp" line="100"/>
+        <location filename="../ui/mainwindow.ui" line="358"/>
+        <location filename="../src/mainwindow.cpp" line="104"/>
         <source>About Qt</source>
         <translation>关于 Qt</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="368"/>
+        <location filename="../ui/mainwindow.ui" line="369"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="373"/>
+        <location filename="../ui/mainwindow.ui" line="374"/>
         <source>Follow System</source>
         <translation>跟随系统</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="391"/>
+        <location filename="../ui/mainwindow.ui" line="392"/>
         <source>RPSideShortcut</source>
         <translation>切换至侧边栏</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="394"/>
+        <location filename="../ui/mainwindow.ui" line="395"/>
         <source>Sidebar</source>
         <translation>侧边栏</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="405"/>
+        <location filename="../ui/mainwindow.ui" line="406"/>
         <source>History</source>
         <translation>历史记录</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="442"/>
+        <location filename="../ui/mainwindow.ui" line="443"/>
         <source>Hide to Tray</source>
         <translation>隐藏至系统托盘</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="450"/>
+        <location filename="../ui/mainwindow.ui" line="451"/>
         <source>Import Temporary List</source>
         <translation>导入临时名单</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="183"/>
+        <location filename="../ui/mainwindow.ui" line="459"/>
+        <source>Disable Parallel Pick</source>
+        <translation>禁用并行抽选</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="187"/>
         <source>Info</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="183"/>
+        <location filename="../src/mainwindow.cpp" line="187"/>
         <source>Namelist not found. Default namelist will be created.</source>
         <translation>未发现名单文件，将创建默认名单文件.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="188"/>
-        <location filename="../src/mainwindow.cpp" line="334"/>
-        <location filename="../src/mainwindow.cpp" line="345"/>
+        <location filename="../src/mainwindow.cpp" line="192"/>
+        <location filename="../src/mainwindow.cpp" line="338"/>
+        <location filename="../src/mainwindow.cpp" line="349"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="188"/>
+        <location filename="../src/mainwindow.cpp" line="192"/>
         <source>Failed to create default namelist file: %1</source>
         <translation>创建默认名单文件失败: %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="197"/>
+        <location filename="../src/mainwindow.cpp" line="201"/>
         <source>Failed to load</source>
         <translation>加载失败</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="223"/>
+        <location filename="../src/mainwindow.cpp" line="227"/>
         <source>Stop</source>
         <translation>停止抽选</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="326"/>
+        <location filename="../src/mainwindow.cpp" line="330"/>
         <source>Import Temporary Namelist</source>
         <translation>导入临时名单</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="334"/>
+        <location filename="../src/mainwindow.cpp" line="338"/>
         <source>Could not open file!</source>
         <translation>不能打开文件!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="353"/>
+        <location filename="../src/mainwindow.cpp" line="357"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="353"/>
+        <location filename="../src/mainwindow.cpp" line="357"/>
         <source>This list exists!</source>
         <translation>该名单已存在!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="326"/>
+        <location filename="../src/mainwindow.cpp" line="330"/>
         <source>Text Files (*.txt)</source>
         <translation>文本文件 (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="171"/>
-        <location filename="../src/mainwindow.cpp" line="299"/>
+        <location filename="../src/mainwindow.cpp" line="175"/>
+        <location filename="../src/mainwindow.cpp" line="303"/>
         <source>Topmost is not available on your system.</source>
         <translation>&quot;置于顶层&quot;当前在您的系统上不可用.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="345"/>
+        <location filename="../src/mainwindow.cpp" line="349"/>
         <source>No valid names found in the file.</source>
         <translation>未在文件中找到可用名单.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="365"/>
+        <location filename="../src/mainwindow.cpp" line="369"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="365"/>
+        <location filename="../src/mainwindow.cpp" line="369"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
         <translation>已导入具有 %1 个名字的临时名单&quot;%2&quot;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="155"/>
+        <location filename="../src/mainwindow.cpp" line="159"/>
         <source>Picked Names Cleared</source>
         <translation>已清理已抽选名字</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="75"/>
+        <location filename="../src/mainwindow.cpp" line="76"/>
         <source>Show</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="79"/>
+        <location filename="../src/mainwindow.cpp" line="80"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="156"/>
+        <location filename="../src/mainwindow.cpp" line="160"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
         <translation>已抽选名字列表现已被重置.

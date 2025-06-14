@@ -48,6 +48,7 @@ private:
     QTranslator appTranslator;
     QList<QStringList> pickHistory;
     bool m_globalTrackingEnabled = false;
+    bool m_parallelPickEnabled = true;
     QPoint m_dragPosition;
     QSystemTrayIcon *m_trayIcon;
 
