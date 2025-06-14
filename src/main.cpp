@@ -16,7 +16,7 @@ bool isAlreadyRunning(const QString &uniqueKey)
 {
     QLocalSocket socket;
     socket.connectToServer(uniqueKey);
-    if (socket.waitForConnected(270)) {
+    if (socket.waitForConnected(105)) {
         socket.close();
         return true;
     }
