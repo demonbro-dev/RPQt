@@ -46,7 +46,9 @@ int main(int argc, char *argv[])
 
     QCommandLineParser parser;
     QCommandLineOption sidebarOption("sidebar", "Start application in sidebar mode");
+    QCommandLineOption sidebarLeftOption("sidebar-left", "Start application in sidebar mode (left side)");
     parser.addOption(sidebarOption);
+    parser.addOption(sidebarLeftOption);
     parser.process(a);
 
     // 强制使用Fusion主题并设置深色调色板
@@ -76,8 +78,11 @@ int main(int argc, char *argv[])
     MainWindow w;
 
     // 检查是否带有 --sidebar 参数
-    if (parser.isSet(sidebarOption)) {
-        QTimer::singleShot(0, &w, &MainWindow::showSideButton);
+    if (parser.isSet(sidebarOption) || parser.isSet(sidebarLeftOption)) {
+        bool toRight = parser.isSet(sidebarOption);
+        QTimer::singleShot(0, [&w, toRight]() {
+            w.showSideButton(toRight);
+        });
     } else {
         w.show();
     }

@@ -66,7 +66,12 @@ void MainWindow::setupConnections()
         nameManager->raise();
         nameManager->activateWindow();
     });
-    connect(ui->actionSidebar, &QAction::triggered, this, &MainWindow::showSideButton);
+    connect(ui->actionSidebar, &QAction::triggered, this, [this]() {
+        showSideButton(true);
+    });
+    connect(ui->actionSidebarToLeft, &QAction::triggered, this, [this]() {
+        showSideButton(false);
+    });
     connect(ui->actionHidetoTray, &QAction::triggered, this, [this]() {
         if (!m_trayIcon) {
             m_trayIcon = new QSystemTrayIcon(this);
@@ -379,19 +384,19 @@ void MainWindow::onImportTempList()
     QMessageBox::information(this,tr("Success"),tr("Imported %1 names as temporary list '%2'").arg(names.size()).arg(listName));
 }
 
-void MainWindow::showSideButton()
+void MainWindow::showSideButton(bool toRight)
 {
     hide();
 
     if (!sideButton) {
-        sideButton = new SideButton();
+        sideButton = new SideButton(nullptr, toRight);
         sideButton->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
         connect(sideButton, &SideButton::clickedToShowMain, this, &MainWindow::showMainWindow);
     }
 
     QRect screenGeometry = QApplication::primaryScreen()->availableGeometry();
 
-    int x = screenGeometry.right() - sideButton->width();
+    int x = toRight ? screenGeometry.right() - sideButton->width() : screenGeometry.left();
     int y = screenGeometry.top() + screenGeometry.height() / 4;
 
     y = qMin(y, screenGeometry.bottom() - sideButton->height());

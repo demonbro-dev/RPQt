@@ -302,6 +302,7 @@ QCheckBox::indicator {
     <addaction name="actionNameManager"/>
     <addaction name="separator"/>
     <addaction name="actionSidebar"/>
+    <addaction name="actionSidebarToLeft"/>
     <addaction name="actionHidetoTray"/>
     <addaction name="separator"/>
     <addaction name="actionRPWeb"/>
@@ -457,6 +458,14 @@ QCheckBox::indicator {
    </property>
    <property name="text">
     <string>Disable Parallel Pick</string>
+   </property>
+  </action>
+  <action name="actionSidebarToLeft">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::MediaSkipBackward"/>
+   </property>
+   <property name="text">
+    <string>RPSideShortcutLeft</string>
    </property>
   </action>
  </widget>

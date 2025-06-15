@@ -23,7 +23,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void showSideButton();
+    void showSideButton(bool toRight);
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
