@@ -10,6 +10,7 @@
 #include <QFileInfo>
 #include <QFileDialog>
 #include <QDir>
+#include <QGesture>
 #include <QtConcurrent>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -25,12 +26,28 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    gestureHintLabel = new QLabel(this);
+    gestureHintLabel->setAlignment(Qt::AlignCenter);
+    gestureHintLabel->setStyleSheet(
+        "QLabel {"
+        "  background-color: rgba(50, 50, 50, 150);"
+        "  color: white;"
+        "  font-size: 24px;"
+        "  border-radius: 10px;"
+        "  padding: 20px;"
+        "}"
+        );
+    gestureHintLabel->hide();
+    gestureHintLabel->resize(200, 100);
+
     if (!loadTranslation(QLocale(QLocale::system()))) {
         loadTranslation(QLocale(QLocale::English, QLocale::UnitedStates));
     }
 
     loadNameLists();
     setupConnections();
+    grabGesture(Qt::PanGesture);
+    grabGesture(Qt::SwipeGesture);
 }
 
 MainWindow::~MainWindow()
@@ -442,6 +459,20 @@ void MainWindow::updateFontSize()
     ui->nameLabel->setFixedSize(qMax(labelWidth, 200), qMax(labelHeight, 80));
 }
 
+void MainWindow::showGestureHint(const QString &text) {
+    gestureHintLabel->setText(text);
+    gestureHintLabel->move(
+        (width() - gestureHintLabel->width()) / 2,
+        (height() - gestureHintLabel->height()) / 2
+        );
+    gestureHintLabel->show();
+    gestureHintLabel->raise();
+}
+
+void MainWindow::hideGestureHint() {
+    gestureHintLabel->hide();
+}
+
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     if (m_globalTrackingEnabled && event->button() == Qt::LeftButton) {
@@ -458,4 +489,64 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         event->accept();
     }
     QMainWindow::mouseMoveEvent(event);
+}
+
+bool MainWindow::event(QEvent *event)
+{
+    if (event->type() == QEvent::TouchBegin ||
+        event->type() == QEvent::TouchUpdate ||
+        event->type() == QEvent::TouchEnd)
+    {
+        QTouchEvent *touchEvent = static_cast<QTouchEvent*>(event);
+        if (touchEvent->points().size() == 2) {
+            return handleTwoFingerSwipe(touchEvent);
+        }
+    }
+    return QMainWindow::event(event);
+}
+
+bool MainWindow::handleTwoFingerSwipe(QTouchEvent *touchEvent) {
+    static QPointF startPos1, startPos2;
+    static bool isTracking = false;
+
+    const auto &points = touchEvent->points();
+    if (points.size() < 2) return false;
+
+    QPointF currentPos1 = points[0].position();
+    QPointF currentPos2 = points[1].position();
+
+    switch (touchEvent->type()) {
+    case QEvent::TouchBegin:
+        startPos1 = currentPos1;
+        startPos2 = currentPos2;
+        isTracking = true;
+        return true;
+
+    case QEvent::TouchUpdate:
+        if (isTracking) {
+            qreal totalDeltaX = (currentPos1.x() - startPos1.x() + currentPos2.x() - startPos2.x()) / 2;
+            QString direction = (totalDeltaX > 50) ? "Right" : (totalDeltaX < -50) ? "Left" : "";
+
+            if (!direction.isEmpty()) {
+                showGestureHint(direction == "Right" ? "→" : "←");
+            }
+        }
+        return true;
+
+    case QEvent::TouchEnd:
+        if (isTracking) {
+            qreal totalDeltaX = (currentPos1.x() - startPos1.x() + currentPos2.x() - startPos2.x()) / 2;
+            if (totalDeltaX > 50) {
+                showSideButton(true);
+            } else if (totalDeltaX < -50) {
+                showSideButton(false);
+            }
+            hideGestureHint();
+        }
+        isTracking = false;
+        return true;
+
+    default:
+        return false;
+    }
 }
