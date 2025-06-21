@@ -8,10 +8,12 @@
 #include <QSystemTrayIcon>
 #include <QLabel>
 #include "jsonhandler.h"
+#include "settingshandler.h"
 #include "namemanager.h"
 #include "pickhistorydialog.h"
 #include "sidebutton.h"
 #include "pickerlogic.h"
+#include "randmirage.h"
 
 namespace Ui {
 class MainWindow;
@@ -39,12 +41,13 @@ private slots:
 private:
     Ui::MainWindow *ui;
     PickerLogic::RandomGeneratorType m_currentRandomType;
-    QLabel *gestureHintLabel;
+    SettingsHandler settingsHandler;
     JsonHandler jsonHandler;
     NameManager *nameManager;
     PickerLogic *pickerLogic;
     SideButton *sideButton;
     PickHistoryDialog *historyDialog;
+    RandMirage *randMirage;
     QMap<QString, QStringList> nameGroups;
     QStringList currentNames;
     QTranslator qtTranslator;
@@ -64,6 +67,7 @@ private:
     void showMainWindow();
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
+    void closeEvent(QCloseEvent *event) override;
 };
 
 #endif // MAINWINDOW_H

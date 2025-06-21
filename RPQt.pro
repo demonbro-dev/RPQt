@@ -23,8 +23,10 @@ SOURCES += \
     src/passphrasedialog.cpp \
     src/pickerlogic.cpp \
     src/pickhistorydialog.cpp \
+    src/randmirage.cpp \
     src/rpweb.cpp \
     src/scheduledpickdialog.cpp \
+    src/settingshandler.cpp \
     src/sidebutton.cpp
 
 HEADERS += \
@@ -35,8 +37,10 @@ HEADERS += \
     include/passphrasedialog.h \
     include/pickerlogic.h \
     include/pickhistorydialog.h \
+    include/randmirage.h \
     include/rpweb.h \
     include/scheduledpickdialog.h \
+    include/settingshandler.h \
     include/sidebutton.h
 
 FORMS += \

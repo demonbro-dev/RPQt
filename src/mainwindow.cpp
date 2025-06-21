@@ -16,10 +16,12 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::MainWindow),
+    settingsHandler(new SettingsHandler(this)),
     nameManager(nullptr),
     pickerLogic(new PickerLogic(this)),
     sideButton(nullptr),
     historyDialog(nullptr),
+    randMirage(nullptr),
     m_globalTrackingEnabled(false),
     m_parallelPickEnabled(true),
     m_trayIcon(nullptr)
@@ -137,6 +139,11 @@ void MainWindow::setupConnections()
     });
     connect(ui->actionDisableParallelPick, &QAction::toggled, this, [this](bool checked) {
         m_parallelPickEnabled = !checked;
+    });
+    connect(ui->actionGTC, &QAction::triggered, this, [this]() {
+        settingsHandler.generateExampleConfig();
+        QMessageBox::information(this, tr("Template Config Generated"),
+                                 tr("A template config.ini file has been generated.\n\nConfig.ini file is in:\n'YOUR_APP_PATH/config.ini' (Windows)\n'~/.config/config.ini' (Linux)."));
     });
     connect(ui->actionAboutQt, &QAction::triggered, this, [this]() {
         QMessageBox::aboutQt(this, tr("About Qt"));
@@ -451,6 +458,11 @@ void MainWindow::showMainWindow()
         m_trayIcon->hide();
         m_trayIcon = nullptr;
     }
+    if (randMirage) {
+        randMirage->hide();
+        randMirage->deleteLater();
+        randMirage = nullptr;
+    }
 }
 
 void MainWindow::resizeEvent(QResizeEvent *event)
@@ -493,4 +505,36 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         event->accept();
     }
     QMainWindow::mouseMoveEvent(event);
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (settingsHandler.getOpenRandMirageWhenClose()) {
+        QRect screenGeometry = QApplication::primaryScreen()->availableGeometry();
+        QPoint centerPos = geometry().center();
+
+        hide();
+        if (!randMirage) {
+            randMirage = new RandMirage();
+            connect(randMirage, &RandMirage::clicked, this, &MainWindow::showMainWindow);
+            connect(randMirage, &RandMirage::closeRequested, qApp, &QApplication::quit);
+            connect(randMirage, &RandMirage::destroyed, this, [this]() {
+                randMirage = nullptr;
+            });
+        }
+
+        int xPos;
+        if (centerPos.x() < screenGeometry.width() / 2) {
+            xPos = screenGeometry.left();
+        } else {
+            xPos = screenGeometry.right() - randMirage->width();
+        }
+        int yPos = screenGeometry.top() + (screenGeometry.height() - randMirage->height()) / 2;
+
+        randMirage->move(xPos, yPos);
+        randMirage->show();
+        event->ignore();
+    } else {
+        event->accept();
+    }
 }

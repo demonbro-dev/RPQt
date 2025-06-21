@@ -346,6 +346,8 @@ QCheckBox::indicator {
     <addaction name="separator"/>
     <addaction name="menuRandom_Impl"/>
     <addaction name="menuLanguage"/>
+    <addaction name="separator"/>
+    <addaction name="actionGTC"/>
    </widget>
    <addaction name="menuFeatures"/>
    <addaction name="menuInPick"/>
@@ -477,6 +479,11 @@ QCheckBox::indicator {
   <action name="action1">
    <property name="text">
     <string>1</string>
+   </property>
+  </action>
+  <action name="actionGTC">
+   <property name="text">
+    <string>Generate Template Config</string>
    </property>
   </action>
  </widget>
