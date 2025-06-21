@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QtConcurrent>
 
 AboutDialog::AboutDialog(QWidget *parent) :
     QDialog(parent),
@@ -11,17 +12,27 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui->setupUi(this);
 
     // 加载 license.md 文件并设置到 licenseTextEdit
-    QFile licenseFile(":/data/license.md");
+    ui->licenseTextEdit->setPlainText("Loading License, please wait...");
+
+    QThreadPool::globalInstance()->start([this]() {
+        QFile licenseFile(":/data/license.md");
+        QString licenseText;
+
+        if (licenseFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QTextStream stream(&licenseFile);
+            licenseText = stream.readAll();
+            licenseFile.close();
+        } else {
+            licenseText = "Failed to load license file.\nThis software uses GPLv3.";
+            qWarning() << "Failed to open license file:" << licenseFile.errorString();
+        }
+
+        QMetaObject::invokeMethod(this, [this, licenseText]() {
+            ui->licenseTextEdit->setMarkdown(licenseText);
+        }, Qt::QueuedConnection);
+    });
+
     QFile commitFile(":/data/commit.md");
-    if (licenseFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QTextStream stream(&licenseFile);
-        QString licenseText = stream.readAll();
-        ui->licenseTextEdit->setMarkdown(licenseText);
-        licenseFile.close();
-    } else {
-        ui->licenseTextEdit->setPlainText("Failed to load license file.\nThis software uses GPLv3.");
-        qWarning() << "Failed to open license file:" << licenseFile.errorString();
-    }
     if (commitFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream stream(&commitFile);
         QString commitText = stream.readAll();
