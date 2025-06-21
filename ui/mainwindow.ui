@@ -336,9 +336,15 @@ QCheckBox::indicator {
      <addaction name="actionenUS"/>
      <addaction name="actionzhCN"/>
     </widget>
+    <widget class="QMenu" name="menuRandom_Impl">
+     <property name="title">
+      <string>Random Implementation</string>
+     </property>
+    </widget>
     <addaction name="actionGlobalTracking"/>
     <addaction name="actionDisableParallelPick"/>
     <addaction name="separator"/>
+    <addaction name="menuRandom_Impl"/>
     <addaction name="menuLanguage"/>
    </widget>
    <addaction name="menuFeatures"/>
@@ -466,6 +472,11 @@ QCheckBox::indicator {
    </property>
    <property name="text">
     <string>RPSideShortcutLeft</string>
+   </property>
+  </action>
+  <action name="action1">
+   <property name="text">
+    <string>1</string>
    </property>
   </action>
  </widget>

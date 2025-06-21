@@ -12,13 +12,20 @@ class PickerLogic : public QObject
 public:
     explicit PickerLogic(QObject *parent = nullptr);
 
+    enum class RandomGeneratorType {
+        QRandomGenerator,
+        minstd_rand,
+        mt19937,
+        RandomSelect
+    };
+
     void setNames(const QStringList &names);
-    QStringList pickNames(int count, bool parallelPick);
+    QStringList pickNames(int count, bool parallelPick, RandomGeneratorType generatorType);
     QString formatNamesWithLineBreak(const QStringList &names);
 
     bool isRunning() const;
     void startPicking(bool parallelPick);
-    void stopPicking();
+    void stopPicking(RandomGeneratorType generatorType);
     void setPickCount(int count);
     void resetPickedNames();
 
@@ -27,7 +34,7 @@ signals:
     void previewNames(const QStringList &names);
 
 private slots:
-    void updateSelection();
+    void updateSelection(RandomGeneratorType generatorType);
 
 private:
     QTimer *timer;
@@ -38,8 +45,8 @@ private:
     bool m_isRunning = false;
     bool m_parallelPick = true;
 
-    void shuffleNames(QStringList &names);
-    void shuffleNamesParallel(QStringList &names);
+    void shuffleNames(QStringList &names, RandomGeneratorType generatorType);
+    void shuffleNamesParallel(QStringList &names, RandomGeneratorType generatorType);
     void refreshAvailableNames();
 };
 

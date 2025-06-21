@@ -38,6 +38,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    PickerLogic::RandomGeneratorType m_currentRandomType;
     QLabel *gestureHintLabel;
     JsonHandler jsonHandler;
     NameManager *nameManager;

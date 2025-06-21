@@ -1,10 +1,13 @@
 #include "pickerlogic.h"
+#include <random>
 #include <QRandomGenerator>
 #include <QtConcurrent>
 
 PickerLogic::PickerLogic(QObject *parent) : QObject(parent), timer(new QTimer(this))
 {
-    connect(timer, &QTimer::timeout, this, &PickerLogic::updateSelection);
+    connect(timer, &QTimer::timeout, this, [this]() {
+        updateSelection(RandomGeneratorType::QRandomGenerator);
+    });
 }
 
 
@@ -14,7 +17,7 @@ void PickerLogic::setNames(const QStringList &names)
     resetPickedNames();
 }
 
-QStringList PickerLogic::pickNames(int count, bool parallelPick)
+QStringList PickerLogic::pickNames(int count, bool parallelPick, RandomGeneratorType generatorType)
 {
     QStringList result;
 
@@ -26,9 +29,9 @@ QStringList PickerLogic::pickNames(int count, bool parallelPick)
     // 从可用名单中随机选取
     QStringList shuffled = availableNames;
     if (parallelPick) {
-        shuffleNamesParallel(shuffled);
+        shuffleNamesParallel(shuffled, generatorType);
     } else {
-        shuffleNames(shuffled);
+        shuffleNames(shuffled, generatorType);
     }
 
     // 取前count个名字
@@ -89,13 +92,13 @@ void PickerLogic::startPicking(bool parallelPick)
     }
 }
 
-void PickerLogic::stopPicking()
+void PickerLogic::stopPicking(RandomGeneratorType generatorType)
 {
     if (m_isRunning) {
         timer->stop();
         m_isRunning = false;
 
-        QStringList finalResult = pickNames(m_pickCount, m_parallelPick);
+        QStringList finalResult = pickNames(m_pickCount, m_parallelPick, generatorType);
         emit namesPicked(finalResult);
     }
 }
@@ -111,14 +114,14 @@ void PickerLogic::resetPickedNames()
     refreshAvailableNames();
 }
 
-void PickerLogic::updateSelection()
+void PickerLogic::updateSelection(RandomGeneratorType generatorType)
 {
     // 动态抽选时从全部名字中随机显示
     QStringList shuffled = currentNames;
     if (m_parallelPick) {
-        shuffleNamesParallel(shuffled);
+        shuffleNamesParallel(shuffled, generatorType);
     } else {
-        shuffleNames(shuffled);
+        shuffleNames(shuffled, generatorType);
     }
 
     // 取前m_pickCount个名字用于预览
@@ -131,16 +134,53 @@ void PickerLogic::updateSelection()
     emit previewNames(preview);
 }
 
-void PickerLogic::shuffleNames(QStringList &names)
+void PickerLogic::shuffleNames(QStringList &names, RandomGeneratorType generatorType)
 {
+    if (names.isEmpty()) return;
+
     QList<int> indexes;
     for(int i = 0; i < names.size(); ++i) {
         indexes.append(i);
     }
 
-    for (int i = indexes.size() - 1; i > 0; --i) {
-        int j = QRandomGenerator::global()->bounded(i + 1);
-        qSwap(indexes[i], indexes[j]);
+    if (generatorType == RandomGeneratorType::RandomSelect) {
+        const int choice = QRandomGenerator::global()->bounded(3);
+        generatorType = static_cast<RandomGeneratorType>(choice);
+    }
+
+    switch (generatorType) {
+    case RandomGeneratorType::QRandomGenerator: {
+        for (int i = indexes.size() - 1; i > 0; --i) {
+            int j = QRandomGenerator::global()->bounded(i + 1);
+            qSwap(indexes[i], indexes[j]);
+        }
+        break;
+    }
+    case RandomGeneratorType::minstd_rand: {
+        std::random_device rd;
+        std::minstd_rand gen(rd());
+        for (int i = indexes.size() - 1; i > 0; --i) {
+            std::uniform_int_distribution<int> dist(0, i);
+            int j = dist(gen);
+            qSwap(indexes[i], indexes[j]);
+        }
+        break;
+    }
+    case RandomGeneratorType::mt19937: {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        for (int i = indexes.size() - 1; i > 0; --i) {
+            std::uniform_int_distribution<int> dist(0, i);
+            int j = dist(gen);
+            qSwap(indexes[i], indexes[j]);
+        }
+        break;
+    }
+    default:
+        for (int i = indexes.size() - 1; i > 0; --i) {
+            int j = QRandomGenerator::global()->bounded(i + 1);
+            qSwap(indexes[i], indexes[j]);
+        }
     }
 
     QStringList shuffled;
@@ -150,8 +190,15 @@ void PickerLogic::shuffleNames(QStringList &names)
     names = shuffled;
 }
 
-void PickerLogic::shuffleNamesParallel(QStringList &names)
+void PickerLogic::shuffleNamesParallel(QStringList &names, RandomGeneratorType generatorType)
 {
+    if (names.isEmpty()) return;
+
+    if (generatorType == RandomGeneratorType::RandomSelect) {
+        const int choice = QRandomGenerator::global()->bounded(3);
+        generatorType = static_cast<RandomGeneratorType>(choice);
+    }
+
     int chunkSize = names.size() / QThread::idealThreadCount();
     if (chunkSize < 1) chunkSize = 1;
 
@@ -160,14 +207,16 @@ void PickerLogic::shuffleNamesParallel(QStringList &names)
         chunks.append(names.mid(i, chunkSize));
     }
 
-    QtConcurrent::blockingMap(chunks, [this](QStringList &chunk) {
-        shuffleNames(chunk);
-    });
+    auto shuffleChunk = [this, generatorType](QStringList &chunk) {
+        shuffleNames(chunk, generatorType);
+    };
+
+    QtConcurrent::blockingMap(chunks, shuffleChunk);
 
     names.clear();
     for (const QStringList &chunk : chunks) {
         names += chunk;
     }
 
-    shuffleNames(names);
+    shuffleNames(names, generatorType);
 }

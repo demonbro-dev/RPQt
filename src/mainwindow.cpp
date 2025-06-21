@@ -4,6 +4,7 @@
 #include "ui_mainwindow.h"
 #include "aboutdialog.h"
 #include <QLibraryInfo>
+#include <QActionGroup>
 #include <QMessageBox>
 #include <QResizeEvent>
 #include <QFile>
@@ -36,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     if(pickerLogic && pickerLogic->isRunning()) {
-        pickerLogic->stopPicking();
+        pickerLogic->stopPicking(PickerLogic::RandomGeneratorType::QRandomGenerator);
         pickerLogic = nullptr;
     }
 
@@ -54,6 +55,37 @@ MainWindow::~MainWindow()
 
 void MainWindow::setupConnections()
 {
+    // 初始化默认随机数生成器类型
+    m_currentRandomType = PickerLogic::RandomGeneratorType::RandomSelect;
+
+    QActionGroup* randomImplGroup = new QActionGroup(this);
+    randomImplGroup->setExclusive(true);
+
+    QAction* actionRandomSelect = new QAction(tr("Random (Default)"), this);
+    actionRandomSelect->setCheckable(true);
+    actionRandomSelect->setChecked(true);
+    actionRandomSelect->setData(QVariant::fromValue(PickerLogic::RandomGeneratorType::RandomSelect));
+    randomImplGroup->addAction(actionRandomSelect);
+    ui->menuRandom_Impl->addAction(actionRandomSelect);
+
+    QAction* actionQRandomGenerator = new QAction("QRandomGenerator", this);
+    actionQRandomGenerator->setCheckable(true);
+    actionQRandomGenerator->setData(QVariant::fromValue(PickerLogic::RandomGeneratorType::QRandomGenerator));
+    randomImplGroup->addAction(actionQRandomGenerator);
+    ui->menuRandom_Impl->addAction(actionQRandomGenerator);
+
+    QAction* actionMinstdRand = new QAction("minstd_rand", this);
+    actionMinstdRand->setCheckable(true);
+    actionMinstdRand->setData(QVariant::fromValue(PickerLogic::RandomGeneratorType::minstd_rand));
+    randomImplGroup->addAction(actionMinstdRand);
+    ui->menuRandom_Impl->addAction(actionMinstdRand);
+
+    QAction* actionMt19937 = new QAction("mt19937", this);
+    actionMt19937->setCheckable(true);
+    actionMt19937->setData(QVariant::fromValue(PickerLogic::RandomGeneratorType::mt19937));
+    randomImplGroup->addAction(actionMt19937);
+    ui->menuRandom_Impl->addAction(actionMt19937);
+
     connect(ui->actionNameManager, &QAction::triggered, this, [this]() {
         if (!nameManager) {
             nameManager = new NameManager(this);
@@ -135,7 +167,7 @@ void MainWindow::setupConnections()
     connect(ui->actionScheduledPick, &QAction::triggered, this, [this]() {
         ScheduledPickDialog *dialog = new ScheduledPickDialog(this);
         connect(dialog, &ScheduledPickDialog::timeElapsed, this, [this]() {
-            QStringList picked = pickerLogic->pickNames(ui->countSpin->value(), m_parallelPickEnabled);
+            QStringList picked = pickerLogic->pickNames(ui->countSpin->value(), m_parallelPickEnabled, m_currentRandomType);
             ui->nameLabel->setText(pickerLogic->formatNamesWithLineBreak(picked));
             pickHistory.append(picked);
             if (historyDialog) historyDialog->updateHistory(pickHistory);
@@ -168,6 +200,9 @@ void MainWindow::setupConnections()
     connect(ui->pickButton, &QPushButton::clicked, this, &MainWindow::onPickButtonClicked);
     connect(pickerLogic, &PickerLogic::namesPicked, this, &MainWindow::onNamesPicked);
     connect(pickerLogic, &PickerLogic::previewNames, this, &MainWindow::onPreviewNames);
+    connect(randomImplGroup, &QActionGroup::triggered, this, [this](QAction* action) {
+        m_currentRandomType = action->data().value<PickerLogic::RandomGeneratorType>();
+    });
     connect(ui->nameListCombo, &QComboBox::currentTextChanged,
             this, [this](const QString &groupName){
                 currentNames = nameGroups.value(groupName);
@@ -228,7 +263,7 @@ void MainWindow::onPickButtonClicked()
 {
     if (ui->instantModeRadio->isChecked()) {
         // 立即抽选模式
-        QStringList picked = pickerLogic->pickNames(ui->countSpin->value(), m_parallelPickEnabled);
+        QStringList picked = pickerLogic->pickNames(ui->countSpin->value(), m_parallelPickEnabled, m_currentRandomType);
         ui->nameLabel->setText(pickerLogic->formatNamesWithLineBreak(picked));
         pickHistory.append(picked);
         if (historyDialog) {
@@ -245,7 +280,7 @@ void MainWindow::onPickButtonClicked()
             ui->countSpin->setEnabled(false);
             ui->actionClearPicked->setEnabled(false);
         } else {
-            pickerLogic->stopPicking();
+            pickerLogic->stopPicking(m_currentRandomType);
             ui->pickButton->setText(tr("Start"));
             ui->instantModeRadio->setCheckable(true);
             ui->nameListCombo->setEnabled(true);
