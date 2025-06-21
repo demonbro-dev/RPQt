@@ -7,7 +7,6 @@
 #include <QTranslator>
 #include <QSystemTrayIcon>
 #include <QLabel>
-#include <QGestureEvent>
 #include "jsonhandler.h"
 #include "namemanager.h"
 #include "pickhistorydialog.h"
@@ -29,8 +28,6 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
-    bool event(QEvent *event) override;
-    bool handleTwoFingerSwipe(QTouchEvent *touchEvent);
 
 private slots:
     void onPickButtonClicked();
@@ -66,8 +63,6 @@ private:
     void showMainWindow();
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
-    void showGestureHint(const QString &text);
-    void hideGestureHint();
 };
 
 #endif // MAINWINDOW_H
