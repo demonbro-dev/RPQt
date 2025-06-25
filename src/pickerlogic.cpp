@@ -6,7 +6,7 @@
 PickerLogic::PickerLogic(QObject *parent) : QObject(parent), timer(new QTimer(this))
 {
     connect(timer, &QTimer::timeout, this, [this]() {
-        updateSelection(RandomGeneratorType::QRandomGenerator);
+        updateSelection(RandomGeneratorType::minstd_rand);
     });
 }
 
@@ -150,8 +150,9 @@ void PickerLogic::shuffleNames(QStringList &names, RandomGeneratorType generator
 
     switch (generatorType) {
     case RandomGeneratorType::QRandomGenerator: {
+        QRandomGenerator generator(QDateTime::currentMSecsSinceEpoch());
         for (int i = indexes.size() - 1; i > 0; --i) {
-            int j = QRandomGenerator::global()->bounded(i + 1);
+            int j = generator.bounded(i + 1);
             qSwap(indexes[i], indexes[j]);
         }
         break;
