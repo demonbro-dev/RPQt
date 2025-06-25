@@ -22,7 +22,7 @@ NameManager::NameManager(QWidget *parent) :
     connect(ui->actionImport, &QAction::triggered, this, &NameManager::importFromTxt);
 
     resize(800, 600);
-    setWindowFlags(windowFlags() &~ Qt::WindowMinMaxButtonsHint);
+    setWindowFlags(windowFlags() &~ Qt::WindowMinimizeButtonHint);
     setupUI();
 }
 
