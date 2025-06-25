@@ -141,9 +141,12 @@ void MainWindow::setupConnections()
         m_parallelPickEnabled = !checked;
     });
     connect(ui->actionGTC, &QAction::triggered, this, [this]() {
-        settingsHandler.generateExampleConfig();
-        QMessageBox::information(this, tr("Template Config Generated"),
-                                 tr("A template config.ini file has been generated.\n\nConfig.ini file is in:\n'YOUR_APP_PATH/config.ini' (Windows)\n'~/.config/config.ini' (Linux)."));
+        if (settingsHandler.generateExampleConfig()) {
+            QMessageBox::information(this, tr("Template Config Generated"),
+                                     tr("A template config.ini file has been generated.\n\nConfig.ini file is in:\n'YOUR_APP_PATH/config.ini' (Windows)\n'~/.config/config.ini' (Linux)."));
+        } else {
+            QMessageBox::warning(this, tr("Error"), tr("Failed to create config.ini file."));
+        }
     });
     connect(ui->actionAboutQt, &QAction::triggered, this, [this]() {
         QMessageBox::aboutQt(this, tr("About Qt"));

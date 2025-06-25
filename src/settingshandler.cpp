@@ -32,7 +32,7 @@ bool SettingsHandler::generateExampleConfig()
 #ifdef Q_OS_WIN
     QString configPath = QCoreApplication::applicationDirPath() + "/config.ini";
 #else
-    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/namelist.json";
+    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/config.ini";
 #endif
     QFile file(configPath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
