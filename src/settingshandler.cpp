@@ -10,7 +10,7 @@ SettingsHandler::SettingsHandler(QObject *parent) : QObject(parent), m_openRandM
 #ifdef Q_OS_WIN
     QString configPath = QCoreApplication::applicationDirPath() + "/config.ini";
 #else
-    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/namelist.json";
+    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/config.ini";
 #endif
 
     if (QFile::exists(configPath)) {
