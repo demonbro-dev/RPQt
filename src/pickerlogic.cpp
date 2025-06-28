@@ -11,7 +11,7 @@
 PickerLogic::PickerLogic(QObject *parent) : QObject(parent), timer(new QTimer(this))
 {
     connect(timer, &QTimer::timeout, this, [this]() {
-        updateSelection(RandomGeneratorType::RandomSelect);
+        updateSelection(m_currentRandomType);
     });
 }
 
@@ -251,4 +251,9 @@ void PickerLogic::shuffleNamesParallel(QStringList &names, RandomGeneratorType g
     }
 
     shuffleNames(names, generatorType);
+}
+
+void PickerLogic::setRandomGeneratorType(RandomGeneratorType type)
+{
+    m_currentRandomType = type;
 }

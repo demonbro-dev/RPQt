@@ -59,6 +59,7 @@ void MainWindow::setupConnections()
 {
     // 初始化默认随机数生成器类型
     m_currentRandomType = PickerLogic::RandomGeneratorType::RandomSelect;
+    pickerLogic->setRandomGeneratorType(m_currentRandomType);
 
     QActionGroup* randomImplGroup = new QActionGroup(this);
     randomImplGroup->setExclusive(true);
@@ -218,6 +219,7 @@ void MainWindow::setupConnections()
     connect(pickerLogic, &PickerLogic::previewNames, this, &MainWindow::onPreviewNames);
     connect(randomImplGroup, &QActionGroup::triggered, this, [this](QAction* action) {
         m_currentRandomType = action->data().value<PickerLogic::RandomGeneratorType>();
+        pickerLogic->setRandomGeneratorType(m_currentRandomType);
     });
     connect(ui->nameListCombo, &QComboBox::currentTextChanged,
             this, [this](const QString &groupName){

@@ -29,6 +29,7 @@ public:
     void stopPicking(RandomGeneratorType generatorType);
     void setPickCount(int count);
     void resetPickedNames();
+    void setRandomGeneratorType(RandomGeneratorType type);
 
 signals:
     void namesPicked(const QStringList &names);
@@ -42,6 +43,7 @@ private:
     QStringList currentNames;
     QStringList pickedNames;
     QStringList availableNames;
+    RandomGeneratorType m_currentRandomType;
     int m_pickCount = 1;
     bool m_isRunning = false;
     bool m_parallelPick = true;
