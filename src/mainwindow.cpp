@@ -534,6 +534,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
             });
         }
 
+        QString displayText = ui->nameLabel->text().replace("\n", ",  ");
+        randMirage->setDisplayText(displayText);
+
         int xPos;
         if (centerPos.x() < screenGeometry.width() / 2) {
             xPos = screenGeometry.left();
