@@ -15,10 +15,12 @@ public:
     static bool generateExampleConfig();
 
     bool getOpenRandMirageWhenClose() const;
+    bool getUseLightTheme() const;
 
 private:
     QSettings* m_settings;
     bool m_openRandMirageWhenClose;
+    bool m_useLightTheme;
 };
 
 #endif // SETTINGSHANDLER_H

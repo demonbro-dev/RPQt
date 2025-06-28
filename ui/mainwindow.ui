@@ -40,18 +40,8 @@
      <widget class="QLabel" name="titleLabel">
       <property name="font">
        <font>
-        <pointsize>-1</pointsize>
         <bold>true</bold>
        </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel {
-    color: #FFFFFF;
-    font-size: 28px;
-	background-color: rgb(44, 44, 44);
-	border: 1px;
-	border-radius:6px;
-}</string>
       </property>
       <property name="text">
        <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#63b8ff;&quot;&gt;R&lt;/span&gt;andPicker&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -73,13 +63,7 @@
        <item alignment="Qt::AlignmentFlag::AlignHCenter">
         <widget class="QLabel" name="nameLabel">
          <property name="styleSheet">
-          <string notr="true">QLabel {
-   border: 3px solid #63B8FF;
-   border-radius: 15px;
-   background-color: transparent;
-   color: #F0F0F0;
-   padding: 15px;
-}</string>
+          <string notr="true"/>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -193,15 +177,7 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">QPushButton {
-   border: 1px solid #A0A0A0;
-   background-color: #353535;
-   color: white;
-   font-size: 20px;
-   padding: 12px 28px;
-   border-radius: 8px;
-}
-QPushButton:hover { background-color: #3f3f3f; }</string>
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>Start</string>
@@ -235,14 +211,7 @@ QPushButton:hover { background-color: #3f3f3f; }</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">QCheckBox {
-   color: #FFFFFF;
-   spacing: 5px;
-}
-QCheckBox::indicator {
-   width: 16px;
-   height: 16px;
-}</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Instant Pick</string>
@@ -261,14 +230,7 @@ QCheckBox::indicator {
              <string/>
             </property>
             <property name="styleSheet">
-             <string notr="true">QCheckBox {
-   color: #FFFFFF;
-   spacing: 5px;
-}
-QCheckBox::indicator {
-   width: 16px;
-   height: 16px;
-}</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Topmost</string>

@@ -5,7 +5,9 @@
 #include <QStandardPaths>
 #include <QTextStream>
 
-SettingsHandler::SettingsHandler(QObject *parent) : QObject(parent), m_openRandMirageWhenClose(false)
+SettingsHandler::SettingsHandler(QObject *parent) : QObject(parent),
+    m_openRandMirageWhenClose(false),
+    m_useLightTheme(false)
 {
 #ifdef Q_OS_WIN
     QString configPath = QCoreApplication::applicationDirPath() + "/config.ini";
@@ -17,6 +19,7 @@ SettingsHandler::SettingsHandler(QObject *parent) : QObject(parent), m_openRandM
         m_settings = new QSettings(configPath, QSettings::IniFormat, this);
 
         m_openRandMirageWhenClose = m_settings->value("Window/OpenRandMirageWhenClose", false).toBool();
+        m_useLightTheme = m_settings->value("Window/UseLightTheme", false).toBool();
     } else {
         m_settings = nullptr;
     }
@@ -46,6 +49,7 @@ bool SettingsHandler::generateExampleConfig()
     out << "\n";
     out << "[Window]\n";
     out << "# OpenRandMirageWhenClose=false\n";
+    out << "# UseLightTheme=false";
 
     file.close();
     return true;
@@ -54,4 +58,9 @@ bool SettingsHandler::generateExampleConfig()
 bool SettingsHandler::getOpenRandMirageWhenClose() const
 {
     return m_openRandMirageWhenClose;
+}
+
+bool SettingsHandler::getUseLightTheme() const
+{
+    return m_useLightTheme;
 }

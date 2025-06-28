@@ -1,5 +1,6 @@
 // main.cpp
 #include "mainwindow.h"
+#include "settingshandler.h"
 #include <QApplication>
 #include <QFile>
 #include <QStyleFactory>
@@ -51,29 +52,50 @@ int main(int argc, char *argv[])
     parser.addOption(sidebarLeftOption);
     parser.process(a);
 
-    // 强制使用Fusion主题并设置深色调色板
+    SettingsHandler settingsHandler;
     a.setStyle(QStyleFactory::create("Fusion"));
 
-    QPalette darkPalette;
-    darkPalette.setColor(QPalette::Window, QColor(31,31,31));
-    darkPalette.setColor(QPalette::WindowText, Qt::white);
-    darkPalette.setColor(QPalette::Base, QColor(46,47,48));
-    darkPalette.setColor(QPalette::AlternateBase, QColor(53,53,53));
-    darkPalette.setColor(QPalette::ToolTipBase, QColor(46,47,48));
-    darkPalette.setColor(QPalette::ToolTipText, Qt::white);
-    darkPalette.setColor(QPalette::Text, Qt::white);
-    darkPalette.setColor(QPalette::Button, QColor(33,33,33));
-    darkPalette.setColor(QPalette::ButtonText, Qt::white);
-    darkPalette.setColor(QPalette::BrightText, Qt::red);
-    darkPalette.setColor(QPalette::Link, QColor(38,191,102));
-    darkPalette.setColor(QPalette::Highlight, QColor(112,128,144));
-    darkPalette.setColor(QPalette::HighlightedText, Qt::white);
-
-    a.setPalette(darkPalette);
-    QFile style(":/data/style.qss");
-    style.open(QFile::ReadOnly);
-    a.setStyleSheet(style.readAll());
-    style.close();
+    if (settingsHandler.getUseLightTheme()) {
+        QPalette lightPalette;
+        lightPalette.setColor(QPalette::Window, Qt::white);
+        lightPalette.setColor(QPalette::WindowText, Qt::black);
+        lightPalette.setColor(QPalette::Base, QColor(240,240,240));
+        lightPalette.setColor(QPalette::AlternateBase, Qt::white);
+        lightPalette.setColor(QPalette::ToolTipBase, Qt::white);
+        lightPalette.setColor(QPalette::ToolTipText, Qt::black);
+        lightPalette.setColor(QPalette::Text, Qt::black);
+        lightPalette.setColor(QPalette::Button, QColor(240,240,240));
+        lightPalette.setColor(QPalette::ButtonText, Qt::black);
+        lightPalette.setColor(QPalette::BrightText, Qt::red);
+        lightPalette.setColor(QPalette::Link, QColor(38,191,102));
+        lightPalette.setColor(QPalette::Highlight, QColor(227,227,227));
+        lightPalette.setColor(QPalette::HighlightedText, Qt::black);
+        a.setPalette(lightPalette);
+        QFile style(":/data/styleLight.qss");
+        style.open(QFile::ReadOnly);
+        a.setStyleSheet(style.readAll());
+        style.close();
+    } else {
+        QPalette darkPalette;
+        darkPalette.setColor(QPalette::Window, QColor(31,31,31));
+        darkPalette.setColor(QPalette::WindowText, Qt::white);
+        darkPalette.setColor(QPalette::Base, QColor(46,47,48));
+        darkPalette.setColor(QPalette::AlternateBase, QColor(53,53,53));
+        darkPalette.setColor(QPalette::ToolTipBase, QColor(46,47,48));
+        darkPalette.setColor(QPalette::ToolTipText, Qt::white);
+        darkPalette.setColor(QPalette::Text, Qt::white);
+        darkPalette.setColor(QPalette::Button, QColor(33,33,33));
+        darkPalette.setColor(QPalette::ButtonText, Qt::white);
+        darkPalette.setColor(QPalette::BrightText, Qt::red);
+        darkPalette.setColor(QPalette::Link, QColor(38,191,102));
+        darkPalette.setColor(QPalette::Highlight, QColor(112,128,144));
+        darkPalette.setColor(QPalette::HighlightedText, Qt::white);
+        a.setPalette(darkPalette);
+        QFile style(":/data/styleDark.qss");
+        style.open(QFile::ReadOnly);
+        a.setStyleSheet(style.readAll());
+        style.close();
+    }
 
     MainWindow w;
 

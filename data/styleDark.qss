@@ -1,0 +1,129 @@
+QMenuBar {
+    background-color: #404142;
+}
+
+QMenuBar::selected {
+    background-color: #5D5E5F;
+}
+
+QListWidget {
+    background-color: #2E2F30;
+}
+
+QListWidget::Item::hover {
+    background-color: #5D5E5F;
+}
+
+QListWidget::Item::selected {
+    background-color: #708090;
+}
+
+QLabel#titleLabel {
+    color: #FFFFFF;
+    font-size: 28px;
+    background-color: rgb(44, 44, 44);
+    border: 1px;
+    border-radius: 6px;
+}
+
+QLabel#nameLabel {
+    border: 3px solid #63B8FF;
+    border-radius: 15px;
+    background-color: transparent;
+    color: #F0F0F0;
+    padding: 15px;
+}
+
+QPushButton#pickButton {
+    border: 1px solid #A0A0A0;
+    background-color: #353535;
+    color: white;
+    font-size: 20px;
+    padding: 12px 28px;
+    border-radius: 8px;
+}
+
+QPushButton#pickButton:hover {
+    background-color: #3f3f3f;
+}
+
+QCheckBox::indicator {
+   width: 18px;
+   height: 18px;
+}
+
+AboutDialog {
+    background-color: #2d2d2d;
+}
+
+AboutDialog QWidget#headerWidget {
+    background-color: #383838;
+    border: 1px solid #454545;
+    border-radius: 10px;
+}
+
+AboutDialog QLabel#iconLabel {
+    background-color: #252525;
+    border: 2px solid #404040;
+    border-radius: 10px;
+}
+
+AboutDialog QLabel#titleLabel2 {
+    color: #ffffff;
+    font-size: x-large;
+    font-weight: 700;
+}
+
+AboutDialog QLabel#commitLabel {
+    color: #b0b0b0;
+}
+
+AboutDialog QTabWidget::pane {
+    border: 1px solid #454545;
+    background: #353535;
+}
+
+AboutDialog QTabBar::tab {
+    background: #404040;
+    color: #e0e0e0;
+    padding: 8px;
+    border: 1px solid #454545;
+    border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+AboutDialog QTabBar::tab:selected {
+    background: #2d2d2d;
+    color: #ffffff;
+    border-bottom: 1px solid #2d2d2d;
+}
+
+AboutDialog QTextEdit {
+    font-family: Consolas, monospace;
+    background-color: #252525;
+    border: 1px solid #454545;
+    font-size: 10pt;
+    padding: 5px;
+    color: #e0e0e0;
+    selection-background-color: #505050;
+    selection-color: #ffffff;
+}
+
+AboutDialog QTextEdit a {
+    color: #4da6ff;
+    text-decoration: none;
+}
+
+AboutDialog QTextEdit a:hover {
+    color: #7ab8ff;
+    text-decoration: underline;
+}
+
+/*
+QToolTip {
+    color: #ffffff;
+    background-color: #0f0f0f;
+    border: 1px solid white;
+}
+*/
