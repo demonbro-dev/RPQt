@@ -16,6 +16,7 @@ public:
         QRandomGenerator,
         minstd_rand,
         mt19937,
+        BCryptGenRandom,
         RandomSelect
     };
 

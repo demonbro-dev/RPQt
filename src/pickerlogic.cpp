@@ -3,10 +3,15 @@
 #include <QRandomGenerator>
 #include <QtConcurrent>
 
+#ifdef Q_OS_WIN
+#include <windows.h>
+#include <bcrypt.h>
+#endif
+
 PickerLogic::PickerLogic(QObject *parent) : QObject(parent), timer(new QTimer(this))
 {
     connect(timer, &QTimer::timeout, this, [this]() {
-        updateSelection(RandomGeneratorType::minstd_rand);
+        updateSelection(RandomGeneratorType::RandomSelect);
     });
 }
 
@@ -144,7 +149,11 @@ void PickerLogic::shuffleNames(QStringList &names, RandomGeneratorType generator
     }
 
     if (generatorType == RandomGeneratorType::RandomSelect) {
+#ifdef Q_OS_WIN
+        const int choice = QRandomGenerator::global()->bounded(4);
+#else
         const int choice = QRandomGenerator::global()->bounded(3);
+#endif
         generatorType = static_cast<RandomGeneratorType>(choice);
     }
 
@@ -177,6 +186,33 @@ void PickerLogic::shuffleNames(QStringList &names, RandomGeneratorType generator
         }
         break;
     }
+    case RandomGeneratorType::BCryptGenRandom: {
+#ifdef Q_OS_WIN
+        HMODULE hBcrypt = LoadLibrary(L"bcrypt.dll");
+        if (hBcrypt) {
+            typedef NTSTATUS (WINAPI *PBCryptGenRandom)(
+                BCRYPT_ALG_HANDLE hAlgorithm,
+                PUCHAR pbBuffer,
+                ULONG cbBuffer,
+                ULONG dwFlags);
+            PBCryptGenRandom pBCryptGenRandom =
+                (PBCryptGenRandom)GetProcAddress(hBcrypt, "BCryptGenRandom");
+
+            if (pBCryptGenRandom) {
+                for (int i = indexes.size() - 1; i > 0; --i) {
+                    ULONG randomNum;
+                    if (pBCryptGenRandom(NULL, (PUCHAR)&randomNum, sizeof(randomNum),
+                                         BCRYPT_USE_SYSTEM_PREFERRED_RNG) == 0) {
+                        int j = randomNum % (i + 1);
+                        qSwap(indexes[i], indexes[j]);
+                    }
+                }
+            }
+            FreeLibrary(hBcrypt);
+        }
+#endif
+        break;
+    }
     default:
         for (int i = indexes.size() - 1; i > 0; --i) {
             int j = QRandomGenerator::global()->bounded(i + 1);
@@ -194,11 +230,6 @@ void PickerLogic::shuffleNames(QStringList &names, RandomGeneratorType generator
 void PickerLogic::shuffleNamesParallel(QStringList &names, RandomGeneratorType generatorType)
 {
     if (names.isEmpty()) return;
-
-    if (generatorType == RandomGeneratorType::RandomSelect) {
-        const int choice = QRandomGenerator::global()->bounded(3);
-        generatorType = static_cast<RandomGeneratorType>(choice);
-    }
 
     int chunkSize = names.size() / QThread::idealThreadCount();
     if (chunkSize < 1) chunkSize = 1;

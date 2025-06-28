@@ -87,7 +87,13 @@ void MainWindow::setupConnections()
     actionMt19937->setData(QVariant::fromValue(PickerLogic::RandomGeneratorType::mt19937));
     randomImplGroup->addAction(actionMt19937);
     ui->menuRandom_Impl->addAction(actionMt19937);
-
+#ifdef Q_OS_WIN
+    QAction* actionBCrypt = new QAction("BCryptGenRandom", this);
+    actionBCrypt->setCheckable(true);
+    actionBCrypt->setData(QVariant::fromValue(PickerLogic::RandomGeneratorType::BCryptGenRandom));
+    randomImplGroup->addAction(actionBCrypt);
+    ui->menuRandom_Impl->addAction(actionBCrypt);
+#endif
     connect(ui->actionNameManager, &QAction::triggered, this, [this]() {
         if (!nameManager) {
             nameManager = new NameManager(this);
