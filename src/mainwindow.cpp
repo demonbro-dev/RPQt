@@ -150,9 +150,9 @@ void MainWindow::setupConnections()
     connect(ui->actionGTC, &QAction::triggered, this, [this]() {
         if (settingsHandler.generateExampleConfig()) {
             QMessageBox::information(this, tr("Template Config Generated"),
-                                     tr("A template config.ini file has been generated.\n\nConfig.ini file is in:\n'YOUR_APP_PATH/config.ini' (Windows)\n'~/.config/config.ini' (Linux)."));
+                                     tr("A template config file has been generated.\n\nConfig file is in:\n'YOUR_APP_PATH/config.ini' (Windows)\n'~/.config/RPconfig.ini' (Linux)."));
         } else {
-            QMessageBox::warning(this, tr("Error"), tr("Failed to create config.ini file."));
+            QMessageBox::warning(this, tr("Error"), tr("Failed to create config file."));
         }
     });
     connect(ui->actionAboutQt, &QAction::triggered, this, [this]() {
@@ -520,7 +520,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    if (settingsHandler.getOpenRandMirageWhenClose()) {
+    if (settingsHandler.getBoolConfig(SettingsHandler::OpenRandMirageWhenClose)) {
         QRect screenGeometry = QApplication::primaryScreen()->availableGeometry();
         QPoint centerPos = geometry().center();
 

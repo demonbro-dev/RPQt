@@ -12,7 +12,7 @@ SettingsHandler::SettingsHandler(QObject *parent) : QObject(parent),
 #ifdef Q_OS_WIN
     QString configPath = QCoreApplication::applicationDirPath() + "/config.ini";
 #else
-    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/config.ini";
+    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/RPconfig.ini";
 #endif
 
     if (QFile::exists(configPath)) {
@@ -35,7 +35,7 @@ bool SettingsHandler::generateExampleConfig()
 #ifdef Q_OS_WIN
     QString configPath = QCoreApplication::applicationDirPath() + "/config.ini";
 #else
-    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/config.ini";
+    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/RPconfig.ini";
 #endif
     QFile file(configPath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -55,12 +55,13 @@ bool SettingsHandler::generateExampleConfig()
     return true;
 }
 
-bool SettingsHandler::getOpenRandMirageWhenClose() const
+bool SettingsHandler::getBoolConfig(BoolConfigType type) const
 {
-    return m_openRandMirageWhenClose;
-}
-
-bool SettingsHandler::getUseLightTheme() const
-{
-    return m_useLightTheme;
+    switch (type) {
+    case OpenRandMirageWhenClose:
+        return m_openRandMirageWhenClose;
+    case UseLightTheme:
+        return m_useLightTheme;
+    }
+    return false;
 }

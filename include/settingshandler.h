@@ -9,13 +9,17 @@ class SettingsHandler : public QObject
     Q_OBJECT
 
 public:
+    enum BoolConfigType {
+        OpenRandMirageWhenClose,
+        UseLightTheme
+    };
+
     explicit SettingsHandler(QObject *parent = nullptr);
     ~SettingsHandler();
 
     static bool generateExampleConfig();
 
-    bool getOpenRandMirageWhenClose() const;
-    bool getUseLightTheme() const;
+    bool getBoolConfig(BoolConfigType type) const;
 
 private:
     QSettings* m_settings;

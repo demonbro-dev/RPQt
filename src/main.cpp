@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
     SettingsHandler settingsHandler;
     a.setStyle(QStyleFactory::create("Fusion"));
 
-    if (settingsHandler.getUseLightTheme()) {
+    if (settingsHandler.getBoolConfig(SettingsHandler::UseLightTheme)) {
         QPalette lightPalette;
         lightPalette.setColor(QPalette::Window, Qt::white);
         lightPalette.setColor(QPalette::WindowText, Qt::black);
