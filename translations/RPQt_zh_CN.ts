@@ -607,55 +607,70 @@ Are you sure to continue?</source>
         <translation>端口:</translation>
     </message>
     <message>
-        <location filename="../ui/rpweb.ui" line="64"/>
-        <location filename="../src/rpweb.cpp" line="100"/>
+        <location filename="../ui/rpweb.ui" line="61"/>
+        <source>Enable E2EE</source>
+        <translation>启用 E2EE</translation>
+    </message>
+    <message>
+        <location filename="../ui/rpweb.ui" line="71"/>
+        <location filename="../src/rpweb.cpp" line="91"/>
         <source>Server is stopped</source>
         <translation>服务器已停止</translation>
     </message>
     <message>
-        <location filename="../ui/rpweb.ui" line="77"/>
-        <location filename="../src/rpweb.cpp" line="98"/>
+        <location filename="../ui/rpweb.ui" line="84"/>
+        <location filename="../src/rpweb.cpp" line="89"/>
         <source>Start Server</source>
         <translation>启动服务器</translation>
     </message>
     <message>
         <location filename="../ui/rpweb.ui" line="29"/>
-        <location filename="../src/rpweb.cpp" line="13"/>
         <source>RPWeb Server Control</source>
         <translation>RPWeb 服务器控制</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="43"/>
-        <location filename="../src/rpweb.cpp" line="55"/>
-        <location filename="../src/rpweb.cpp" line="64"/>
+        <location filename="../src/rpweb.cpp" line="15"/>
+        <source>RandPicker WebSocket Panel</source>
+        <translation>RandPicker WebSocket 面板</translation>
+    </message>
+    <message>
+        <location filename="../src/rpweb.cpp" line="56"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="43"/>
+        <location filename="../src/rpweb.cpp" line="57"/>
+        <source>Cannot start server on port %1:%2</source>
+        <translation>无法在端口%1上启动服务器:%2</translation>
+    </message>
+    <message>
+        <location filename="../src/rpweb.cpp" line="78"/>
+        <source>Server Running
+Address: ws://%1:%2</source>
+        <translation>服务器运行中
+地址: ws://%1:%2</translation>
+    </message>
+    <message>
         <source>Failed to load HTML file</source>
-        <translation>Failed to load HTML file</translation>
+        <translation type="vanished">Failed to load HTML file</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="56"/>
         <source>Cannot set up server on port %1:%2</source>
-        <translation>无法在端口 %1 上建立服务器:%2</translation>
+        <translation type="vanished">无法在端口 %1 上建立服务器:%2</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="65"/>
         <source>Cannot bind HTTP Server to TCP Server</source>
-        <translation>无法绑定HTTP服务器至TCP服务器</translation>
+        <translation type="vanished">无法绑定HTTP服务器至TCP服务器</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="72"/>
+        <location filename="../src/rpweb.cpp" line="66"/>
         <source>Stop Server</source>
         <translation>停止服务器</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="89"/>
         <source>Server is running
 Address: http://%1:%2</source>
-        <translation>服务器正在运行
+        <translation type="vanished">服务器正在运行
 地址: http://%1:%2</translation>
     </message>
 </context>

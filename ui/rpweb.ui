@@ -55,6 +55,13 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="useE2EE">
+        <property name="text">
+         <string>Enable E2EE</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

@@ -3,8 +3,8 @@
 
 #include <QDialog>
 #include <QWebSocketServer>
-#include <QTcpSocket>
-#include <QHash>
+#include <QWebSocket>
+#include <QSet>
 #include "jsonhandler.h"
 #include "pickerlogic.h"
 
@@ -20,16 +20,27 @@ public:
     explicit RPWeb(QWidget *parent = nullptr);
     ~RPWeb();
 
-private slots:
-    void on_confirmButton_clicked();
 
 private:
+    void onConfirmButtonClick();
+    void handleWebSocketConnection(QWebSocket *clientSocket);
+    void processCommand(QWebSocket *clientSocket, const QString &message);
+    void processRandomRequest(QWebSocket *clientSocket, const QString &listName);
+    void processListRequest(QWebSocket *clientSocket);
+    void sendResponse(QWebSocket *clientSocket, const QString &message, bool isError = false);
+    void processListRequest(QWebSocket *clientSocket, const QString &);
+
+    using CommandHandler = void (RPWeb::*)(QWebSocket*, const QString&);
+    void setupCommandHandlers();
+
     Ui::RPWeb *ui;
     QWebSocketServer *webSocketServer;
+    QSet<QWebSocket *> m_connectedClients;
     JsonHandler *jsonHandler;
     PickerLogic *pickerLogic;
     bool serverRunning = false;
-    QSet<QWebSocket *> m_connectedClients;
+
+    QHash<QString, CommandHandler> m_commandHandlers;
 };
 
 #endif // RPWEB_H

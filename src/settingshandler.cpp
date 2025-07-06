@@ -7,7 +7,8 @@
 
 SettingsHandler::SettingsHandler(QObject *parent) : QObject(parent),
     m_openRandMirageWhenClose(false),
-    m_useLightTheme(false)
+    m_useLightTheme(false),
+    m_runAsClient(false)
 {
     QString configPath = CONFIG_PATH;
     if (QFile::exists(configPath)) {
@@ -15,6 +16,7 @@ SettingsHandler::SettingsHandler(QObject *parent) : QObject(parent),
 
         m_openRandMirageWhenClose = m_settings->value("Window/OpenRandMirageWhenClose", false).toBool();
         m_useLightTheme = m_settings->value("Window/UseLightTheme", false).toBool();
+        m_runAsClient = m_settings->value("RPWeb/RunAsClient", false).toBool();
     } else {
         m_settings = nullptr;
     };
@@ -40,7 +42,10 @@ bool SettingsHandler::generateExampleConfig()
     out << "\n";
     out << "[Window]\n";
     out << "#OpenRandMirageWhenClose=false\n";
-    out << "#UseLightTheme=false";
+    out << "#UseLightTheme=false\n";
+    out << "\n";
+    out << "[RPWeb]\n";
+    out << "#RunAsClient=false";
 
     file.close();
     return true;
@@ -53,6 +58,8 @@ bool SettingsHandler::getBoolConfig(BoolConfigType type) const
         return m_openRandMirageWhenClose;
     case UseLightTheme:
         return m_useLightTheme;
+    case RunAsClient:
+        return m_runAsClient;
     }
     return false;
 }
