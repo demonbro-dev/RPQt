@@ -2,8 +2,11 @@
 #define RPWEB_H
 
 #include <QDialog>
-#include <QHttpServer>
-#include <QTcpServer>
+#include <QWebSocketServer>
+#include <QTcpSocket>
+#include <QHash>
+#include "jsonhandler.h"
+#include "pickerlogic.h"
 
 namespace Ui {
 class RPWeb;
@@ -22,8 +25,11 @@ private slots:
 
 private:
     Ui::RPWeb *ui;
-    QHttpServer *httpServer;
+    QWebSocketServer *webSocketServer;
+    JsonHandler *jsonHandler;
+    PickerLogic *pickerLogic;
     bool serverRunning = false;
+    QSet<QWebSocket *> m_connectedClients;
 };
 
 #endif // RPWEB_H
