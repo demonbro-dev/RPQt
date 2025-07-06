@@ -9,12 +9,7 @@ SettingsHandler::SettingsHandler(QObject *parent) : QObject(parent),
     m_openRandMirageWhenClose(false),
     m_useLightTheme(false)
 {
-#ifdef Q_OS_WIN
-    QString configPath = QCoreApplication::applicationDirPath() + "/config.ini";
-#else
-    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/RPconfig.ini";
-#endif
-
+    QString configPath = CONFIG_PATH;
     if (QFile::exists(configPath)) {
         m_settings = new QSettings(configPath, QSettings::IniFormat, this);
 
@@ -22,7 +17,7 @@ SettingsHandler::SettingsHandler(QObject *parent) : QObject(parent),
         m_useLightTheme = m_settings->value("Window/UseLightTheme", false).toBool();
     } else {
         m_settings = nullptr;
-    }
+    };
 }
 
 SettingsHandler::~SettingsHandler()
@@ -32,11 +27,7 @@ SettingsHandler::~SettingsHandler()
 
 bool SettingsHandler::generateExampleConfig()
 {
-#ifdef Q_OS_WIN
-    QString configPath = QCoreApplication::applicationDirPath() + "/config.ini";
-#else
-    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/RPconfig.ini";
-#endif
+    QString configPath = CONFIG_PATH;
     QFile file(configPath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         return false;
@@ -48,8 +39,8 @@ bool SettingsHandler::generateExampleConfig()
     out << "# To enable a setting,remove the '#' ahead of it.\n";
     out << "\n";
     out << "[Window]\n";
-    out << "# OpenRandMirageWhenClose=false\n";
-    out << "# UseLightTheme=false";
+    out << "#OpenRandMirageWhenClose=false\n";
+    out << "#UseLightTheme=false";
 
     file.close();
     return true;

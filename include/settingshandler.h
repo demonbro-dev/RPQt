@@ -4,6 +4,12 @@
 #include <QObject>
 #include <QSettings>
 
+#ifdef Q_OS_WIN
+#define CONFIG_PATH QCoreApplication::applicationDirPath() + "/config.ini"
+#else
+#define CONFIG_PATH QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/RPconfig.ini"
+#endif
+
 class SettingsHandler : public QObject
 {
     Q_OBJECT
