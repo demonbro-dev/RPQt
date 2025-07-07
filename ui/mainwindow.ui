@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>RandPicker</string>
+   <string notr="true">RandPicker</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="mainLayout">

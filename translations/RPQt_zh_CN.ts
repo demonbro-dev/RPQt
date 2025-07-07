@@ -28,7 +28,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="183"/>
-        <location filename="../src/mainwindow.cpp" line="302"/>
+        <location filename="../src/mainwindow.cpp" line="335"/>
         <source>Start</source>
         <translation>开始抽选</translation>
     </message>
@@ -73,9 +73,8 @@
         <translation>功能(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="20"/>
         <source>RandPicker</source>
-        <translation>RandPicker</translation>
+        <translation type="vanished">RandPicker</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="158"/>
@@ -109,7 +108,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="329"/>
-        <location filename="../src/mainwindow.cpp" line="159"/>
+        <location filename="../src/mainwindow.cpp" line="166"/>
         <source>About Qt</source>
         <translation>关于 Qt</translation>
     </message>
@@ -169,111 +168,142 @@
         <translation>生成配置模板</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="247"/>
+        <location filename="../src/mainwindow.cpp" line="271"/>
         <source>Info</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="247"/>
+        <location filename="../src/mainwindow.cpp" line="271"/>
         <source>Namelist not found. Default namelist will be created.</source>
         <translation>未发现名单文件，将创建默认名单文件.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="155"/>
-        <location filename="../src/mainwindow.cpp" line="254"/>
-        <location filename="../src/mainwindow.cpp" line="406"/>
-        <location filename="../src/mainwindow.cpp" line="417"/>
+        <location filename="../src/mainwindow.cpp" line="162"/>
+        <location filename="../src/mainwindow.cpp" line="278"/>
+        <location filename="../src/mainwindow.cpp" line="309"/>
+        <location filename="../src/mainwindow.cpp" line="439"/>
+        <location filename="../src/mainwindow.cpp" line="450"/>
+        <location filename="../src/mainwindow.cpp" line="553"/>
+        <location filename="../src/mainwindow.cpp" line="585"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="254"/>
+        <location filename="../src/mainwindow.cpp" line="257"/>
+        <source>In Client Mode,instant mode can&apos;t be disabled.</source>
+        <translation>在客户端模式,立即抽选模式无法被禁用.</translation>
+    </message>
+    <message>
+        <source> [Client Mode]</source>
+        <translation type="vanished"> [客户端模式]</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="278"/>
         <source>Failed to create default namelist file: %1</source>
         <translation>创建默认名单文件失败: %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="265"/>
+        <location filename="../src/mainwindow.cpp" line="289"/>
         <source>Failed to load</source>
         <translation>加载失败</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="295"/>
+        <location filename="../src/mainwindow.cpp" line="309"/>
+        <source>No list selected</source>
+        <translation>没有选中的名单</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="328"/>
         <source>Stop</source>
         <translation>停止抽选</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="398"/>
+        <location filename="../src/mainwindow.cpp" line="431"/>
         <source>Import Temporary Namelist</source>
         <translation>导入临时名单</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="406"/>
+        <location filename="../src/mainwindow.cpp" line="439"/>
         <source>Could not open file!</source>
         <translation>不能打开文件!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="425"/>
+        <location filename="../src/mainwindow.cpp" line="458"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="425"/>
+        <location filename="../src/mainwindow.cpp" line="458"/>
         <source>This list exists!</source>
         <translation>该名单已存在!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="398"/>
+        <location filename="../src/mainwindow.cpp" line="561"/>
+        <location filename="../src/mainwindow.cpp" line="597"/>
+        <source>Connection Error</source>
+        <translation>连接错误</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="562"/>
+        <location filename="../src/mainwindow.cpp" line="598"/>
+        <source>Failed to connect to server at %1
+Error: %2</source>
+        <translation>连接服务器 %1 失败
+错误:%2</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="431"/>
         <source>Text Files (*.txt)</source>
         <translation>文本文件 (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="67"/>
+        <location filename="../src/mainwindow.cpp" line="74"/>
         <source>Random (Default)</source>
         <translation>随机使用 (默认)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="152"/>
+        <location filename="../src/mainwindow.cpp" line="159"/>
         <source>Template Config Generated</source>
         <translation>已生成配置模板</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="234"/>
-        <location filename="../src/mainwindow.cpp" line="371"/>
+        <location filename="../src/mainwindow.cpp" line="241"/>
+        <location filename="../src/mainwindow.cpp" line="404"/>
         <source>Topmost is not available on your system.</source>
         <translation>&quot;置于顶层&quot;当前在您的系统上不可用.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="417"/>
+        <location filename="../src/mainwindow.cpp" line="450"/>
         <source>No valid names found in the file.</source>
         <translation>未在文件中找到可用名单.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="437"/>
+        <location filename="../src/mainwindow.cpp" line="470"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="437"/>
+        <location filename="../src/mainwindow.cpp" line="470"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
         <translation>已导入具有 %1 个名字的临时名单&quot;%2&quot;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="214"/>
+        <location filename="../src/mainwindow.cpp" line="221"/>
         <source>Picked Names Cleared</source>
         <translation>已清理已抽选名字</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="123"/>
+        <location filename="../src/mainwindow.cpp" line="130"/>
         <source>Show</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="127"/>
+        <location filename="../src/mainwindow.cpp" line="134"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="153"/>
+        <location filename="../src/mainwindow.cpp" line="160"/>
         <source>A template config file has been generated.
 
 Config file is in:
@@ -286,12 +316,12 @@ Config file is in:
 &apos;~/.config/RPconfig.ini&apos; (Linux).</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="155"/>
+        <location filename="../src/mainwindow.cpp" line="162"/>
         <source>Failed to create config file.</source>
         <translation>创建配置文件失败.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="215"/>
+        <location filename="../src/mainwindow.cpp" line="222"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
         <translation>已抽选名字列表现已被重置.
@@ -613,13 +643,13 @@ Are you sure to continue?</source>
     </message>
     <message>
         <location filename="../ui/rpweb.ui" line="71"/>
-        <location filename="../src/rpweb.cpp" line="91"/>
+        <location filename="../src/rpweb.cpp" line="97"/>
         <source>Server is stopped</source>
         <translation>服务器已停止</translation>
     </message>
     <message>
         <location filename="../ui/rpweb.ui" line="84"/>
-        <location filename="../src/rpweb.cpp" line="89"/>
+        <location filename="../src/rpweb.cpp" line="95"/>
         <source>Start Server</source>
         <translation>启动服务器</translation>
     </message>
@@ -629,22 +659,22 @@ Are you sure to continue?</source>
         <translation>RPWeb 服务器控制</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="15"/>
+        <location filename="../src/rpweb.cpp" line="16"/>
         <source>RandPicker WebSocket Panel</source>
         <translation>RandPicker WebSocket 面板</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="56"/>
+        <location filename="../src/rpweb.cpp" line="62"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="57"/>
+        <location filename="../src/rpweb.cpp" line="63"/>
         <source>Cannot start server on port %1:%2</source>
         <translation>无法在端口%1上启动服务器:%2</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="78"/>
+        <location filename="../src/rpweb.cpp" line="84"/>
         <source>Server Running
 Address: ws://%1:%2</source>
         <translation>服务器运行中
@@ -663,7 +693,7 @@ Address: ws://%1:%2</source>
         <translation type="vanished">无法绑定HTTP服务器至TCP服务器</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="66"/>
+        <location filename="../src/rpweb.cpp" line="72"/>
         <source>Stop Server</source>
         <translation>停止服务器</translation>
     </message>

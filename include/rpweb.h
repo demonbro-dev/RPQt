@@ -29,6 +29,7 @@ private:
     void processListRequest(QWebSocket *clientSocket);
     void sendResponse(QWebSocket *clientSocket, const QString &message, bool isError = false);
     void processListRequest(QWebSocket *clientSocket, const QString &);
+    void processE2EEStatus(QWebSocket *clientSocket, const QString &);
 
     using CommandHandler = void (RPWeb::*)(QWebSocket*, const QString&);
     void setupCommandHandlers();
@@ -39,6 +40,7 @@ private:
     JsonHandler *jsonHandler;
     PickerLogic *pickerLogic;
     bool serverRunning = false;
+    bool m_useE2EE = false;
 
     QHash<QString, CommandHandler> m_commandHandlers;
 };

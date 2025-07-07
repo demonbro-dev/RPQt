@@ -20,6 +20,10 @@ public:
         UseLightTheme,
         RunAsClient
     };
+    enum StringConfigType {
+        ServerHost,
+        ServerPort
+    };
 
     explicit SettingsHandler(QObject *parent = nullptr);
     ~SettingsHandler();
@@ -27,6 +31,7 @@ public:
     static bool generateExampleConfig();
 
     bool getBoolConfig(BoolConfigType type) const;
+    QString getStringConfig(StringConfigType type) const;
 
 private:
     QSettings* m_settings;

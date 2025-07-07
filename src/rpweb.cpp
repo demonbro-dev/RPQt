@@ -9,13 +9,18 @@ RPWeb::RPWeb(QWidget *parent) :
     ui(new Ui::RPWeb),
     webSocketServer(nullptr),
     jsonHandler(new JsonHandler(this)),
-    pickerLogic(new PickerLogic(this))
+    pickerLogic(new PickerLogic(this)),
+    m_useE2EE(false)
 {
     ui->setupUi(this);
     setWindowTitle(tr("RandPicker WebSocket Panel"));
     ui->portSpinBox->setRange(1024, 65535);
     ui->portSpinBox->setValue(8080);
 
+    connect(ui->useE2EE, &QCheckBox::checkStateChanged,
+            this, [this](Qt::CheckState state) {
+                m_useE2EE = (state == Qt::Checked);
+            });
     connect(ui->confirmButton, &QPushButton::clicked,
             this, &RPWeb::onConfirmButtonClick);
 
@@ -36,7 +41,8 @@ void RPWeb::setupCommandHandlers()
 {
     m_commandHandlers = {
         {"GET_RANDOM", &RPWeb::processRandomRequest},
-        {"LIST_GROUPS", &RPWeb::processListRequest}
+        {"LIST_GROUPS", &RPWeb::processListRequest},
+        {"E2EE_STATUS", &RPWeb::processE2EEStatus}
     };
 }
 
@@ -167,6 +173,11 @@ void RPWeb::processListRequest(QWebSocket *clientSocket, const QString &)
         sendResponse(clientSocket,
                      QString("Available Lists: %1").arg(nameGroups.keys().join(", ")));
     }
+}
+
+void RPWeb::processE2EEStatus(QWebSocket *clientSocket, const QString &)
+{
+    sendResponse(clientSocket, m_useE2EE ? "true" : "false");
 }
 
 void RPWeb::sendResponse(QWebSocket *clientSocket, const QString &message, bool isError)

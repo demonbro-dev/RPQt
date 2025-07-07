@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     randMirage(nullptr),
     m_globalTrackingEnabled(false),
     m_parallelPickEnabled(true),
+    m_isClientMode(false),
     m_trayIcon(nullptr)
 {
     ui->setupUi(this);
@@ -32,7 +33,13 @@ MainWindow::MainWindow(QWidget *parent)
         loadTranslation(QLocale(QLocale::English, QLocale::UnitedStates));
     }
 
-    loadNameLists();
+    if (settingsHandler.getBoolConfig(SettingsHandler::RunAsClient)) {
+        m_isClientMode = true;
+        setupClientUI();
+        fetchAvailableLists();
+    } else {
+        loadNameLists();
+    }
     setupConnections();
 }
 
@@ -235,6 +242,23 @@ void MainWindow::setupConnections()
 #endif
 }
 
+void MainWindow::setupClientUI()
+{
+    ui->actionRPWeb->setVisible(false);
+    ui->actionDisableParallelPick->setVisible(false);
+    ui->actionClearPicked->setVisible(false);
+    ui->actionImportTemp->setVisible(false);
+    ui->actionNameManager->setVisible(false);
+    ui->actionScheduledPick->setVisible(false);
+    ui->menuRandom_Impl->setEnabled(false);
+
+    ui->instantModeRadio->setChecked(true);
+    ui->instantModeRadio->setEnabled(false);
+    ui->instantModeRadio->setToolTip(tr("In Client Mode,instant mode can't be disabled."));
+
+    setWindowTitle(windowTitle() + " [Client Mode]");
+}
+
 void MainWindow::loadNameLists()
 {
     QFuture<void> future = QtConcurrent::run([this]() {
@@ -279,6 +303,15 @@ void MainWindow::loadNameLists()
 
 void MainWindow::onPickButtonClicked()
 {
+    if (m_isClientMode) {
+        QString currentList = ui->nameListCombo->currentText();
+        if (currentList.isEmpty()) {
+            QMessageBox::warning(this, tr("Error"), tr("No list selected"));
+            return;
+        }
+        sendRandomRequest(currentList);
+        return;
+    }
     if (ui->instantModeRadio->isChecked()) {
         // 立即抽选模式
         QStringList picked = pickerLogic->pickNames(ui->countSpin->value(), m_parallelPickEnabled, m_currentRandomType);
@@ -498,6 +531,78 @@ void MainWindow::updateFontSize()
     int labelWidth = width() * 4 / 5;
     int labelHeight = height() / 2;
     ui->nameLabel->setFixedSize(qMax(labelWidth, 200), qMax(labelHeight, 80));
+}
+
+void MainWindow::fetchAvailableLists()
+{
+    QString host = settingsHandler.getStringConfig(SettingsHandler::ServerHost);
+    QString port = settingsHandler.getStringConfig(SettingsHandler::ServerPort);
+    QString url = QString("ws://%1:%2").arg(host).arg(port);
+
+    QWebSocket *webSocket = new QWebSocket();
+    connect(webSocket, &QWebSocket::connected, this, [webSocket]() {
+        webSocket->sendTextMessage("LIST_GROUPS");
+    });
+
+    connect(webSocket, &QWebSocket::textMessageReceived, this, [this, webSocket](const QString &message) {
+        if (message.startsWith("Available Lists:")) {
+            QStringList lists = message.mid(17).split(", ", Qt::SkipEmptyParts);
+            ui->nameListCombo->clear();
+            ui->nameListCombo->addItems(lists);
+        } else if (message.startsWith("[ERROR]")) {
+            QMessageBox::warning(this, tr("Error"), message);
+        }
+        webSocket->close();
+        webSocket->deleteLater();
+    });
+
+    connect(webSocket, &QWebSocket::errorOccurred,
+            this, [this, url](QAbstractSocket::SocketError error) {
+                QMessageBox::warning(this, tr("Connection Error"),
+                                     tr("Failed to connect to server at %1\nError: %2")
+                                         .arg(url)
+                                         .arg(error));
+            });
+
+    connect(webSocket, &QWebSocket::disconnected, webSocket, &QWebSocket::deleteLater);
+
+    webSocket->open(QUrl(url));
+}
+
+void MainWindow::sendRandomRequest(const QString &listName)
+{
+    QString host = settingsHandler.getStringConfig(SettingsHandler::ServerHost);
+    QString port = settingsHandler.getStringConfig(SettingsHandler::ServerPort);
+    QString url = QString("ws://%1:%2").arg(host).arg(port);
+
+    QWebSocket *webSocket = new QWebSocket();
+    connect(webSocket, &QWebSocket::connected, this, [webSocket, listName]() {
+        webSocket->sendTextMessage("GET_RANDOM " + listName);
+    });
+
+    connect(webSocket, &QWebSocket::textMessageReceived, this, [this, webSocket](const QString &message) {
+        if (message.startsWith("[ERROR]")) {
+            QMessageBox::warning(this, tr("Error"), message);
+        } else {
+            ui->nameLabel->setText(message);
+            pickHistory.append(message.split("\n", Qt::SkipEmptyParts));
+            if (historyDialog) historyDialog->updateHistory(pickHistory);
+        }
+        webSocket->close();
+        webSocket->deleteLater();
+    });
+
+    connect(webSocket, &QWebSocket::errorOccurred,
+            this, [this, url](QAbstractSocket::SocketError error) {
+                QMessageBox::warning(this, tr("Connection Error"),
+                                     tr("Failed to connect to server at %1\nError: %2")
+                                         .arg(url)
+                                         .arg(error));
+            });
+
+    connect(webSocket, &QWebSocket::disconnected, webSocket, &QWebSocket::deleteLater);
+
+    webSocket->open(QUrl(url));
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

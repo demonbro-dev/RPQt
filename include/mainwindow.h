@@ -55,9 +55,11 @@ private:
     QList<QStringList> pickHistory;
     bool m_globalTrackingEnabled = false;
     bool m_parallelPickEnabled = true;
+    bool m_isClientMode = false;
     QPoint m_dragPosition;
     QSystemTrayIcon *m_trayIcon;
 
+    void setupClientUI();
     void loadNameLists();
     void setupConnections();
     void updateFontSize();
@@ -65,6 +67,8 @@ private:
     void onNameListComboActivated(int index);
     void onImportTempList();
     void showMainWindow();
+    void fetchAvailableLists();
+    void sendRandomRequest(const QString &listName);
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void closeEvent(QCloseEvent *event) override;

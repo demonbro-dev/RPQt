@@ -28,7 +28,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="183"/>
-        <location filename="../src/mainwindow.cpp" line="302"/>
+        <location filename="../src/mainwindow.cpp" line="335"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
@@ -73,9 +73,8 @@
         <translation>Features(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="20"/>
         <source>RandPicker</source>
-        <translation>RandPicker</translation>
+        <translation type="vanished">RandPicker</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="158"/>
@@ -109,7 +108,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="329"/>
-        <location filename="../src/mainwindow.cpp" line="159"/>
+        <location filename="../src/mainwindow.cpp" line="166"/>
         <source>About Qt</source>
         <translation>About Qt</translation>
     </message>
@@ -169,111 +168,142 @@
         <translation>Generate Template Config</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="247"/>
+        <location filename="../src/mainwindow.cpp" line="271"/>
         <source>Info</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="247"/>
+        <location filename="../src/mainwindow.cpp" line="271"/>
         <source>Namelist not found. Default namelist will be created.</source>
         <translation>Namelist not found. Default namelist will be created.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="155"/>
-        <location filename="../src/mainwindow.cpp" line="254"/>
-        <location filename="../src/mainwindow.cpp" line="406"/>
-        <location filename="../src/mainwindow.cpp" line="417"/>
+        <location filename="../src/mainwindow.cpp" line="162"/>
+        <location filename="../src/mainwindow.cpp" line="278"/>
+        <location filename="../src/mainwindow.cpp" line="309"/>
+        <location filename="../src/mainwindow.cpp" line="439"/>
+        <location filename="../src/mainwindow.cpp" line="450"/>
+        <location filename="../src/mainwindow.cpp" line="553"/>
+        <location filename="../src/mainwindow.cpp" line="585"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="254"/>
+        <location filename="../src/mainwindow.cpp" line="257"/>
+        <source>In Client Mode,instant mode can&apos;t be disabled.</source>
+        <translation>In Client Mode,instant mode can&apos;t be disabled.</translation>
+    </message>
+    <message>
+        <source> [Client Mode]</source>
+        <translation type="vanished"> [Client Mode]</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="278"/>
         <source>Failed to create default namelist file: %1</source>
         <translation>Failed to create default namelist file: %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="265"/>
+        <location filename="../src/mainwindow.cpp" line="289"/>
         <source>Failed to load</source>
         <translation>Failed to load</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="295"/>
+        <location filename="../src/mainwindow.cpp" line="309"/>
+        <source>No list selected</source>
+        <translation>No list selected</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="328"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="398"/>
+        <location filename="../src/mainwindow.cpp" line="431"/>
         <source>Import Temporary Namelist</source>
         <translation>Import Temporary Namelist</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="406"/>
+        <location filename="../src/mainwindow.cpp" line="439"/>
         <source>Could not open file!</source>
         <translation>Could not open file!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="425"/>
+        <location filename="../src/mainwindow.cpp" line="458"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="425"/>
+        <location filename="../src/mainwindow.cpp" line="458"/>
         <source>This list exists!</source>
         <translation>This list exists!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="398"/>
+        <location filename="../src/mainwindow.cpp" line="561"/>
+        <location filename="../src/mainwindow.cpp" line="597"/>
+        <source>Connection Error</source>
+        <translation>Connection Error</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="562"/>
+        <location filename="../src/mainwindow.cpp" line="598"/>
+        <source>Failed to connect to server at %1
+Error: %2</source>
+        <translation>Failed to connect to server at %1
+Error: %2</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="431"/>
         <source>Text Files (*.txt)</source>
         <translation>Text Files (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="67"/>
+        <location filename="../src/mainwindow.cpp" line="74"/>
         <source>Random (Default)</source>
         <translation>Random (Default)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="152"/>
+        <location filename="../src/mainwindow.cpp" line="159"/>
         <source>Template Config Generated</source>
         <translation>Template Config Generated</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="234"/>
-        <location filename="../src/mainwindow.cpp" line="371"/>
+        <location filename="../src/mainwindow.cpp" line="241"/>
+        <location filename="../src/mainwindow.cpp" line="404"/>
         <source>Topmost is not available on your system.</source>
         <translation>Topmost is not available on your system.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="417"/>
+        <location filename="../src/mainwindow.cpp" line="450"/>
         <source>No valid names found in the file.</source>
         <translation>No valid names found in the file.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="437"/>
+        <location filename="../src/mainwindow.cpp" line="470"/>
         <source>Success</source>
         <translation>Success</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="437"/>
+        <location filename="../src/mainwindow.cpp" line="470"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
         <translation>Imported %1 names as temporary list &apos;%2&apos;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="214"/>
+        <location filename="../src/mainwindow.cpp" line="221"/>
         <source>Picked Names Cleared</source>
         <translation>Picked Names Cleared</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="123"/>
+        <location filename="../src/mainwindow.cpp" line="130"/>
         <source>Show</source>
         <translation>Show</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="127"/>
+        <location filename="../src/mainwindow.cpp" line="134"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="153"/>
+        <location filename="../src/mainwindow.cpp" line="160"/>
         <source>A template config file has been generated.
 
 Config file is in:
@@ -286,12 +316,12 @@ Config file is in:
 &apos;~/.config/RPconfig.ini&apos; (Linux).</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="155"/>
+        <location filename="../src/mainwindow.cpp" line="162"/>
         <source>Failed to create config file.</source>
         <translation>Failed to create config file.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="215"/>
+        <location filename="../src/mainwindow.cpp" line="222"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
         <translation>The list of picked names has been reset.
@@ -613,13 +643,13 @@ Are you sure to continue?</translation>
     </message>
     <message>
         <location filename="../ui/rpweb.ui" line="71"/>
-        <location filename="../src/rpweb.cpp" line="91"/>
+        <location filename="../src/rpweb.cpp" line="97"/>
         <source>Server is stopped</source>
         <translation>Server is stopped</translation>
     </message>
     <message>
         <location filename="../ui/rpweb.ui" line="84"/>
-        <location filename="../src/rpweb.cpp" line="89"/>
+        <location filename="../src/rpweb.cpp" line="95"/>
         <source>Start Server</source>
         <translation>Start Server</translation>
     </message>
@@ -629,22 +659,22 @@ Are you sure to continue?</translation>
         <translation>RPWeb Server Control</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="15"/>
+        <location filename="../src/rpweb.cpp" line="16"/>
         <source>RandPicker WebSocket Panel</source>
         <translation>RandPicker WebSocket Panel</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="56"/>
+        <location filename="../src/rpweb.cpp" line="62"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="57"/>
+        <location filename="../src/rpweb.cpp" line="63"/>
         <source>Cannot start server on port %1:%2</source>
         <translation>Cannot start server on port %1:%2</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="78"/>
+        <location filename="../src/rpweb.cpp" line="84"/>
         <source>Server Running
 Address: ws://%1:%2</source>
         <translation>Server Running
@@ -663,7 +693,7 @@ Address: ws://%1:%2</translation>
         <translation type="vanished">Cannot bind HTTP Server to TCP Server</translation>
     </message>
     <message>
-        <location filename="../src/rpweb.cpp" line="66"/>
+        <location filename="../src/rpweb.cpp" line="72"/>
         <source>Stop Server</source>
         <translation>Stop Server</translation>
     </message>

@@ -45,7 +45,9 @@ bool SettingsHandler::generateExampleConfig()
     out << "#UseLightTheme=false\n";
     out << "\n";
     out << "[RPWeb]\n";
-    out << "#RunAsClient=false";
+    out << "#RunAsClient=false\n";
+    out << "#Server=127.0.0.1\n";
+    out << "#Port=8080";
 
     file.close();
     return true;
@@ -62,4 +64,17 @@ bool SettingsHandler::getBoolConfig(BoolConfigType type) const
         return m_runAsClient;
     }
     return false;
+}
+
+QString SettingsHandler::getStringConfig(StringConfigType type) const
+{
+    if (!m_settings) return QString();
+
+    switch (type) {
+    case ServerHost:
+        return m_settings->value("RPWeb/Server", "localhost").toString();
+    case ServerPort:
+        return m_settings->value("RPWeb/Port", "8080").toString();
+    }
+    return QString();
 }
