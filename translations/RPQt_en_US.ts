@@ -14,6 +14,29 @@
         <translation>About</translation>
     </message>
     <message>
+        <location filename="../ui/aboutdialog.ui" line="127"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;RandPicker is a simple random name picker based on C++,using Qt Toolkit.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Source: &lt;a href=&quot;https://github.com/demonbro-dev/RPQt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#27bf73;&quot;&gt;https://github.com/demonbro-dev/RPQt&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Microsoft YaHei UI&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;RandPicker is a simple random name picker based on C++,using Qt Toolkit.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Source: &lt;a href=&quot;https://github.com/demonbro-dev/RPQt&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#27bf73;&quot;&gt;https://github.com/demonbro-dev/RPQt&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
         <location filename="../ui/aboutdialog.ui" line="147"/>
         <source>License</source>
         <translation>License</translation>
@@ -28,7 +51,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="183"/>
-        <location filename="../src/mainwindow.cpp" line="333"/>
+        <location filename="../src/mainwindow.cpp" line="334"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
@@ -170,11 +193,10 @@
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="276"/>
-        <location filename="../src/mainwindow.cpp" line="307"/>
-        <location filename="../src/mainwindow.cpp" line="437"/>
-        <location filename="../src/mainwindow.cpp" line="448"/>
-        <location filename="../src/mainwindow.cpp" line="551"/>
-        <location filename="../src/mainwindow.cpp" line="583"/>
+        <location filename="../src/mainwindow.cpp" line="308"/>
+        <location filename="../src/mainwindow.cpp" line="438"/>
+        <location filename="../src/mainwindow.cpp" line="449"/>
+        <location filename="../src/mainwindow.cpp" line="555"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
@@ -194,51 +216,49 @@
         <translation>Failed to load</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="307"/>
+        <location filename="../src/mainwindow.cpp" line="308"/>
         <source>No list selected</source>
         <translation>No list selected</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="326"/>
+        <location filename="../src/mainwindow.cpp" line="327"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="429"/>
+        <location filename="../src/mainwindow.cpp" line="430"/>
         <source>Import Temporary Namelist</source>
         <translation>Import Temporary Namelist</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="437"/>
+        <location filename="../src/mainwindow.cpp" line="438"/>
         <source>Could not open file!</source>
         <translation>Could not open file!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="456"/>
+        <location filename="../src/mainwindow.cpp" line="457"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="456"/>
+        <location filename="../src/mainwindow.cpp" line="457"/>
         <source>This list exists!</source>
         <translation>This list exists!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="559"/>
-        <location filename="../src/mainwindow.cpp" line="595"/>
+        <location filename="../src/mainwindow.cpp" line="578"/>
         <source>Connection Error</source>
         <translation>Connection Error</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="560"/>
-        <location filename="../src/mainwindow.cpp" line="596"/>
+        <location filename="../src/mainwindow.cpp" line="579"/>
         <source>Failed to connect to server at %1
 Error: %2</source>
         <translation>Failed to connect to server at %1
 Error: %2</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="429"/>
+        <location filename="../src/mainwindow.cpp" line="430"/>
         <source>Text Files (*.txt)</source>
         <translation>Text Files (*.txt)</translation>
     </message>
@@ -249,22 +269,22 @@ Error: %2</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="239"/>
-        <location filename="../src/mainwindow.cpp" line="402"/>
+        <location filename="../src/mainwindow.cpp" line="403"/>
         <source>Topmost is not available on your system.</source>
         <translation>Topmost is not available on your system.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="448"/>
+        <location filename="../src/mainwindow.cpp" line="449"/>
         <source>No valid names found in the file.</source>
         <translation>No valid names found in the file.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="468"/>
+        <location filename="../src/mainwindow.cpp" line="469"/>
         <source>Success</source>
         <translation>Success</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="468"/>
+        <location filename="../src/mainwindow.cpp" line="469"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
         <translation>Imported %1 names as temporary list &apos;%2&apos;</translation>
     </message>
@@ -525,8 +545,8 @@ All names are now available for picking again.</translation>
     </message>
     <message>
         <location filename="../src/passphrasedialog.cpp" line="28"/>
-        <location filename="../src/passphrasedialog.cpp" line="61"/>
-        <location filename="../src/passphrasedialog.cpp" line="90"/>
+        <location filename="../src/passphrasedialog.cpp" line="60"/>
+        <location filename="../src/passphrasedialog.cpp" line="88"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
@@ -546,24 +566,24 @@ All names are now available for picking again.</translation>
         <translation>Type your new passphrase:</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="61"/>
+        <location filename="../src/passphrasedialog.cpp" line="60"/>
         <source>Incorrect passphrase!</source>
         <translation>Incorrect passphrase!</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="69"/>
+        <location filename="../src/passphrasedialog.cpp" line="67"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="70"/>
+        <location filename="../src/passphrasedialog.cpp" line="68"/>
         <source>You are setting an empty passphrase.
 Are you sure to continue?</source>
         <translation>You are setting an empty passphrase.
 Are you sure to continue?</translation>
     </message>
     <message>
-        <location filename="../src/passphrasedialog.cpp" line="90"/>
+        <location filename="../src/passphrasedialog.cpp" line="88"/>
         <source>Failed to save passphrase:</source>
         <translation>Failed to save passphrase:</translation>
     </message>
@@ -686,47 +706,47 @@ Address: ws://%1:%2</translation>
         <translation>RP Visualized Configurator</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="31"/>
+        <location filename="../src/visualeditor.cpp" line="33"/>
         <source>Open RandMirage When Closing Program</source>
         <translation>Open RandMirage When Closing Program</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="32"/>
+        <location filename="../src/visualeditor.cpp" line="34"/>
         <source>Use Light Theme</source>
         <translation>Use Light Theme</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="33"/>
+        <location filename="../src/visualeditor.cpp" line="35"/>
         <source>Run as Client</source>
         <translation>Run as Client</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="34"/>
+        <location filename="../src/visualeditor.cpp" line="36"/>
         <source>Server Host</source>
         <translation>Server Host</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="35"/>
+        <location filename="../src/visualeditor.cpp" line="37"/>
         <source>Server Port</source>
         <translation>Server Port</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="45"/>
+        <location filename="../src/visualeditor.cpp" line="47"/>
         <source>Properties</source>
         <translation>Properties</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="45"/>
+        <location filename="../src/visualeditor.cpp" line="47"/>
         <source>Value</source>
         <translation>Value</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="50"/>
+        <location filename="../src/visualeditor.cpp" line="52"/>
         <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="51"/>
+        <location filename="../src/visualeditor.cpp" line="53"/>
         <source>Cancel</source>
         <translation>Cancel</translation>
     </message>
