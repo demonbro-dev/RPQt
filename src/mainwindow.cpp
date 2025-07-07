@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
     if (settingsHandler.getBoolConfig(SettingsHandler::RunAsClient)) {
         m_isClientMode = true;
         setupClientUI();
-        fetchAvailableLists();
+        handleWebSocketRequest(WebSocketRequestType::FetchAvailableLists);
     } else {
         loadNameLists();
     }
@@ -302,12 +302,13 @@ void MainWindow::loadNameLists()
 void MainWindow::onPickButtonClicked()
 {
     if (m_isClientMode) {
+        int count = ui->countSpin->value();
         QString currentList = ui->nameListCombo->currentText();
         if (currentList.isEmpty()) {
             QMessageBox::warning(this, tr("Error"), tr("No list selected"));
             return;
         }
-        sendRandomRequest(currentList);
+        handleWebSocketRequest(WebSocketRequestType::GetRandomNames, QString("%1 %2").arg(currentList).arg(count));
         return;
     }
     if (ui->instantModeRadio->isChecked()) {
@@ -531,60 +532,42 @@ void MainWindow::updateFontSize()
     ui->nameLabel->setFixedSize(qMax(labelWidth, 200), qMax(labelHeight, 80));
 }
 
-void MainWindow::fetchAvailableLists()
+void MainWindow::handleWebSocketRequest(WebSocketRequestType requestType, const QString& listNameAndPickCount)
 {
     QString host = settingsHandler.getStringConfig(SettingsHandler::ServerHost);
     QString port = settingsHandler.getStringConfig(SettingsHandler::ServerPort);
-    QString url = QString("ws://%1:%2").arg(host).arg(port);
+    QString url = QString("ws://%1:%2").arg(host,port);
 
     QWebSocket *webSocket = new QWebSocket();
-    connect(webSocket, &QWebSocket::connected, this, [webSocket]() {
-        webSocket->sendTextMessage("LIST_GROUPS");
-    });
-
-    connect(webSocket, &QWebSocket::textMessageReceived, this, [this, webSocket](const QString &message) {
-        if (message.startsWith("Available Lists:")) {
-            QStringList lists = message.mid(17).split(", ", Qt::SkipEmptyParts);
-            ui->nameListCombo->clear();
-            ui->nameListCombo->addItems(lists);
-        } else if (message.startsWith("[ERROR]")) {
-            QMessageBox::warning(this, tr("Error"), message);
+    connect(webSocket, &QWebSocket::connected, this, [webSocket, requestType, listNameAndPickCount]() {
+        switch (requestType) {
+        case WebSocketRequestType::FetchAvailableLists:
+            webSocket->sendTextMessage("LIST_GROUPS");
+            break;
+        case WebSocketRequestType::GetRandomNames:
+            webSocket->sendTextMessage("GET_RANDOM " + listNameAndPickCount);
+            break;
         }
-        webSocket->close();
-        webSocket->deleteLater();
     });
 
-    connect(webSocket, &QWebSocket::errorOccurred,
-            this, [this, url](QAbstractSocket::SocketError error) {
-                QMessageBox::warning(this, tr("Connection Error"),
-                                     tr("Failed to connect to server at %1\nError: %2")
-                                         .arg(url)
-                                         .arg(error));
-            });
-
-    connect(webSocket, &QWebSocket::disconnected, webSocket, &QWebSocket::deleteLater);
-
-    webSocket->open(QUrl(url));
-}
-
-void MainWindow::sendRandomRequest(const QString &listName)
-{
-    QString host = settingsHandler.getStringConfig(SettingsHandler::ServerHost);
-    QString port = settingsHandler.getStringConfig(SettingsHandler::ServerPort);
-    QString url = QString("ws://%1:%2").arg(host).arg(port);
-
-    QWebSocket *webSocket = new QWebSocket();
-    connect(webSocket, &QWebSocket::connected, this, [webSocket, listName]() {
-        webSocket->sendTextMessage("GET_RANDOM " + listName);
-    });
-
-    connect(webSocket, &QWebSocket::textMessageReceived, this, [this, webSocket](const QString &message) {
+    connect(webSocket, &QWebSocket::textMessageReceived, this, [this, webSocket, requestType](const QString &message) {
         if (message.startsWith("[ERROR]")) {
             QMessageBox::warning(this, tr("Error"), message);
         } else {
-            ui->nameLabel->setText(message);
-            pickHistory.append(message.split("\n", Qt::SkipEmptyParts));
-            if (historyDialog) historyDialog->updateHistory(pickHistory);
+            switch (requestType) {
+            case WebSocketRequestType::FetchAvailableLists:
+                if (message.startsWith("Available Lists:")) {
+                    QStringList lists = message.mid(17).split(", ", Qt::SkipEmptyParts);
+                    ui->nameListCombo->clear();
+                    ui->nameListCombo->addItems(lists);
+                }
+                break;
+            case WebSocketRequestType::GetRandomNames:
+                ui->nameLabel->setText(message);
+                pickHistory.append(message.split("\n", Qt::SkipEmptyParts));
+                if (historyDialog) historyDialog->updateHistory(pickHistory);
+                break;
+            }
         }
         webSocket->close();
         webSocket->deleteLater();

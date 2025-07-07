@@ -107,13 +107,6 @@ void RPWeb::handleWebSocketConnection(QWebSocket *clientSocket)
                 processCommand(clientSocket, message);
             });
 
-    QTimer::singleShot(60000, clientSocket, [clientSocket]() {
-        if (clientSocket->state() == QAbstractSocket::ConnectedState) {
-            clientSocket->sendTextMessage("Connection Timeout");
-            clientSocket->close();
-        }
-    });
-
     connect(clientSocket, &QWebSocket::disconnected, this, [this, clientSocket]() {
         m_connectedClients.remove(clientSocket);
         clientSocket->deleteLater();
@@ -129,7 +122,7 @@ void RPWeb::processCommand(QWebSocket *clientSocket, const QString &message)
     }
 
     QString command = parts[0];
-    QString argument = parts.size() > 1 ? parts[1] : QString();
+    QString argument = parts.size() > 1 ? parts.mid(1).join(' ') : QString();
 
     if (m_commandHandlers.contains(command)) {
         (this->*m_commandHandlers[command])(clientSocket, argument);
@@ -141,11 +134,23 @@ void RPWeb::processCommand(QWebSocket *clientSocket, const QString &message)
     }
 }
 
-void RPWeb::processRandomRequest(QWebSocket *clientSocket, const QString &listName)
+void RPWeb::processRandomRequest(QWebSocket *clientSocket, const QString &argument)
 {
-    if (listName.isEmpty()) {
-        sendResponse(clientSocket, "Usage: GET_RANDOM <LIST_NAME>", true);
+    QStringList args = argument.split(' ', Qt::SkipEmptyParts);
+    if (args.isEmpty()) {
+        sendResponse(clientSocket, "Usage: GET_RANDOM [LIST_NAME] [COUNT]", true);
         return;
+    }
+
+    QString listName = args[0];
+    int count = 1;
+    if (args.size() > 1) {
+        bool ok;
+        count = args[1].toInt(&ok);
+        if (!ok || count <= 0) {
+            sendResponse(clientSocket, "Invalid count parameter. Must be a positive integer", true);
+            return;
+        }
     }
 
     QString error;
@@ -157,7 +162,11 @@ void RPWeb::processRandomRequest(QWebSocket *clientSocket, const QString &listNa
         sendResponse(clientSocket, QString("List '%1' doesn't exist").arg(listName), true);
     } else {
         pickerLogic->setNames(nameGroups[listName]);
-        QStringList pickedNames = pickerLogic->pickNames(10, true, PickerLogic::RandomGeneratorType::RandomSelect);
+        // If count is >= total names, pick all names
+        if (count >= nameGroups[listName].size()) {
+            count = nameGroups[listName].size();
+        }
+        QStringList pickedNames = pickerLogic->pickNames(count, true, PickerLogic::RandomGeneratorType::RandomSelect);
         sendResponse(clientSocket, pickerLogic->formatNamesWithLineBreak(pickedNames));
     }
 }

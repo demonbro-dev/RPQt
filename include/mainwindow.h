@@ -59,6 +59,11 @@ private:
     QPoint m_dragPosition;
     QSystemTrayIcon *m_trayIcon;
 
+    enum class WebSocketRequestType {
+        FetchAvailableLists,
+        GetRandomNames
+    };
+
     void setupClientUI();
     void loadNameLists();
     void setupConnections();
@@ -67,8 +72,7 @@ private:
     void onNameListComboActivated(int index);
     void onImportTempList();
     void showMainWindow();
-    void fetchAvailableLists();
-    void sendRandomRequest(const QString &listName);
+    void handleWebSocketRequest(WebSocketRequestType requestType, const QString& listNameAndPickCount = QString());
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void closeEvent(QCloseEvent *event) override;
