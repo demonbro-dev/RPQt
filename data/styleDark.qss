@@ -65,7 +65,7 @@ AboutDialog QWidget#headerWidget {
 AboutDialog QLabel#iconLabel {
     background-color: #252525;
     border: 2px solid #404040;
-    border-radius: 10px;
+    border-radius: 17px;
 }
 
 AboutDialog QLabel#titleLabel2 {
