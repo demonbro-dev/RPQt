@@ -27,7 +27,8 @@ SOURCES += \
     src/rpweb.cpp \
     src/scheduledpickdialog.cpp \
     src/settingshandler.cpp \
-    src/sidebutton.cpp
+    src/sidebutton.cpp \
+    src/visualeditor.cpp
 
 HEADERS += \
     include/aboutdialog.h \
@@ -41,7 +42,8 @@ HEADERS += \
     include/rpweb.h \
     include/scheduledpickdialog.h \
     include/settingshandler.h \
-    include/sidebutton.h
+    include/sidebutton.h \
+    include/visualeditor.h
 
 FORMS += \
     ui/aboutdialog.ui \

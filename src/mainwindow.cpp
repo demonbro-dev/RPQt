@@ -3,6 +3,7 @@
 #include "scheduledpickdialog.h"
 #include "ui_mainwindow.h"
 #include "aboutdialog.h"
+#include "visualeditor.h"
 #include <QLibraryInfo>
 #include <QActionGroup>
 #include <QMessageBox>
@@ -154,13 +155,10 @@ void MainWindow::setupConnections()
     connect(ui->actionDisableParallelPick, &QAction::toggled, this, [this](bool checked) {
         m_parallelPickEnabled = !checked;
     });
-    connect(ui->actionGTC, &QAction::triggered, this, [this]() {
-        if (settingsHandler.generateExampleConfig()) {
-            QMessageBox::information(this, tr("Template Config Generated"),
-                                     tr("A template config file has been generated.\n\nConfig file is in:\n'YOUR_APP_PATH/config.ini' (Windows)\n'~/.config/RPconfig.ini' (Linux)."));
-        } else {
-            QMessageBox::warning(this, tr("Error"), tr("Failed to create config file."));
-        }
+    connect(ui->actionVisualEditor, &QAction::triggered, this, [this]() {
+        VisualEditor *editor = new VisualEditor(this);
+        editor->setAttribute(Qt::WA_DeleteOnClose);
+        editor->show();
     });
     connect(ui->actionAboutQt, &QAction::triggered, this, [this]() {
         QMessageBox::aboutQt(this, tr("About Qt"));

@@ -28,7 +28,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="183"/>
-        <location filename="../src/mainwindow.cpp" line="335"/>
+        <location filename="../src/mainwindow.cpp" line="333"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
@@ -63,18 +63,9 @@
         <translation>Scheduled Pick</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="409"/>
-        <source>RPWeb</source>
-        <translation>RPWeb</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.ui" line="262"/>
         <source>Features(&amp;F)</source>
         <translation>Features(&amp;F)</translation>
-    </message>
-    <message>
-        <source>RandPicker</source>
-        <translation type="vanished">RandPicker</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="158"/>
@@ -108,7 +99,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="329"/>
-        <location filename="../src/mainwindow.cpp" line="166"/>
+        <location filename="../src/mainwindow.cpp" line="164"/>
         <source>About Qt</source>
         <translation>About Qt</translation>
     </message>
@@ -138,6 +129,11 @@
         <translation>History</translation>
     </message>
     <message>
+        <location filename="../ui/mainwindow.ui" line="409"/>
+        <source>RP WebSocket</source>
+        <translation>RP WebSocket</translation>
+    </message>
+    <message>
         <location filename="../ui/mainwindow.ui" line="414"/>
         <source>Hide to Tray</source>
         <translation>Hide to Tray</translation>
@@ -159,169 +155,136 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="443"/>
-        <source>1</source>
-        <translation>1</translation>
+        <source>Visualized Configurator</source>
+        <translation>Visualized Configurator</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="448"/>
-        <source>Generate Template Config</source>
-        <translation>Generate Template Config</translation>
-    </message>
-    <message>
-        <location filename="../src/mainwindow.cpp" line="271"/>
+        <location filename="../src/mainwindow.cpp" line="269"/>
         <source>Info</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="271"/>
+        <location filename="../src/mainwindow.cpp" line="269"/>
         <source>Namelist not found. Default namelist will be created.</source>
         <translation>Namelist not found. Default namelist will be created.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="162"/>
-        <location filename="../src/mainwindow.cpp" line="278"/>
-        <location filename="../src/mainwindow.cpp" line="309"/>
-        <location filename="../src/mainwindow.cpp" line="439"/>
-        <location filename="../src/mainwindow.cpp" line="450"/>
-        <location filename="../src/mainwindow.cpp" line="553"/>
-        <location filename="../src/mainwindow.cpp" line="585"/>
+        <location filename="../src/mainwindow.cpp" line="276"/>
+        <location filename="../src/mainwindow.cpp" line="307"/>
+        <location filename="../src/mainwindow.cpp" line="437"/>
+        <location filename="../src/mainwindow.cpp" line="448"/>
+        <location filename="../src/mainwindow.cpp" line="551"/>
+        <location filename="../src/mainwindow.cpp" line="583"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="257"/>
+        <location filename="../src/mainwindow.cpp" line="255"/>
         <source>In Client Mode,instant mode can&apos;t be disabled.</source>
         <translation>In Client Mode,instant mode can&apos;t be disabled.</translation>
     </message>
     <message>
-        <source> [Client Mode]</source>
-        <translation type="vanished"> [Client Mode]</translation>
-    </message>
-    <message>
-        <location filename="../src/mainwindow.cpp" line="278"/>
+        <location filename="../src/mainwindow.cpp" line="276"/>
         <source>Failed to create default namelist file: %1</source>
         <translation>Failed to create default namelist file: %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="289"/>
+        <location filename="../src/mainwindow.cpp" line="287"/>
         <source>Failed to load</source>
         <translation>Failed to load</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="309"/>
+        <location filename="../src/mainwindow.cpp" line="307"/>
         <source>No list selected</source>
         <translation>No list selected</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="328"/>
+        <location filename="../src/mainwindow.cpp" line="326"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="431"/>
+        <location filename="../src/mainwindow.cpp" line="429"/>
         <source>Import Temporary Namelist</source>
         <translation>Import Temporary Namelist</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="439"/>
+        <location filename="../src/mainwindow.cpp" line="437"/>
         <source>Could not open file!</source>
         <translation>Could not open file!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="458"/>
+        <location filename="../src/mainwindow.cpp" line="456"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="458"/>
+        <location filename="../src/mainwindow.cpp" line="456"/>
         <source>This list exists!</source>
         <translation>This list exists!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="561"/>
-        <location filename="../src/mainwindow.cpp" line="597"/>
+        <location filename="../src/mainwindow.cpp" line="559"/>
+        <location filename="../src/mainwindow.cpp" line="595"/>
         <source>Connection Error</source>
         <translation>Connection Error</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="562"/>
-        <location filename="../src/mainwindow.cpp" line="598"/>
+        <location filename="../src/mainwindow.cpp" line="560"/>
+        <location filename="../src/mainwindow.cpp" line="596"/>
         <source>Failed to connect to server at %1
 Error: %2</source>
         <translation>Failed to connect to server at %1
 Error: %2</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="431"/>
+        <location filename="../src/mainwindow.cpp" line="429"/>
         <source>Text Files (*.txt)</source>
         <translation>Text Files (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="74"/>
+        <location filename="../src/mainwindow.cpp" line="75"/>
         <source>Random (Default)</source>
         <translation>Random (Default)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="159"/>
-        <source>Template Config Generated</source>
-        <translation>Template Config Generated</translation>
-    </message>
-    <message>
-        <location filename="../src/mainwindow.cpp" line="241"/>
-        <location filename="../src/mainwindow.cpp" line="404"/>
+        <location filename="../src/mainwindow.cpp" line="239"/>
+        <location filename="../src/mainwindow.cpp" line="402"/>
         <source>Topmost is not available on your system.</source>
         <translation>Topmost is not available on your system.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="450"/>
+        <location filename="../src/mainwindow.cpp" line="448"/>
         <source>No valid names found in the file.</source>
         <translation>No valid names found in the file.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="470"/>
+        <location filename="../src/mainwindow.cpp" line="468"/>
         <source>Success</source>
         <translation>Success</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="470"/>
+        <location filename="../src/mainwindow.cpp" line="468"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
         <translation>Imported %1 names as temporary list &apos;%2&apos;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="221"/>
+        <location filename="../src/mainwindow.cpp" line="219"/>
         <source>Picked Names Cleared</source>
         <translation>Picked Names Cleared</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="130"/>
+        <location filename="../src/mainwindow.cpp" line="131"/>
         <source>Show</source>
         <translation>Show</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="134"/>
+        <location filename="../src/mainwindow.cpp" line="135"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="160"/>
-        <source>A template config file has been generated.
-
-Config file is in:
-&apos;YOUR_APP_PATH/config.ini&apos; (Windows)
-&apos;~/.config/RPconfig.ini&apos; (Linux).</source>
-        <translation>A template config file has been generated.
-
-Config file is in:
-&apos;YOUR_APP_PATH/config.ini&apos; (Windows)
-&apos;~/.config/RPconfig.ini&apos; (Linux).</translation>
-    </message>
-    <message>
-        <location filename="../src/mainwindow.cpp" line="162"/>
-        <source>Failed to create config file.</source>
-        <translation>Failed to create config file.</translation>
-    </message>
-    <message>
-        <location filename="../src/mainwindow.cpp" line="222"/>
+        <location filename="../src/mainwindow.cpp" line="220"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
         <translation>The list of picked names has been reset.
@@ -681,27 +644,9 @@ Address: ws://%1:%2</source>
 Address: ws://%1:%2</translation>
     </message>
     <message>
-        <source>Failed to load HTML file</source>
-        <translation type="vanished">Failed to load HTML file</translation>
-    </message>
-    <message>
-        <source>Cannot set up server on port %1:%2</source>
-        <translation type="vanished">Cannot set up server on port %1:%2</translation>
-    </message>
-    <message>
-        <source>Cannot bind HTTP Server to TCP Server</source>
-        <translation type="vanished">Cannot bind HTTP Server to TCP Server</translation>
-    </message>
-    <message>
         <location filename="../src/rpweb.cpp" line="72"/>
         <source>Stop Server</source>
         <translation>Stop Server</translation>
-    </message>
-    <message>
-        <source>Server is running
-Address: http://%1:%2</source>
-        <translation type="vanished">Server is running
-Address: http://%1:%2</translation>
     </message>
 </context>
 <context>
@@ -731,6 +676,79 @@ Address: http://%1:%2</translation>
         <location filename="../src/scheduledpickdialog.cpp" line="36"/>
         <source>Please set a valid countdown time.</source>
         <translation>Please set a valid countdown time.</translation>
+    </message>
+</context>
+<context>
+    <name>VisualEditor</name>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="16"/>
+        <source>RP Visualized Configurator</source>
+        <translation>RP Visualized Configurator</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="31"/>
+        <source>Open RandMirage When Closing Program</source>
+        <translation>Open RandMirage When Closing Program</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="32"/>
+        <source>Use Light Theme</source>
+        <translation>Use Light Theme</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="33"/>
+        <source>Run as Client</source>
+        <translation>Run as Client</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="34"/>
+        <source>Server Host</source>
+        <translation>Server Host</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="35"/>
+        <source>Server Port</source>
+        <translation>Server Port</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="45"/>
+        <source>Properties</source>
+        <translation>Properties</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="45"/>
+        <source>Value</source>
+        <translation>Value</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="50"/>
+        <source>Save</source>
+        <translation>Save</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="51"/>
+        <source>Cancel</source>
+        <translation>Cancel</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="216"/>
+        <source>Success</source>
+        <translation>Success</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="217"/>
+        <source>Settings saved successfully. Please restart the application for changes to take effect.</source>
+        <translation>Settings saved successfully. Please restart the application for changes to take effect.</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="220"/>
+        <source>Error</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="221"/>
+        <source>Failed to save settings. Please check file permissions and try again.</source>
+        <translation>Failed to save settings. Please check file permissions and try again.</translation>
     </message>
 </context>
 </TS>

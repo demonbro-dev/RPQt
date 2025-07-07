@@ -26,7 +26,7 @@ PassphraseDialog::PassphraseDialog(const QString &jsonFilePath,
         if (!error.isEmpty()) {
             qWarning() << "Failed to load passphrase:" << error;
             QMessageBox::warning(this, tr("Error"), tr("Cannot load passphrase config:") + error);
-            correctPassphrase = ""; // 设置为空字符串作为默认值
+            correctPassphrase = "";
         }
     } else {
         setWindowTitle(tr("Set new passphrase"));
@@ -54,9 +54,8 @@ void PassphraseDialog::on_submitButton_clicked()
     QString input = ui->lineEdit->text();
 
     if (currentMode == InputMode) {
-        // 输入密码模式
         if (input == correctPassphrase) {
-            accept();  // 只有密码正确才接受对话框
+            accept();
         } else {
             QMessageBox::warning(this, tr("Error"), tr("Incorrect passphrase!"));
             ui->lineEdit->clear();
@@ -64,7 +63,6 @@ void PassphraseDialog::on_submitButton_clicked()
     } else {
         // 设置新密码模式
         if (input.isEmpty()) {
-            // 询问用户是否确定使用空密码
             QMessageBox::StandardButton reply;
             reply = QMessageBox::warning(this, tr("Warning"),
                                          tr("You are setting an empty passphrase.\nAre you sure to continue?"),
@@ -76,7 +74,7 @@ void PassphraseDialog::on_submitButton_clicked()
 
         newPassphrase = input;
         if (saveNewPassphrase()) {
-            accept();  // 只有保存成功才接受对话框
+            accept();
         }
     }
 }

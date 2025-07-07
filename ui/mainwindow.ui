@@ -307,9 +307,9 @@
     <addaction name="actionDisableParallelPick"/>
     <addaction name="separator"/>
     <addaction name="menuRandom_Impl"/>
-    <addaction name="menuLanguage"/>
+    <addaction name="actionVisualEditor"/>
     <addaction name="separator"/>
-    <addaction name="actionGTC"/>
+    <addaction name="menuLanguage"/>
    </widget>
    <addaction name="menuFeatures"/>
    <addaction name="menuInPick"/>
@@ -406,7 +406,7 @@
     <iconset theme="QIcon::ThemeIcon::NetworkWired"/>
    </property>
    <property name="text">
-    <string>RPWeb</string>
+    <string>RP WebSocket</string>
    </property>
   </action>
   <action name="actionHidetoTray">
@@ -438,14 +438,9 @@
     <string>RPSideShortcutLeft</string>
    </property>
   </action>
-  <action name="action1">
+  <action name="actionVisualEditor">
    <property name="text">
-    <string>1</string>
-   </property>
-  </action>
-  <action name="actionGTC">
-   <property name="text">
-    <string>Generate Template Config</string>
+    <string>Visualized Configurator</string>
    </property>
   </action>
  </widget>

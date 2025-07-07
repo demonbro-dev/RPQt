@@ -28,7 +28,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="183"/>
-        <location filename="../src/mainwindow.cpp" line="335"/>
+        <location filename="../src/mainwindow.cpp" line="333"/>
         <source>Start</source>
         <translation>开始抽选</translation>
     </message>
@@ -63,18 +63,9 @@
         <translation>计时抽选</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="409"/>
-        <source>RPWeb</source>
-        <translation>RPWeb</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.ui" line="262"/>
         <source>Features(&amp;F)</source>
         <translation>功能(&amp;F)</translation>
-    </message>
-    <message>
-        <source>RandPicker</source>
-        <translation type="vanished">RandPicker</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="158"/>
@@ -108,7 +99,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="329"/>
-        <location filename="../src/mainwindow.cpp" line="166"/>
+        <location filename="../src/mainwindow.cpp" line="164"/>
         <source>About Qt</source>
         <translation>关于 Qt</translation>
     </message>
@@ -138,6 +129,11 @@
         <translation>历史记录</translation>
     </message>
     <message>
+        <location filename="../ui/mainwindow.ui" line="409"/>
+        <source>RP WebSocket</source>
+        <translation>RP WebSocket</translation>
+    </message>
+    <message>
         <location filename="../ui/mainwindow.ui" line="414"/>
         <source>Hide to Tray</source>
         <translation>隐藏至系统托盘</translation>
@@ -159,169 +155,136 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="443"/>
-        <source>1</source>
-        <translation>1</translation>
+        <source>Visualized Configurator</source>
+        <translation>可视化配置器</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="448"/>
-        <source>Generate Template Config</source>
-        <translation>生成配置模板</translation>
-    </message>
-    <message>
-        <location filename="../src/mainwindow.cpp" line="271"/>
+        <location filename="../src/mainwindow.cpp" line="269"/>
         <source>Info</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="271"/>
+        <location filename="../src/mainwindow.cpp" line="269"/>
         <source>Namelist not found. Default namelist will be created.</source>
         <translation>未发现名单文件，将创建默认名单文件.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="162"/>
-        <location filename="../src/mainwindow.cpp" line="278"/>
-        <location filename="../src/mainwindow.cpp" line="309"/>
-        <location filename="../src/mainwindow.cpp" line="439"/>
-        <location filename="../src/mainwindow.cpp" line="450"/>
-        <location filename="../src/mainwindow.cpp" line="553"/>
-        <location filename="../src/mainwindow.cpp" line="585"/>
+        <location filename="../src/mainwindow.cpp" line="276"/>
+        <location filename="../src/mainwindow.cpp" line="307"/>
+        <location filename="../src/mainwindow.cpp" line="437"/>
+        <location filename="../src/mainwindow.cpp" line="448"/>
+        <location filename="../src/mainwindow.cpp" line="551"/>
+        <location filename="../src/mainwindow.cpp" line="583"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="257"/>
+        <location filename="../src/mainwindow.cpp" line="255"/>
         <source>In Client Mode,instant mode can&apos;t be disabled.</source>
         <translation>在客户端模式,立即抽选模式无法被禁用.</translation>
     </message>
     <message>
-        <source> [Client Mode]</source>
-        <translation type="vanished"> [客户端模式]</translation>
-    </message>
-    <message>
-        <location filename="../src/mainwindow.cpp" line="278"/>
+        <location filename="../src/mainwindow.cpp" line="276"/>
         <source>Failed to create default namelist file: %1</source>
         <translation>创建默认名单文件失败: %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="289"/>
+        <location filename="../src/mainwindow.cpp" line="287"/>
         <source>Failed to load</source>
         <translation>加载失败</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="309"/>
+        <location filename="../src/mainwindow.cpp" line="307"/>
         <source>No list selected</source>
         <translation>没有选中的名单</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="328"/>
+        <location filename="../src/mainwindow.cpp" line="326"/>
         <source>Stop</source>
         <translation>停止抽选</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="431"/>
+        <location filename="../src/mainwindow.cpp" line="429"/>
         <source>Import Temporary Namelist</source>
         <translation>导入临时名单</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="439"/>
+        <location filename="../src/mainwindow.cpp" line="437"/>
         <source>Could not open file!</source>
         <translation>不能打开文件!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="458"/>
+        <location filename="../src/mainwindow.cpp" line="456"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="458"/>
+        <location filename="../src/mainwindow.cpp" line="456"/>
         <source>This list exists!</source>
         <translation>该名单已存在!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="561"/>
-        <location filename="../src/mainwindow.cpp" line="597"/>
+        <location filename="../src/mainwindow.cpp" line="559"/>
+        <location filename="../src/mainwindow.cpp" line="595"/>
         <source>Connection Error</source>
         <translation>连接错误</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="562"/>
-        <location filename="../src/mainwindow.cpp" line="598"/>
+        <location filename="../src/mainwindow.cpp" line="560"/>
+        <location filename="../src/mainwindow.cpp" line="596"/>
         <source>Failed to connect to server at %1
 Error: %2</source>
         <translation>连接服务器 %1 失败
 错误:%2</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="431"/>
+        <location filename="../src/mainwindow.cpp" line="429"/>
         <source>Text Files (*.txt)</source>
         <translation>文本文件 (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="74"/>
+        <location filename="../src/mainwindow.cpp" line="75"/>
         <source>Random (Default)</source>
         <translation>随机使用 (默认)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="159"/>
-        <source>Template Config Generated</source>
-        <translation>已生成配置模板</translation>
-    </message>
-    <message>
-        <location filename="../src/mainwindow.cpp" line="241"/>
-        <location filename="../src/mainwindow.cpp" line="404"/>
+        <location filename="../src/mainwindow.cpp" line="239"/>
+        <location filename="../src/mainwindow.cpp" line="402"/>
         <source>Topmost is not available on your system.</source>
         <translation>&quot;置于顶层&quot;当前在您的系统上不可用.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="450"/>
+        <location filename="../src/mainwindow.cpp" line="448"/>
         <source>No valid names found in the file.</source>
         <translation>未在文件中找到可用名单.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="470"/>
+        <location filename="../src/mainwindow.cpp" line="468"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="470"/>
+        <location filename="../src/mainwindow.cpp" line="468"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
         <translation>已导入具有 %1 个名字的临时名单&quot;%2&quot;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="221"/>
+        <location filename="../src/mainwindow.cpp" line="219"/>
         <source>Picked Names Cleared</source>
         <translation>已清理已抽选名字</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="130"/>
+        <location filename="../src/mainwindow.cpp" line="131"/>
         <source>Show</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="134"/>
+        <location filename="../src/mainwindow.cpp" line="135"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="160"/>
-        <source>A template config file has been generated.
-
-Config file is in:
-&apos;YOUR_APP_PATH/config.ini&apos; (Windows)
-&apos;~/.config/RPconfig.ini&apos; (Linux).</source>
-        <translation>一个模板配置文件已经被生成.
-
-配置文件的位置是:
-&apos;YOUR_APP_PATH/config.ini&apos; (Windows)
-&apos;~/.config/RPconfig.ini&apos; (Linux).</translation>
-    </message>
-    <message>
-        <location filename="../src/mainwindow.cpp" line="162"/>
-        <source>Failed to create config file.</source>
-        <translation>创建配置文件失败.</translation>
-    </message>
-    <message>
-        <location filename="../src/mainwindow.cpp" line="222"/>
+        <location filename="../src/mainwindow.cpp" line="220"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
         <translation>已抽选名字列表现已被重置.
@@ -681,27 +644,9 @@ Address: ws://%1:%2</source>
 地址: ws://%1:%2</translation>
     </message>
     <message>
-        <source>Failed to load HTML file</source>
-        <translation type="vanished">Failed to load HTML file</translation>
-    </message>
-    <message>
-        <source>Cannot set up server on port %1:%2</source>
-        <translation type="vanished">无法在端口 %1 上建立服务器:%2</translation>
-    </message>
-    <message>
-        <source>Cannot bind HTTP Server to TCP Server</source>
-        <translation type="vanished">无法绑定HTTP服务器至TCP服务器</translation>
-    </message>
-    <message>
         <location filename="../src/rpweb.cpp" line="72"/>
         <source>Stop Server</source>
         <translation>停止服务器</translation>
-    </message>
-    <message>
-        <source>Server is running
-Address: http://%1:%2</source>
-        <translation type="vanished">服务器正在运行
-地址: http://%1:%2</translation>
     </message>
 </context>
 <context>
@@ -731,6 +676,79 @@ Address: http://%1:%2</source>
         <location filename="../src/scheduledpickdialog.cpp" line="36"/>
         <source>Please set a valid countdown time.</source>
         <translation>请设置一个有效的倒计时.</translation>
+    </message>
+</context>
+<context>
+    <name>VisualEditor</name>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="16"/>
+        <source>RP Visualized Configurator</source>
+        <translation>RP 可视化配置器</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="31"/>
+        <source>Open RandMirage When Closing Program</source>
+        <translation>在关闭程序时打开RandMirage</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="32"/>
+        <source>Use Light Theme</source>
+        <translation>使用亮色主题</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="33"/>
+        <source>Run as Client</source>
+        <translation>作为客户端运行</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="34"/>
+        <source>Server Host</source>
+        <translation>服务器地址</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="35"/>
+        <source>Server Port</source>
+        <translation>服务器端口</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="45"/>
+        <source>Properties</source>
+        <translation>属性</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="45"/>
+        <source>Value</source>
+        <translation>值</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="50"/>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="51"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="216"/>
+        <source>Success</source>
+        <translation>成功</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="217"/>
+        <source>Settings saved successfully. Please restart the application for changes to take effect.</source>
+        <translation>配置已成功保存. 请重启程序以应用更改.</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="220"/>
+        <source>Error</source>
+        <translation>错误</translation>
+    </message>
+    <message>
+        <location filename="../src/visualeditor.cpp" line="221"/>
+        <source>Failed to save settings. Please check file permissions and try again.</source>
+        <translation>配置保存失败. 请检查文件权限并重试.</translation>
     </message>
 </context>
 </TS>
