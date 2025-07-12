@@ -547,6 +547,9 @@ void MainWindow::handleWebSocketRequest(WebSocketRequestType requestType, const 
         case WebSocketRequestType::GetRandomNames:
             webSocket->sendTextMessage("GET_RANDOM " + listNameAndPickCount);
             break;
+        case WebSocketRequestType::E2EEStatus:
+            webSocket->sendTextMessage("E2EE_STATUS");
+            break;
         }
     });
 
@@ -566,6 +569,9 @@ void MainWindow::handleWebSocketRequest(WebSocketRequestType requestType, const 
                 ui->nameLabel->setText(message);
                 pickHistory.append(message.split("\n", Qt::SkipEmptyParts));
                 if (historyDialog) historyDialog->updateHistory(pickHistory);
+                break;
+            case WebSocketRequestType::E2EEStatus:
+                use_E2EE = (message == "true");
                 break;
             }
         }

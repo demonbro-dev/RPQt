@@ -56,12 +56,14 @@ private:
     bool m_globalTrackingEnabled = false;
     bool m_parallelPickEnabled = true;
     bool m_isClientMode = false;
+    bool use_E2EE = false;
     QPoint m_dragPosition;
     QSystemTrayIcon *m_trayIcon;
 
     enum class WebSocketRequestType {
         FetchAvailableLists,
-        GetRandomNames
+        GetRandomNames,
+        E2EEStatus
     };
 
     void setupClientUI();
