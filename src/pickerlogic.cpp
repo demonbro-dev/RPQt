@@ -66,7 +66,7 @@ QString PickerLogic::formatNamesWithLineBreak(const QStringList &names)
     if (names.isEmpty()) return "";
 
     QString result;
-    const int maxPerLine = 4;
+    const int maxPerLine = 5;
 
     for (int i = 0; i < names.size(); ++i) {
         if (i > 0) {

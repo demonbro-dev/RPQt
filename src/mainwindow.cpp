@@ -527,7 +527,7 @@ void MainWindow::updateFontSize()
     font.setPixelSize(fontSize);
     ui->nameLabel->setFont(font);
 
-    int labelWidth = width() * 4 / 5;
+    int labelWidth = width() * 9 / 10;
     int labelHeight = height() / 2;
     ui->nameLabel->setFixedSize(qMax(labelWidth, 200), qMax(labelHeight, 80));
 }
