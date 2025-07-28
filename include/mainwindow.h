@@ -27,6 +27,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void showSideButton(bool toRight);
+    void showMainWindow();
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
@@ -73,7 +74,6 @@ private:
     void setupNameListCombo();
     void onNameListComboActivated(int index);
     void onImportTempList();
-    void showMainWindow();
     void handleWebSocketRequest(WebSocketRequestType requestType, const QString& listNameAndPickCount = QString());
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;

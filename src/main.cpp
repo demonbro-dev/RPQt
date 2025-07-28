@@ -18,6 +18,10 @@ bool isAlreadyRunning(const QString &uniqueKey)
     QLocalSocket socket;
     socket.connectToServer(uniqueKey);
     if (socket.waitForConnected(105)) {
+        if (socket.state() == QLocalSocket::ConnectedState) {
+            socket.write("activate");
+            socket.waitForBytesWritten();
+        }
         socket.close();
         return true;
     }
@@ -26,6 +30,23 @@ bool isAlreadyRunning(const QString &uniqueKey)
     QLocalServer *server = new QLocalServer();
     if (!server->listen(uniqueKey)) {
         qWarning() << "Failed to create single-instance server:" << server->errorString();
+    } else {
+        QObject::connect(server, &QLocalServer::newConnection, [server]() {
+            QLocalSocket *clientConnection = server->nextPendingConnection();
+            QObject::connect(clientConnection, &QLocalSocket::readyRead, [clientConnection]() {
+                QByteArray data = clientConnection->readAll();
+                if (data == "activate") {
+                    foreach (QWidget *widget, QApplication::topLevelWidgets()) {
+                        if (MainWindow *mainWindow = qobject_cast<MainWindow*>(widget)) {
+                            mainWindow->showMainWindow();
+                            break;
+                        }
+                    }
+                }
+                clientConnection->close();
+                clientConnection->deleteLater();
+            });
+        });
     }
     return false;
 }
@@ -38,7 +59,6 @@ int main(int argc, char *argv[])
                                   QCoreApplication::applicationName();
 
         if (isAlreadyRunning(uniqueKey)) {
-            QMessageBox::critical(nullptr, "Error", "A RandPicker instance is already running.", QMessageBox::Ok);
             return 1;
         }
     }

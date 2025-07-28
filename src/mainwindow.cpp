@@ -14,6 +14,10 @@
 #include <QDir>
 #include <QtConcurrent>
 
+#ifdef Q_OS_WIN
+#include <windows.h>
+#endif
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -493,6 +497,18 @@ void MainWindow::showSideButton(bool toRight)
 void MainWindow::showMainWindow()
 {
     show();
+#ifdef Q_OS_WIN
+    HWND hwnd = reinterpret_cast<HWND>(winId());
+    if (::IsIconic(hwnd)) {
+        ::ShowWindow(hwnd, SW_RESTORE);
+    }
+    ::SetForegroundWindow(hwnd);
+    ::BringWindowToTop(hwnd);
+    ::SetFocus(hwnd);
+#else
+    activateWindow();
+    raise();
+#endif
     if (sideButton) {
         sideButton->deleteLater();
         sideButton = nullptr;
