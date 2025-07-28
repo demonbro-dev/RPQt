@@ -358,19 +358,19 @@ void MainWindow::onNameListComboActivated(int index)
 
 void MainWindow::onTopmostToggled(bool checked)
 {
-    QPoint pos = this->pos();
-    QSize size = this->size();
-
+#ifdef Q_OS_WIN
+    HWND hwnd = reinterpret_cast<HWND>(winId());
+    if (checked) {
+        ::SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+    } else {
+        ::SetWindowPos(hwnd, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+    }
+#else
     Qt::WindowFlags flags = windowFlags();
     flags.setFlag(Qt::WindowStaysOnTopHint, checked);
-
-    hide();
     setWindowFlags(flags);
     show();
-
-    move(pos);
-    resize(size);
-    activateWindow();
+#endif
 }
 
 bool MainWindow::loadTranslation(const QLocale& locale)
