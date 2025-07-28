@@ -68,9 +68,21 @@ int main(int argc, char *argv[])
     QCommandLineParser parser;
     QCommandLineOption sidebarOption("sidebar", "Start application in sidebar mode");
     QCommandLineOption sidebarLeftOption("sidebar-left", "Start application in sidebar mode (left side)");
+    QCommandLineOption trayIconOption("trayicon", "Start application minimized to system tray");
     parser.addOption(sidebarOption);
     parser.addOption(sidebarLeftOption);
+    parser.addOption(trayIconOption);
     parser.process(a);
+
+    int activeOptions = 0;
+    if (parser.isSet(sidebarOption)) activeOptions++;
+    if (parser.isSet(sidebarLeftOption)) activeOptions++;
+    if (parser.isSet(trayIconOption)) activeOptions++;
+    if (activeOptions > 1) {
+        QMessageBox::critical(nullptr, "Parameter Error",
+                              "Only one of --sidebar, --sidebar-left or --trayicon can be used at a time.");
+        return 1;
+    }
 
     SettingsHandler settingsHandler;
     a.setStyle(QStyleFactory::create("Fusion"));
@@ -124,6 +136,10 @@ int main(int argc, char *argv[])
         bool toRight = parser.isSet(sidebarOption);
         QTimer::singleShot(0, [&w, toRight]() {
             w.showSideButton(toRight);
+        });
+    } else if (parser.isSet(trayIconOption)) {
+        QTimer::singleShot(0, [&w]() {
+            w.showTrayIcon();
         });
     } else {
         w.show();

@@ -27,6 +27,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void showSideButton(bool toRight);
+    void showTrayIcon();
     void showMainWindow();
 
 protected:

@@ -125,29 +125,7 @@ void MainWindow::setupConnections()
     connect(ui->actionSidebarToLeft, &QAction::triggered, this, [this]() {
         showSideButton(false);
     });
-    connect(ui->actionHidetoTray, &QAction::triggered, this, [this]() {
-        if (!m_trayIcon) {
-            m_trayIcon = new QSystemTrayIcon(this);
-            m_trayIcon->setIcon(QIcon(":/data/RandPickerLogo.ico"));
-            m_trayIcon->setToolTip("RandPicker");
-
-            QMenu *trayMenu = new QMenu(this);
-            trayMenu->addAction(tr("Show"), this, [this]() {
-                showMainWindow();
-            });
-            trayMenu->addSeparator();
-            trayMenu->addAction(tr("Exit"), qApp, &QApplication::quit);
-
-            m_trayIcon->setContextMenu(trayMenu);
-            connect(m_trayIcon, &QSystemTrayIcon::activated, this, [this](QSystemTrayIcon::ActivationReason reason) {
-                if (reason == QSystemTrayIcon::Trigger) {
-                    showMainWindow();
-                }
-            });
-        }
-        m_trayIcon->show();
-        hide();
-    });
+    connect(ui->actionHidetoTray, &QAction::triggered, this, &MainWindow::showTrayIcon);
     connect(ui->actionRPWeb, &QAction::triggered, this, [this]() {
         RPWeb *rpwDialog = new RPWeb(this);
         rpwDialog->setAttribute(Qt::WA_DeleteOnClose);
@@ -492,6 +470,31 @@ void MainWindow::showSideButton(bool toRight)
 
     sideButton->move(x, y);
     sideButton->show();
+}
+
+void MainWindow::showTrayIcon()
+{
+    if (!m_trayIcon) {
+        m_trayIcon = new QSystemTrayIcon(this);
+        m_trayIcon->setIcon(QIcon(":/data/RandPickerLogo.ico"));
+        m_trayIcon->setToolTip("RandPicker");
+
+        QMenu *trayMenu = new QMenu(this);
+        trayMenu->addAction(tr("Show"), this, [this]() {
+            showMainWindow();
+        });
+        trayMenu->addSeparator();
+        trayMenu->addAction(tr("Exit"), qApp, &QApplication::quit);
+
+        m_trayIcon->setContextMenu(trayMenu);
+        connect(m_trayIcon, &QSystemTrayIcon::activated, this, [this](QSystemTrayIcon::ActivationReason reason) {
+            if (reason == QSystemTrayIcon::Trigger) {
+                showMainWindow();
+            }
+        });
+    }
+    m_trayIcon->show();
+    hide();
 }
 
 void MainWindow::showMainWindow()
