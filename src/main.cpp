@@ -53,35 +53,39 @@ bool isAlreadyRunning(const QString &uniqueKey)
 
 int main(int argc, char *argv[])
 {
-    {
-        QApplication tmpApp(argc, argv);
-        const QString uniqueKey = "RandPicker_UniqueKey_" +
-                                  QCoreApplication::applicationName();
-
-        if (isAlreadyRunning(uniqueKey)) {
-            return 1;
-        }
+    const QString uniqueKey = "RandPicker_UniqueKey_" + QCoreApplication::applicationName();
+    if (isAlreadyRunning(uniqueKey)) {
+        return 1;
     }
 
     QApplication a(argc, argv);
 
-    QCommandLineParser parser;
-    QCommandLineOption sidebarOption("sidebar", "Start application in sidebar mode");
-    QCommandLineOption sidebarLeftOption("sidebar-left", "Start application in sidebar mode (left side)");
-    QCommandLineOption trayIconOption("trayicon", "Start application minimized to system tray");
-    parser.addOption(sidebarOption);
-    parser.addOption(sidebarLeftOption);
-    parser.addOption(trayIconOption);
-    parser.process(a);
+    bool sidebarMode = false;
+    bool sidebarLeftMode = false;
+    bool trayIconMode = false;
+    if (argc > 1) {
+        QCommandLineParser parser;
+        QCommandLineOption sidebarOption("sidebar", "Start application in sidebar mode");
+        QCommandLineOption sidebarLeftOption("sidebar-left", "Start application in sidebar mode (left side)");
+        QCommandLineOption trayIconOption("trayicon", "Start application minimized to system tray");
+        parser.addOption(sidebarOption);
+        parser.addOption(sidebarLeftOption);
+        parser.addOption(trayIconOption);
+        parser.process(a);
 
-    int activeOptions = 0;
-    if (parser.isSet(sidebarOption)) activeOptions++;
-    if (parser.isSet(sidebarLeftOption)) activeOptions++;
-    if (parser.isSet(trayIconOption)) activeOptions++;
-    if (activeOptions > 1) {
-        QMessageBox::critical(nullptr, "Parameter Error",
-                              "Only one of --sidebar, --sidebar-left or --trayicon can be used at a time.");
-        return 1;
+        int activeOptions = 0;
+        if (parser.isSet(sidebarOption)) activeOptions++;
+        if (parser.isSet(sidebarLeftOption)) activeOptions++;
+        if (parser.isSet(trayIconOption)) activeOptions++;
+        if (activeOptions > 1) {
+            QMessageBox::critical(nullptr, "Parameter Error",
+                                  "Only one of --sidebar, --sidebar-left or --trayicon can be used at a time.");
+            return 1;
+        }
+
+        sidebarMode = parser.isSet(sidebarOption);
+        sidebarLeftMode = parser.isSet(sidebarLeftOption);
+        trayIconMode = parser.isSet(trayIconOption);
     }
 
     SettingsHandler settingsHandler;
@@ -131,13 +135,12 @@ int main(int argc, char *argv[])
 
     MainWindow w;
 
-    // 检查是否带有 --sidebar 参数
-    if (parser.isSet(sidebarOption) || parser.isSet(sidebarLeftOption)) {
-        bool toRight = parser.isSet(sidebarOption);
+    if (sidebarMode || sidebarLeftMode) {
+        bool toRight = sidebarMode;
         QTimer::singleShot(0, [&w, toRight]() {
             w.showSideButton(toRight);
         });
-    } else if (parser.isSet(trayIconOption)) {
+    } else if (trayIconMode) {
         QTimer::singleShot(0, [&w]() {
             w.showTrayIcon();
         });
