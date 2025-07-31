@@ -126,6 +126,7 @@ void MainWindow::setupConnections()
         showSideButton(false);
     });
     connect(ui->actionHidetoTray, &QAction::triggered, this, &MainWindow::showTrayIcon);
+    connect(ui->actionRandMirage, &QAction::triggered, this, &MainWindow::showRandMirage);
     connect(ui->actionRPWeb, &QAction::triggered, this, [this]() {
         RPWeb *rpwDialog = new RPWeb(this);
         rpwDialog->setAttribute(Qt::WA_DeleteOnClose);
@@ -497,6 +498,36 @@ void MainWindow::showTrayIcon()
     hide();
 }
 
+void MainWindow::showRandMirage()
+{
+    QRect screenGeometry = QApplication::primaryScreen()->availableGeometry();
+    QPoint centerPos = geometry().center();
+
+    if (!randMirage) {
+        randMirage = new RandMirage();
+        connect(randMirage, &RandMirage::clicked, this, &MainWindow::showMainWindow);
+        connect(randMirage, &RandMirage::closeRequested, qApp, &QApplication::quit);
+        connect(randMirage, &RandMirage::destroyed, this, [this]() {
+            randMirage = nullptr;
+        });
+    }
+
+    QString displayText = ui->nameLabel->text().replace("\n", ",  ");
+    randMirage->setDisplayText(displayText);
+
+    int xPos;
+    if (centerPos.x() < screenGeometry.width() / 2) {
+        xPos = screenGeometry.left();
+    } else {
+        xPos = screenGeometry.right() - randMirage->width();
+    }
+    int yPos = screenGeometry.top() + (screenGeometry.height() - randMirage->height()) / 2;
+
+    hide();
+    randMirage->move(xPos, yPos);
+    randMirage->show();
+}
+
 void MainWindow::showMainWindow()
 {
     show();
@@ -632,32 +663,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     if (settingsHandler.getBoolConfig(SettingsHandler::OpenRandMirageWhenClose)) {
-        QRect screenGeometry = QApplication::primaryScreen()->availableGeometry();
-        QPoint centerPos = geometry().center();
-
-        hide();
-        if (!randMirage) {
-            randMirage = new RandMirage();
-            connect(randMirage, &RandMirage::clicked, this, &MainWindow::showMainWindow);
-            connect(randMirage, &RandMirage::closeRequested, qApp, &QApplication::quit);
-            connect(randMirage, &RandMirage::destroyed, this, [this]() {
-                randMirage = nullptr;
-            });
-        }
-
-        QString displayText = ui->nameLabel->text().replace("\n", ",  ");
-        randMirage->setDisplayText(displayText);
-
-        int xPos;
-        if (centerPos.x() < screenGeometry.width() / 2) {
-            xPos = screenGeometry.left();
-        } else {
-            xPos = screenGeometry.right() - randMirage->width();
-        }
-        int yPos = screenGeometry.top() + (screenGeometry.height() - randMirage->height()) / 2;
-
-        randMirage->move(xPos, yPos);
-        randMirage->show();
+        showRandMirage();
         event->ignore();
     } else {
         event->accept();

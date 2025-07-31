@@ -28,6 +28,7 @@ public:
     ~MainWindow();
     void showSideButton(bool toRight);
     void showTrayIcon();
+    void showRandMirage();
     void showMainWindow();
 
 protected:

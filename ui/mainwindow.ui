@@ -266,6 +266,7 @@
     <addaction name="actionSidebar"/>
     <addaction name="actionSidebarToLeft"/>
     <addaction name="actionHidetoTray"/>
+    <addaction name="actionRandMirage"/>
     <addaction name="separator"/>
     <addaction name="actionRPWeb"/>
    </widget>
@@ -441,6 +442,14 @@
   <action name="actionVisualEditor">
    <property name="text">
     <string>Visualized Configurator</string>
+   </property>
+  </action>
+  <action name="actionRandMirage">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::SystemLockScreen"/>
+   </property>
+   <property name="text">
+    <string>Open RandMirage</string>
    </property>
   </action>
  </widget>
