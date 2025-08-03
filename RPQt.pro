@@ -4,6 +4,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 INCLUDEPATH += include
+INCLUDEPATH += third_party
 
 RC_ICONS = $$PWD/data/RandPickerLogo.ico
 QMAKE_TARGET_COMPANY = "demonbro"
