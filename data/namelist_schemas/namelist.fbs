@@ -1,0 +1,17 @@
+namespace RPNameListConf;
+
+table Passphrase {
+    phrasevalue:string;
+}
+
+table NameList {
+    name:string;
+    members:[string];
+}
+
+table Config {
+    name_lists:[NameList];
+    passphrase:Passphrase;
+}
+
+root_type Config;
