@@ -244,7 +244,7 @@ void MainWindow::loadNameLists()
 {
     QFuture<void> future = QtConcurrent::run([this]() {
         QString error;
-        QString filePath = NAMELIST_PATH;
+        QString filePath = NAMELIST_PATH_BINARY;
 
         QFile file(filePath);
         if (!file.exists()) {
@@ -253,7 +253,7 @@ void MainWindow::loadNameLists()
             }, Qt::BlockingQueuedConnection);
 
             // 使用JsonHandler创建默认文件
-            bool createDefaultNamelist = jsonHandler.createDefaultNamelist(filePath, error);
+            bool createDefaultNamelist = fbsHandler.createDefaultNamelist(filePath, error);
             if (!createDefaultNamelist) {
                 QMetaObject::invokeMethod(this, [this, error]() {
                     QMessageBox::warning(this, tr("Error"), QString(tr("Failed to create default namelist file: %1")).arg(error));
@@ -263,7 +263,7 @@ void MainWindow::loadNameLists()
             }
         }
 
-        auto loadedGroups = jsonHandler.loadFromFile(filePath, error);
+        auto loadedGroups = fbsHandler.loadFromFile(filePath, error);
 
         QMetaObject::invokeMethod(this, [this, loadedGroups, error]() {
             if (!error.isEmpty()) {

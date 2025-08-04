@@ -8,7 +8,7 @@ RPWeb::RPWeb(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::RPWeb),
     webSocketServer(nullptr),
-    jsonHandler(new JsonHandler(this)),
+    fbsHandler(new FbsHandler(this)),
     pickerLogic(new PickerLogic(this)),
     m_useE2EE(false)
 {
@@ -154,7 +154,7 @@ void RPWeb::processRandomRequest(QWebSocket *clientSocket, const QString &argume
     }
 
     QString error;
-    QMap<QString, QStringList> nameGroups = jsonHandler->loadFromFile(NAMELIST_PATH, error);
+    QMap<QString, QStringList> nameGroups = fbsHandler.loadFromFile(NAMELIST_PATH_BINARY, error);
 
     if (!error.isEmpty()) {
         sendResponse(clientSocket, QString("Error when loading namelist: %1").arg(error), true);
@@ -174,7 +174,7 @@ void RPWeb::processRandomRequest(QWebSocket *clientSocket, const QString &argume
 void RPWeb::processListRequest(QWebSocket *clientSocket, const QString &)
 {
     QString error;
-    QMap<QString, QStringList> nameGroups = jsonHandler->loadFromFile(NAMELIST_PATH, error);
+    QMap<QString, QStringList> nameGroups = fbsHandler.loadFromFile(NAMELIST_PATH_BINARY, error);
 
     if (!error.isEmpty()) {
         sendResponse(clientSocket, QString("Error when loading namelist: %1").arg(error), true);

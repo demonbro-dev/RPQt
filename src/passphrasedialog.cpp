@@ -3,13 +3,13 @@
 #include <QMessageBox>
 #include <QDebug>
 
-PassphraseDialog::PassphraseDialog(const QString &jsonFilePath,
+PassphraseDialog::PassphraseDialog(const QString &fbsFilePath,
                                    Mode mode,
                                    QWidget *parent) :
     QDialog(parent),
     ui(new Ui::PassphraseDialog),
-    jsonFilePath(jsonFilePath),
-    jsonHandler(),
+    fbsFilePath(fbsFilePath),
+    fbsHandler(),
     currentMode(mode)
 {
     ui->setupUi(this);
@@ -22,7 +22,7 @@ PassphraseDialog::PassphraseDialog(const QString &jsonFilePath,
 
         // 从JSON文件加载密码
         QString error;
-        correctPassphrase = jsonHandler.getPassphrase(jsonFilePath, error);
+        correctPassphrase = fbsHandler.getPassphrase(fbsFilePath, error);
         if (!error.isEmpty()) {
             qWarning() << "Failed to load passphrase:" << error;
             QMessageBox::warning(this, tr("Error"), tr("Cannot load passphrase config:") + error);
@@ -82,7 +82,7 @@ void PassphraseDialog::on_submitButton_clicked()
 bool PassphraseDialog::saveNewPassphrase()
 {
     QString error;
-    bool success = jsonHandler.savePassphrase(newPassphrase, jsonFilePath, error);
+    bool success = fbsHandler.savePassphrase(newPassphrase, fbsFilePath, error);
 
     if (!success) {
         QMessageBox::warning(this, tr("Error"), tr("Failed to save passphrase:") + error);

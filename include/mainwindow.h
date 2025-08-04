@@ -7,7 +7,7 @@
 #include <QTranslator>
 #include <QSystemTrayIcon>
 #include <QLabel>
-#include "jsonhandler.h"
+#include "fbshandler.h"
 #include "settingshandler.h"
 #include "namemanager.h"
 #include "pickhistorydialog.h"
@@ -45,7 +45,7 @@ private:
     Ui::MainWindow *ui;
     PickerLogic::RandomGeneratorType m_currentRandomType;
     SettingsHandler settingsHandler;
-    JsonHandler jsonHandler;
+    FbsHandler fbsHandler;
     NameManager *nameManager;
     PickerLogic *pickerLogic;
     SideButton *sideButton;

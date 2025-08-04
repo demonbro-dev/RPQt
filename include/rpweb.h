@@ -5,7 +5,7 @@
 #include <QWebSocketServer>
 #include <QWebSocket>
 #include <QSet>
-#include "jsonhandler.h"
+#include "fbshandler.h"
 #include "pickerlogic.h"
 
 namespace Ui {
@@ -37,7 +37,7 @@ private:
     Ui::RPWeb *ui;
     QWebSocketServer *webSocketServer;
     QSet<QWebSocket *> m_connectedClients;
-    JsonHandler *jsonHandler;
+    FbsHandler fbsHandler;
     PickerLogic *pickerLogic;
     bool serverRunning = false;
     bool m_useE2EE = false;

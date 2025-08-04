@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QListWidget>
 #include <QTranslator>
-#include "jsonhandler.h"
+#include "fbshandler.h"
 
 namespace Ui {
 class NameManager;
@@ -33,7 +33,7 @@ public slots:
 
 private:
     Ui::NameManager *ui;
-    JsonHandler jsonHandler;
+    FbsHandler fbsHandler;
     QMap<QString, QStringList> nameGroups;
     QString currentFilePath;
     QString currentSelectedList;

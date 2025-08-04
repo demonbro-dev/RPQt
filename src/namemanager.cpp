@@ -68,7 +68,7 @@ void NameManager::setupUI()
 
 void NameManager::unlockApplication()
 {
-    currentFilePath = NAMELIST_PATH;
+    currentFilePath = NAMELIST_PATH_BINARY;
     PassphraseDialog dialog(currentFilePath, PassphraseDialog::InputMode, this);
     if (dialog.exec() == QDialog::Accepted) {
         isUnlocked = true;
@@ -80,7 +80,7 @@ void NameManager::loadNameLists()
 {
     QString error;
 
-    nameGroups = jsonHandler.loadFromFile(currentFilePath, error);
+    nameGroups = fbsHandler.loadFromFile(currentFilePath, error);
 
     if (!error.isEmpty()) {
         QMessageBox::warning(this, tr("Error"), error);
@@ -112,7 +112,7 @@ void NameManager::reloadNameLists()
 
     // 重新加载数据
     QString error;
-    QMap<QString, QStringList> newNameGroups = jsonHandler.loadFromFile(currentFilePath, error);
+    QMap<QString, QStringList> newNameGroups = fbsHandler.loadFromFile(currentFilePath, error);
 
     if (!error.isEmpty()) {
         QMessageBox::warning(this, tr("Error"), error);
@@ -344,7 +344,7 @@ void NameManager::changePassphrase()
 void NameManager::saveChanges()
 {
     QString error;
-    if (!jsonHandler.saveToFile(nameGroups,currentFilePath, error)) {
+    if (!fbsHandler.saveToFile(nameGroups,currentFilePath, error)) {
         QMessageBox::warning(this, tr("Failed to save."), error);
     } else {
         QMessageBox::information(this, tr("Success"), tr("The namelist has been saved!"));

@@ -2,7 +2,7 @@
 #define PASSPHRASEDIALOG_H
 
 #include <QDialog>
-#include "jsonhandler.h"
+#include "fbshandler.h"
 
 namespace Ui {
 class PassphraseDialog;
@@ -18,7 +18,7 @@ public:
         SetNewMode
     };
 
-    explicit PassphraseDialog(const QString &jsonFilePath,
+    explicit PassphraseDialog(const QString &fbsFilePath,
                               Mode mode = InputMode,
                               QWidget *parent = nullptr);
     ~PassphraseDialog();
@@ -34,8 +34,8 @@ private:
     QString correctPassphrase;
     QString newPassphrase;
     bool saveNewPassphrase();
-    QString jsonFilePath;
-    JsonHandler jsonHandler;
+    QString fbsFilePath;
+    FbsHandler fbsHandler;
     Mode currentMode;
 };
 
