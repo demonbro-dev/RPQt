@@ -18,7 +18,6 @@ VERSION= "1.0.0.0"
 SOURCES += \
     src/aboutdialog.cpp \
     src/fbshandler.cpp \
-    src/jsonhandler.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
     src/namemanager.cpp \
@@ -35,7 +34,6 @@ SOURCES += \
 HEADERS += \
     include/aboutdialog.h \
     include/fbshandler.h \
-    include/jsonhandler.h \
     include/mainwindow.h \
     include/namemanager.h \
     include/passphrasedialog.h \
