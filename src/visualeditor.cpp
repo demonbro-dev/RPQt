@@ -30,6 +30,7 @@ VisualEditor::~VisualEditor()
 void VisualEditor::initializeConfigItems()
 {
     configItems = {
+        //{section, key, friendlyName, defaultValue, type},
         {"Window", "OpenRandMirageWhenClose", tr("Open RandMirage When Closing Program"), false, "bool"},
         {"Window", "UseLightTheme", tr("Use Light Theme"), false, "bool"},
         {"RPWeb", "RunAsClient", tr("Run as Client"), false, "bool"},
