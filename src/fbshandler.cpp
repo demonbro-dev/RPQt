@@ -16,7 +16,7 @@ flatbuffers::DetachedBuffer FbsHandler::parseFbsData(const QByteArray &data, QSt
     //验证Buffers
     flatbuffers::Verifier verifier(reinterpret_cast<const uint8_t*>(data.constData()), data.size());
     if (!RPNameListConf::VerifyConfigBuffer(verifier)) {
-        error = "FlatBuffers varification failed: Invalid format";
+        error = "FlatBuffers verification failed: Invalid format";
         return flatbuffers::DetachedBuffer();
     }
 
