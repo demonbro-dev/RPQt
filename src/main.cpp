@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
 {
     const QString uniqueKey = "RandPicker_UniqueKey_" + QCoreApplication::applicationName();
     if (isAlreadyRunning(uniqueKey)) {
-        return 1;
+        return 0;
     }
 
     QApplication a(argc, argv);
