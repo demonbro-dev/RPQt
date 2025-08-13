@@ -9,19 +9,25 @@ FbsHandler::FbsHandler(QObject *parent) : QObject(parent)
 {
 }
 
+static bool useBase64 = true;  //该变量决定是否使用Base64编码文件
+
 flatbuffers::DetachedBuffer FbsHandler::parseFbsData(const QByteArray &data, QString &error)
 {
     error.clear();
 
-    //验证Buffers
-    flatbuffers::Verifier verifier(reinterpret_cast<const uint8_t*>(data.constData()), data.size());
+    QByteArray actualData = data;
+    if (useBase64) {
+        actualData = QByteArray::fromBase64(data);
+    }
+
+    flatbuffers::Verifier verifier(reinterpret_cast<const uint8_t*>(actualData.constData()), actualData.size());
     if (!RPNameListConf::VerifyConfigBuffer(verifier)) {
         error = "FlatBuffers verification failed: Invalid format";
         return flatbuffers::DetachedBuffer();
     }
 
     flatbuffers::FlatBufferBuilder fbb;
-    fbb.PushFlatBuffer(reinterpret_cast<const uint8_t*>(data.constData()), data.size());
+    fbb.PushFlatBuffer(reinterpret_cast<const uint8_t*>(actualData.constData()), actualData.size());
     return fbb.Release();
 }
 
@@ -35,7 +41,12 @@ bool FbsHandler::writeFbsToFile(const QString &filePath, const flatbuffers::Deta
         return false;
     }
 
-    file.write(reinterpret_cast<const char*>(buffer.data()), buffer.size());
+    QByteArray data(reinterpret_cast<const char*>(buffer.data()), buffer.size());
+    if (useBase64) {
+        data = data.toBase64();
+    }
+
+    file.write(data);
     file.close();
     return true;
 }
