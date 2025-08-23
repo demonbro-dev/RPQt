@@ -5,18 +5,11 @@
 #include <QStandardPaths>
 #include <QTextStream>
 
-SettingsHandler::SettingsHandler(QObject *parent) : QObject(parent),
-    m_openRandMirageWhenClose(false),
-    m_useLightTheme(false),
-    m_runAsClient(false)
+SettingsHandler::SettingsHandler(QObject *parent) : QObject(parent)
 {
     QString configPath = CONFIG_PATH;
     if (QFile::exists(configPath)) {
         m_settings = new QSettings(configPath, QSettings::IniFormat, this);
-
-        m_openRandMirageWhenClose = m_settings->value("Window/OpenRandMirageWhenClose", false).toBool();
-        m_useLightTheme = m_settings->value("Window/UseLightTheme", false).toBool();
-        m_runAsClient = m_settings->value("RPWeb/RunAsClient", false).toBool();
     } else {
         m_settings = nullptr;
     };
@@ -55,13 +48,19 @@ bool SettingsHandler::generateExampleConfig()
 
 bool SettingsHandler::getBoolConfig(BoolConfigType type) const
 {
+    if (!m_settings) return false;
+
     switch (type) {
     case OpenRandMirageWhenClose:
-        return m_openRandMirageWhenClose;
+        return m_settings->value("Window/OpenRandMirageWhenClose", false).toBool();
     case UseLightTheme:
-        return m_useLightTheme;
+        return m_settings->value("Window/UseLightTheme", false).toBool();
     case RunAsClient:
-        return m_runAsClient;
+        return m_settings->value("RPWeb/RunAsClient", false).toBool();
+    case InstantPickByDefault:
+        return m_settings->value("InPick/InstantPickByDefault", false).toBool();
+    case TopmostByDefault:
+        return m_settings->value("InPick/TopmostByDefault", false).toBool();
     }
     return false;
 }

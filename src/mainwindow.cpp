@@ -46,6 +46,12 @@ MainWindow::MainWindow(QWidget *parent)
         loadNameLists();
     }
     setupConnections();
+
+    ui->instantModeRadio->setChecked(settingsHandler.getBoolConfig(SettingsHandler::InstantPickByDefault));
+#ifdef Q_OS_WIN
+    ui->topmostRadio->setChecked(settingsHandler.getBoolConfig(SettingsHandler::TopmostByDefault));
+    onTopmostToggled(settingsHandler.getBoolConfig(SettingsHandler::TopmostByDefault));
+#endif
 }
 
 MainWindow::~MainWindow()

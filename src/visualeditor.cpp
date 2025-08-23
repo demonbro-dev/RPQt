@@ -33,6 +33,8 @@ void VisualEditor::initializeConfigItems()
         //{section, key, friendlyName, defaultValue, type},
         {"Window", "OpenRandMirageWhenClose", tr("Open RandMirage When Closing Program"), false, "bool"},
         {"Window", "UseLightTheme", tr("Use Light Theme"), false, "bool"},
+        {"InPick", "InstantPickByDefault", tr("Enable Instant Pick by default"), false, "bool"},
+        {"InPick", "TopmostByDefault", tr("Enable Topmost by default"), false, "bool"},
         {"RPWeb", "RunAsClient", tr("Run as Client"), false, "bool"},
         {"RPWeb", "Server", tr("Server Host"), "localhost", "string"},
         {"RPWeb", "Port", tr("Server Port"), "8080", "string"}

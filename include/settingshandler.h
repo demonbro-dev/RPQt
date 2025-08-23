@@ -18,7 +18,9 @@ public:
     enum BoolConfigType {
         OpenRandMirageWhenClose,
         UseLightTheme,
-        RunAsClient
+        RunAsClient,
+        InstantPickByDefault,
+        TopmostByDefault
     };
     enum StringConfigType {
         ServerHost,
@@ -35,9 +37,6 @@ public:
 
 private:
     QSettings* m_settings;
-    bool m_openRandMirageWhenClose;
-    bool m_useLightTheme;
-    bool m_runAsClient;
 };
 
 #endif // SETTINGSHANDLER_H
