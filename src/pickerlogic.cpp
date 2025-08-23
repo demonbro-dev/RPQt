@@ -211,22 +211,31 @@ void PickerLogic::shuffleNames(QStringList &names, RandomGeneratorType generator
                     }
                 }
                 if (retries < 0) {
-                    int j = QRandomGenerator::global()->bounded(i + 1);
-                    qSwap(indexes[i], indexes[j]);
+                    goto fallback_rdrand;
                 }
             }
         } else {
-            for (int i = indexes.size() - 1; i > 0; --i) {
-                int j = QRandomGenerator::global()->bounded(i + 1);
-                qSwap(indexes[i], indexes[j]);
-            }
+            goto fallback_rdrand;
         }
 #else
-        for (int i = indexes.size() - 1; i > 0; --i) {
-            int j = QRandomGenerator::global()->bounded(i + 1);
-            qSwap(indexes[i], indexes[j]);
-        }
+        goto fallback_rdrand;
 #endif
+        break;
+
+    fallback_rdrand:
+        RandomGeneratorType fallbackType = static_cast<RandomGeneratorType>(
+            QRandomGenerator::global()->bounded(3));
+
+        QStringList tempNames;
+        for (int idx : indexes) {
+            tempNames << names.at(idx);
+        }
+
+        shuffleNames(tempNames, fallbackType);
+
+        for (int idx = 0; idx < indexes.size(); ++idx) {
+            indexes[idx] = names.indexOf(tempNames[idx]);
+        }
         break;
     }
     case RandomGeneratorType::BCryptGenRandom: {
