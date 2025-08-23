@@ -16,6 +16,7 @@ public:
         QRandomGenerator,
         minstd_rand,
         mt19937,
+        RdRand,
         BCryptGenRandom,
         RandomSelect
     };
@@ -30,6 +31,7 @@ public:
     void setPickCount(int count);
     void resetPickedNames();
     void setRandomGeneratorType(RandomGeneratorType type);
+    bool cpuHasRdRand();
 
 signals:
     void namesPicked(const QStringList &names);

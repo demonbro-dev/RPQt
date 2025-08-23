@@ -8,6 +8,14 @@
 #include <bcrypt.h>
 #endif
 
+#if defined(__x86_64__) || defined(__i386__) || defined(_M_IX86) || defined(_M_X64)
+#if defined(_MSC_VER)
+#include <intrin.h>
+#else
+#include <cpuid.h>
+#endif // defined(_MSC_VER)
+#endif // defined(__x86_64__) || defined(__i386__) || defined(_M_IX86) || defined(_M_X64)
+
 PickerLogic::PickerLogic(QObject *parent) : QObject(parent), timer(new QTimer(this))
 {
     connect(timer, &QTimer::timeout, this, [this]() {
@@ -150,9 +158,9 @@ void PickerLogic::shuffleNames(QStringList &names, RandomGeneratorType generator
 
     if (generatorType == RandomGeneratorType::RandomSelect) {
 #ifdef Q_OS_WIN
-        const int choice = QRandomGenerator::global()->bounded(4);
+        const int choice = QRandomGenerator::global()->bounded(5);
 #else
-        const int choice = QRandomGenerator::global()->bounded(3);
+        const int choice = QRandomGenerator::global()->bounded(4);
 #endif
         generatorType = static_cast<RandomGeneratorType>(choice);
     }
@@ -184,6 +192,41 @@ void PickerLogic::shuffleNames(QStringList &names, RandomGeneratorType generator
             int j = dist(gen);
             qSwap(indexes[i], indexes[j]);
         }
+        break;
+    }
+    case RandomGeneratorType::RdRand: {
+#if defined(__x86_64__) || defined(__i386__) || defined(_M_IX86) || defined(_M_X64)
+        static bool has_rdrand = cpuHasRdRand();
+
+        if (has_rdrand) {
+            for (int i = indexes.size() - 1; i > 0; --i) {
+                unsigned int random_num;
+                // 尝试使用RdRand
+                int retries = 10;
+                while (retries-- > 0) {
+                    if (_rdrand32_step(&random_num)) {
+                        int j = random_num % (i + 1);
+                        qSwap(indexes[i], indexes[j]);
+                        break;
+                    }
+                }
+                if (retries < 0) {
+                    int j = QRandomGenerator::global()->bounded(i + 1);
+                    qSwap(indexes[i], indexes[j]);
+                }
+            }
+        } else {
+            for (int i = indexes.size() - 1; i > 0; --i) {
+                int j = QRandomGenerator::global()->bounded(i + 1);
+                qSwap(indexes[i], indexes[j]);
+            }
+        }
+#else
+        for (int i = indexes.size() - 1; i > 0; --i) {
+            int j = QRandomGenerator::global()->bounded(i + 1);
+            qSwap(indexes[i], indexes[j]);
+        }
+#endif
         break;
     }
     case RandomGeneratorType::BCryptGenRandom: {
@@ -245,4 +288,21 @@ void PickerLogic::shuffleNamesParallel(QStringList &names, RandomGeneratorType g
 void PickerLogic::setRandomGeneratorType(RandomGeneratorType type)
 {
     m_currentRandomType = type;
+}
+
+bool PickerLogic::cpuHasRdRand()
+{
+#if defined(__x86_64__) || defined(__i386__) || defined(_M_IX86) || defined(_M_X64)
+#if defined(_MSC_VER)
+    int cpuInfo[4];
+    __cpuid(cpuInfo, 1);
+    return (cpuInfo[2] & (1 << 30)) != 0;
+#else
+    unsigned int eax, ebx, ecx, edx;
+    __get_cpuid(1, &eax, &ebx, &ecx, &edx);
+    return (ecx & (1 << 30)) != 0;
+#endif // defined(_MSC_VER)
+#else
+    return false;
+#endif // defined(__x86_64__) || defined(__i386__) || defined(_M_IX86) || defined(_M_X64)
 }

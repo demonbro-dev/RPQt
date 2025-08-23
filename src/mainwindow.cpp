@@ -100,6 +100,15 @@ void MainWindow::setupConnections()
     actionMt19937->setData(QVariant::fromValue(PickerLogic::RandomGeneratorType::mt19937));
     randomImplGroup->addAction(actionMt19937);
     ui->menuRandom_Impl->addAction(actionMt19937);
+#if defined(__x86_64__) || defined(__i386__) || defined(_M_IX86) || defined(_M_X64)
+    if (pickerLogic->cpuHasRdRand()) {
+        QAction* actionRdRand = new QAction("Intel RdRand", this);
+        actionRdRand->setCheckable(true);
+        actionRdRand->setData(QVariant::fromValue(PickerLogic::RandomGeneratorType::RdRand));
+        randomImplGroup->addAction(actionRdRand);
+        ui->menuRandom_Impl->addAction(actionRdRand);
+    }
+#endif
 #ifdef Q_OS_WIN
     QAction* actionBCrypt = new QAction("BCryptGenRandom", this);
     actionBCrypt->setCheckable(true);
