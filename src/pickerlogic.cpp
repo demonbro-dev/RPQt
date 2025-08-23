@@ -188,27 +188,16 @@ void PickerLogic::shuffleNames(QStringList &names, RandomGeneratorType generator
     }
     case RandomGeneratorType::BCryptGenRandom: {
 #ifdef Q_OS_WIN
-        HMODULE hBcrypt = LoadLibrary(L"bcrypt.dll");
-        if (hBcrypt) {
-            typedef NTSTATUS (WINAPI *PBCryptGenRandom)(
-                BCRYPT_ALG_HANDLE hAlgorithm,
-                PUCHAR pbBuffer,
-                ULONG cbBuffer,
-                ULONG dwFlags);
-            PBCryptGenRandom pBCryptGenRandom =
-                (PBCryptGenRandom)GetProcAddress(hBcrypt, "BCryptGenRandom");
-
-            if (pBCryptGenRandom) {
-                for (int i = indexes.size() - 1; i > 0; --i) {
-                    ULONG randomNum;
-                    if (pBCryptGenRandom(NULL, (PUCHAR)&randomNum, sizeof(randomNum),
-                                         BCRYPT_USE_SYSTEM_PREFERRED_RNG) == 0) {
-                        int j = randomNum % (i + 1);
-                        qSwap(indexes[i], indexes[j]);
-                    }
-                }
+        for (int i = indexes.size() - 1; i > 0; --i) {
+            ULONG randomNum;
+            if (BCryptGenRandom(
+                    NULL,
+                    (PUCHAR)&randomNum,
+                    sizeof(randomNum),
+                    BCRYPT_USE_SYSTEM_PREFERRED_RNG) == 0) {
+                int j = randomNum % (i + 1);
+                qSwap(indexes[i], indexes[j]);
             }
-            FreeLibrary(hBcrypt);
         }
 #endif
         break;
