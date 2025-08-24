@@ -4,6 +4,11 @@
 #include <QApplication>
 #include <QFontMetrics>
 
+#ifdef Q_OS_WIN
+#include <windows.h>
+#include <QOperatingSystemVersion>
+#endif
+
 RandMirage::RandMirage(QWidget *parent) : QWidget(parent), m_isDragging(false)
 {
     setWindowFlags(Qt::FramelessWindowHint | Qt::Tool | Qt::WindowStaysOnTopHint);
@@ -98,7 +103,45 @@ void RandMirage::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
+#ifdef Q_OS_WIN
+    if (QOperatingSystemVersion::current() >= QOperatingSystemVersion::Windows10) {
+        HWND hwnd = (HWND)winId();
+
+        typedef struct _ACCENTPOLICY
+        {
+            int nAccentState;
+            int nFlags;
+            unsigned int nColor;
+            int nAnimationId;
+        } ACCENTPOLICY;
+
+        typedef struct _WINCOMPATTRDATA
+        {
+            int nAttribute;
+            PVOID pData;
+            ULONG ulDataSize;
+        } WINCOMPATTRDATA;
+
+        typedef BOOL (WINAPI *pSetWindowCompositionAttribute)(HWND, WINCOMPATTRDATA*);
+
+        HMODULE hUser = GetModuleHandle(L"user32.dll");
+        if (hUser) {
+            pSetWindowCompositionAttribute SetWindowCompositionAttribute =
+                (pSetWindowCompositionAttribute)GetProcAddress(hUser, "SetWindowCompositionAttribute");
+
+            if (SetWindowCompositionAttribute) {
+                ACCENTPOLICY policy = { 4, 0, 0x99000000, 0 };
+                WINCOMPATTRDATA data = { 19, &policy, sizeof(ACCENTPOLICY) };
+                SetWindowCompositionAttribute(hwnd, &data);
+            }
+        }
+        painter.setBrush(QColor(0, 0, 0, 32));
+    } else {
+        painter.setBrush(QColor(0, 0, 0, 204));
+    }
+#else
     painter.setBrush(QColor(0, 0, 0, 204));
+#endif
     painter.setPen(Qt::NoPen);
     painter.drawRect(rect());
 
