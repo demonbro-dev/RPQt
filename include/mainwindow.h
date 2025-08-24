@@ -78,6 +78,7 @@ private:
     void setupNameListCombo();
     void onNameListComboActivated(int index);
     void onImportTempList();
+    void showBuildInfo();
     void handleWebSocketRequest(WebSocketRequestType requestType, const QString& listNameAndPickCount = QString());
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;

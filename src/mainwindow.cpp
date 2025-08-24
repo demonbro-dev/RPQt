@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
         loadNameLists();
     }
     setupConnections();
+    showBuildInfo();
 
     ui->instantModeRadio->setChecked(settingsHandler.getBoolConfig(SettingsHandler::InstantPickByDefault));
 #ifdef Q_OS_WIN
@@ -584,6 +585,38 @@ void MainWindow::showMainWindow()
         randMirage->deleteLater();
         randMirage = nullptr;
     }
+}
+
+void MainWindow::showBuildInfo()
+{
+    QString arch;
+    QString os;
+
+#if defined(__x86_64__) || defined(_M_X64)
+    arch = "x86_64";
+#elif defined(__i386__) || defined(_M_IX86)
+    arch = "i386";
+#elif defined(__aarch64__) || defined(_M_ARM64)
+    arch = "arm64";
+#elif defined(__arm__) || defined(_M_ARM)
+    arch = "arm";
+#else
+    arch = "unknown";
+#endif
+
+#if defined(Q_OS_WIN)
+    os = "win32";
+#elif defined(Q_OS_LINUX)
+    os = "linux";
+#else
+    os = "unknown";
+#endif
+
+    QString statusText = QString("RandPicker %1-%2 Build").arg(arch).arg(os);
+    QLabel *infoLabel = new QLabel(statusText, this);
+    infoLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+    infoLabel->setStyleSheet("QLabel { padding: 0 8px; color: grey; font-size: 13px; }");
+    ui->menuBar->setCornerWidget(infoLabel, Qt::TopRightCorner);
 }
 
 void MainWindow::resizeEvent(QResizeEvent *event)
