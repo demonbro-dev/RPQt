@@ -30,6 +30,7 @@ SOURCES += \
     src/scheduledpickdialog.cpp \
     src/settingshandler.cpp \
     src/sidebutton.cpp \
+    src/updater.cpp \
     src/visualeditor.cpp
 
 HEADERS += \
@@ -45,6 +46,7 @@ HEADERS += \
     include/scheduledpickdialog.h \
     include/settingshandler.h \
     include/sidebutton.h \
+    include/updater.h \
     include/visualeditor.h
 
 FORMS += \
@@ -54,7 +56,8 @@ FORMS += \
     ui/passphrasedialog.ui \
     ui/pickhistorydialog.ui \
     ui/rpweb.ui \
-    ui/scheduledpickdialog.ui
+    ui/scheduledpickdialog.ui \
+    ui/updater.ui
 
 RESOURCES += \
     resources.qrc

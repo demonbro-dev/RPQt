@@ -51,7 +51,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="183"/>
-        <location filename="../src/mainwindow.cpp" line="326"/>
+        <location filename="../src/mainwindow.cpp" line="345"/>
         <source>Start</source>
         <translation>Start</translation>
     </message>
@@ -66,22 +66,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Topmost</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="296"/>
+        <location filename="../ui/mainwindow.ui" line="298"/>
         <source>Language</source>
         <translation>Language</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="386"/>
+        <location filename="../ui/mainwindow.ui" line="388"/>
         <source>Global Drag Tracking</source>
         <translation>Global Drag Tracking</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="394"/>
+        <location filename="../ui/mainwindow.ui" line="396"/>
         <source>Clear Picked Names</source>
         <translation>Clear Picked Names</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="402"/>
+        <location filename="../ui/mainwindow.ui" line="404"/>
         <source>Scheduled Pick</source>
         <translation>Scheduled Pick</translation>
     </message>
@@ -101,215 +101,220 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>Help(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="282"/>
+        <location filename="../ui/mainwindow.ui" line="284"/>
         <source>InPick(&amp;I)</source>
         <translation>InPick(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="292"/>
+        <location filename="../ui/mainwindow.ui" line="294"/>
         <source>Settings(&amp;S)</source>
         <translation>Settings(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="304"/>
+        <location filename="../ui/mainwindow.ui" line="306"/>
         <source>Random Implementation</source>
         <translation>Random Implementation</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="325"/>
+        <location filename="../ui/mainwindow.ui" line="327"/>
         <source>Open Namelist Manager</source>
         <translation>Open Namelist Manager</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="330"/>
-        <location filename="../src/mainwindow.cpp" line="156"/>
+        <location filename="../ui/mainwindow.ui" line="332"/>
+        <location filename="../src/mainwindow.cpp" line="175"/>
         <source>About Qt</source>
         <translation>About Qt</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="341"/>
+        <location filename="../ui/mainwindow.ui" line="343"/>
         <source>About</source>
         <translation>About</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="346"/>
+        <location filename="../ui/mainwindow.ui" line="348"/>
         <source>Follow System</source>
         <translation>Follow System</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="364"/>
+        <location filename="../ui/mainwindow.ui" line="366"/>
         <source>RPSideShortcut</source>
         <translation>Switch to SideBar</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="367"/>
+        <location filename="../ui/mainwindow.ui" line="369"/>
         <source>Sidebar</source>
         <translation>Sidebar</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="378"/>
+        <location filename="../ui/mainwindow.ui" line="380"/>
         <source>History</source>
         <translation>History</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="410"/>
+        <location filename="../ui/mainwindow.ui" line="412"/>
         <source>RP WebSocket</source>
         <translation>RP WebSocket</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="415"/>
+        <location filename="../ui/mainwindow.ui" line="417"/>
         <source>Hide to Tray</source>
         <translation>Hide to Tray</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="423"/>
+        <location filename="../ui/mainwindow.ui" line="425"/>
         <source>Import Temporary List</source>
         <translation>Import Temporary List</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="431"/>
+        <location filename="../ui/mainwindow.ui" line="433"/>
         <source>Disable Parallel Pick</source>
         <translation>Disable Parallel Pick</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="439"/>
+        <location filename="../ui/mainwindow.ui" line="441"/>
         <source>RPSideShortcutLeft</source>
         <translation>Switch to SideBar (Left)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="444"/>
+        <location filename="../ui/mainwindow.ui" line="446"/>
         <source>Visualized Configurator</source>
         <translation>Visualized Configurator</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="452"/>
+        <location filename="../ui/mainwindow.ui" line="454"/>
         <source>Open RandMirage</source>
         <translation>Open RandMirage</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="261"/>
+        <location filename="../ui/mainwindow.ui" line="459"/>
+        <source>Check For Updates</source>
+        <translation>Check For Updates</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="280"/>
         <source>Info</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="261"/>
+        <location filename="../src/mainwindow.cpp" line="280"/>
         <source>Namelist not found. Default namelist will be created.</source>
         <translation>Namelist not found. Default namelist will be created.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="268"/>
-        <location filename="../src/mainwindow.cpp" line="300"/>
-        <location filename="../src/mainwindow.cpp" line="430"/>
-        <location filename="../src/mainwindow.cpp" line="441"/>
-        <location filename="../src/mainwindow.cpp" line="617"/>
+        <location filename="../src/mainwindow.cpp" line="287"/>
+        <location filename="../src/mainwindow.cpp" line="319"/>
+        <location filename="../src/mainwindow.cpp" line="449"/>
+        <location filename="../src/mainwindow.cpp" line="460"/>
+        <location filename="../src/mainwindow.cpp" line="636"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="247"/>
+        <location filename="../src/mainwindow.cpp" line="266"/>
         <source>In Client Mode,instant mode can&apos;t be disabled.</source>
         <translation>In Client Mode,instant mode can&apos;t be disabled.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="268"/>
+        <location filename="../src/mainwindow.cpp" line="287"/>
         <source>Failed to create default namelist file: %1</source>
         <translation>Failed to create default namelist file: %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="279"/>
+        <location filename="../src/mainwindow.cpp" line="298"/>
         <source>Failed to load</source>
         <translation>Failed to load</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="300"/>
+        <location filename="../src/mainwindow.cpp" line="319"/>
         <source>No list selected</source>
         <translation>No list selected</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="319"/>
+        <location filename="../src/mainwindow.cpp" line="338"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="422"/>
+        <location filename="../src/mainwindow.cpp" line="441"/>
         <source>Import Temporary Namelist</source>
         <translation>Import Temporary Namelist</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="430"/>
+        <location filename="../src/mainwindow.cpp" line="449"/>
         <source>Could not open file!</source>
         <translation>Could not open file!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="449"/>
+        <location filename="../src/mainwindow.cpp" line="468"/>
         <source>Warning</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="449"/>
+        <location filename="../src/mainwindow.cpp" line="468"/>
         <source>This list exists!</source>
         <translation>This list exists!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="643"/>
+        <location filename="../src/mainwindow.cpp" line="662"/>
         <source>Connection Error</source>
         <translation>Connection Error</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="644"/>
+        <location filename="../src/mainwindow.cpp" line="663"/>
         <source>Failed to connect to server at %1
 Error: %2</source>
         <translation>Failed to connect to server at %1
 Error: %2</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="422"/>
+        <location filename="../src/mainwindow.cpp" line="441"/>
         <source>Text Files (*.txt)</source>
         <translation>Text Files (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="79"/>
+        <location filename="../src/mainwindow.cpp" line="87"/>
         <source>Random (Default)</source>
         <translation>Random (Default)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="231"/>
-        <location filename="../src/mainwindow.cpp" line="395"/>
+        <location filename="../src/mainwindow.cpp" line="250"/>
+        <location filename="../src/mainwindow.cpp" line="414"/>
         <source>Topmost is not available on your system.</source>
         <translation>Topmost is not available on your system.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="441"/>
+        <location filename="../src/mainwindow.cpp" line="460"/>
         <source>No valid names found in the file.</source>
         <translation>No valid names found in the file.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="461"/>
+        <location filename="../src/mainwindow.cpp" line="480"/>
         <source>Success</source>
         <translation>Success</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="461"/>
+        <location filename="../src/mainwindow.cpp" line="480"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
         <translation>Imported %1 names as temporary list &apos;%2&apos;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="211"/>
+        <location filename="../src/mainwindow.cpp" line="230"/>
         <source>Picked Names Cleared</source>
         <translation>Picked Names Cleared</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="493"/>
+        <location filename="../src/mainwindow.cpp" line="512"/>
         <source>Show</source>
         <translation>Show</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="497"/>
+        <location filename="../src/mainwindow.cpp" line="516"/>
         <source>Exit</source>
         <translation>Exit</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="212"/>
+        <location filename="../src/mainwindow.cpp" line="231"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
         <translation>The list of picked names has been reset.
@@ -701,6 +706,85 @@ Address: ws://%1:%2</translation>
         <location filename="../src/scheduledpickdialog.cpp" line="36"/>
         <source>Please set a valid countdown time.</source>
         <translation>Please set a valid countdown time.</translation>
+    </message>
+</context>
+<context>
+    <name>Updater</name>
+    <message>
+        <location filename="../ui/updater.ui" line="14"/>
+        <location filename="../src/updater.cpp" line="20"/>
+        <source>Software Update</source>
+        <translation>Software Update</translation>
+    </message>
+    <message>
+        <location filename="../ui/updater.ui" line="20"/>
+        <location filename="../src/updater.cpp" line="41"/>
+        <source>Checking for updates...</source>
+        <translation>Checking for updates...</translation>
+    </message>
+    <message>
+        <location filename="../ui/updater.ui" line="45"/>
+        <source>Go to Update</source>
+        <translation>Go to Update</translation>
+    </message>
+    <message>
+        <location filename="../ui/updater.ui" line="55"/>
+        <source>Close</source>
+        <translation>Close</translation>
+    </message>
+    <message>
+        <location filename="../src/updater.cpp" line="63"/>
+        <source>Network error: %1</source>
+        <translation>Network error: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/updater.cpp" line="80"/>
+        <source>Failed to parse update information</source>
+        <translation>Failed to parse update information</translation>
+    </message>
+    <message>
+        <location filename="../src/updater.cpp" line="87"/>
+        <source>Invalid response format from GitHub</source>
+        <translation>Invalid response format from GitHub</translation>
+    </message>
+    <message>
+        <location filename="../src/updater.cpp" line="106"/>
+        <source>Invalid version information received</source>
+        <translation>Invalid version information received</translation>
+    </message>
+    <message>
+        <location filename="../src/updater.cpp" line="131"/>
+        <source>Update available: %1
+
+Click the button below to download the latest version.</source>
+        <translation>Update available: %1
+
+Click the button below to download the latest version.</translation>
+    </message>
+    <message>
+        <location filename="../src/updater.cpp" line="139"/>
+        <source>No updates available.
+
+You are using the latest version.</source>
+        <translation>No updates available.
+
+You are using the latest version.</translation>
+    </message>
+    <message>
+        <location filename="../src/updater.cpp" line="147"/>
+        <source>Update check failed:
+%1
+
+Please check your internet connection and try again.</source>
+        <translation>Update check failed:
+%1
+
+Please check your internet connection and try again.</translation>
+    </message>
+    <message>
+        <location filename="../src/updater.cpp" line="157"/>
+        <source>Request timeout</source>
+        <translation>Request timeout</translation>
     </message>
 </context>
 <context>

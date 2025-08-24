@@ -14,6 +14,7 @@
 #include "sidebutton.h"
 #include "pickerlogic.h"
 #include "randmirage.h"
+#include "updater.h"
 
 namespace Ui {
 class MainWindow;
@@ -50,6 +51,7 @@ private:
     PickerLogic *pickerLogic;
     SideButton *sideButton;
     PickHistoryDialog *historyDialog;
+    Updater *updater;
     RandMirage *randMirage;
     QMap<QString, QStringList> nameGroups;
     QStringList currentNames;

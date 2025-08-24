@@ -276,6 +276,8 @@
     </property>
     <addaction name="actionAboutApp"/>
     <addaction name="actionAboutQt"/>
+    <addaction name="separator"/>
+    <addaction name="actionCheckForUpdates"/>
    </widget>
    <widget class="QMenu" name="menuInPick">
     <property name="title">
@@ -450,6 +452,11 @@
    </property>
    <property name="text">
     <string>Open RandMirage</string>
+   </property>
+  </action>
+  <action name="actionCheckForUpdates">
+   <property name="text">
+    <string>Check For Updates</string>
    </property>
   </action>
  </widget>

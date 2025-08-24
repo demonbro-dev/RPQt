@@ -3,6 +3,7 @@
 #include "scheduledpickdialog.h"
 #include "ui_mainwindow.h"
 #include "aboutdialog.h"
+#include "updater.h"
 #include "visualeditor.h"
 #include <QLibraryInfo>
 #include <QActionGroup>
@@ -26,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
     pickerLogic(new PickerLogic(this)),
     sideButton(nullptr),
     historyDialog(nullptr),
+    updater(nullptr),
     randMirage(nullptr),
     m_globalTrackingEnabled(false),
     m_parallelPickEnabled(true),
@@ -157,6 +159,17 @@ void MainWindow::setupConnections()
         VisualEditor *editor = new VisualEditor(this);
         editor->setAttribute(Qt::WA_DeleteOnClose);
         editor->show();
+    });
+    connect(ui->actionCheckForUpdates, &QAction::triggered, this, [this]() {
+        if (!updater) {
+            updater = new Updater(this);
+            connect(updater, &Updater::finished, this, [this]() {
+                updater->deleteLater();
+                updater = nullptr;
+            });
+        }
+        updater->show();
+        updater->checkForUpdates();
     });
     connect(ui->actionAboutQt, &QAction::triggered, this, [this]() {
         QMessageBox::aboutQt(this, tr("About Qt"));
