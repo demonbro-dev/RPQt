@@ -78,7 +78,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <message>
         <location filename="../ui/mainwindow.ui" line="396"/>
         <source>Clear Picked Names</source>
-        <translation>清理已抽选名字</translation>
+        <translation>清理已抽选名称</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="404"/>
@@ -296,12 +296,12 @@ Error: %2</source>
     <message>
         <location filename="../src/mainwindow.cpp" line="480"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
-        <translation>已导入具有 %1 个名字的临时名单&quot;%2&quot;</translation>
+        <translation>已导入具有 %1 个名称的临时名单&quot;%2&quot;</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="230"/>
         <source>Picked Names Cleared</source>
-        <translation>已清理已抽选名字</translation>
+        <translation>已清理已抽选名称</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="512"/>
@@ -317,8 +317,8 @@ Error: %2</source>
         <location filename="../src/mainwindow.cpp" line="231"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
-        <translation>已抽选名字列表现已被重置.
-所有名字现在均可被重新抽选.</translation>
+        <translation>已抽选名称列表现已被重置.
+所有名称现在均可被重新抽选.</translation>
     </message>
 </context>
 <context>
@@ -518,12 +518,12 @@ All names are now available for picking again.</source>
     <message>
         <location filename="../src/namemanager.cpp" line="397"/>
         <source>No valid names found in the file!</source>
-        <translation>文件中无可用名字!</translation>
+        <translation>文件中无可用名称!</translation>
     </message>
     <message>
         <location filename="../src/namemanager.cpp" line="420"/>
         <source>Imported %1 names to list &apos;%2&apos;</source>
-        <translation>已对名单&quot;%2&quot;导入了&quot;%1&quot;个名字</translation>
+        <translation>已对名单&quot;%2&quot;导入了&quot;%1&quot;个名称</translation>
     </message>
 </context>
 <context>
