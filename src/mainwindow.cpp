@@ -617,6 +617,14 @@ void MainWindow::showBuildInfo()
 #endif
 
     QString statusText = QString("RandPicker %1-%2 Build").arg(arch).arg(os);
+#if defined(Q_OS_LINUX)
+    QString platformName = QGuiApplication::platformName();
+    if (platformName.contains("wayland", Qt::CaseInsensitive)) {
+        statusText += " (Wayland)";
+    } else if (platformName.contains("xcb", Qt::CaseInsensitive)) {
+        statusText += " (X11)";
+    }
+#endif
     QLabel *infoLabel = new QLabel(statusText, this);
     infoLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     infoLabel->setStyleSheet("QLabel { padding: 0 8px; color: grey; font-size: 13px; }");
