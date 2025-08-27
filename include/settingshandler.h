@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QSettings>
+#include <QStandardPaths>
 
 #ifdef Q_OS_WIN
 #define CONFIG_PATH QCoreApplication::applicationDirPath() + "/config.ini"

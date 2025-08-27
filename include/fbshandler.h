@@ -6,6 +6,7 @@
 #include <QMap>
 #include <QStringList>
 #include <QByteArray>
+#include <QStandardPaths>
 #include <flatbuffers/flatbuffers.h>
 
 #ifdef Q_OS_WIN
