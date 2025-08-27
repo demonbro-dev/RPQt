@@ -157,11 +157,7 @@ void PickerLogic::shuffleNames(QStringList &names, RandomGeneratorType generator
     }
 
     if (generatorType == RandomGeneratorType::RandomSelect) {
-#ifdef Q_OS_WIN
         const int choice = QRandomGenerator::global()->bounded(5);
-#else
-        const int choice = QRandomGenerator::global()->bounded(4);
-#endif
         generatorType = static_cast<RandomGeneratorType>(choice);
     }
 
@@ -238,7 +234,7 @@ void PickerLogic::shuffleNames(QStringList &names, RandomGeneratorType generator
         }
         break;
     }
-    case RandomGeneratorType::BCryptGenRandom: {
+    case RandomGeneratorType::BCryptGenRandomOrURandom: {
 #ifdef Q_OS_WIN
         for (int i = indexes.size() - 1; i > 0; --i) {
             ULONG randomNum;
@@ -250,6 +246,18 @@ void PickerLogic::shuffleNames(QStringList &names, RandomGeneratorType generator
                 int j = randomNum % (i + 1);
                 qSwap(indexes[i], indexes[j]);
             }
+        }
+#elif defined Q_OS_LINUX
+        QFile urandom("/dev/urandom");
+        if (urandom.open(QIODevice::ReadOnly)) {
+            for (int i = indexes.size() - 1; i > 0; --i) {
+                unsigned int randomNum;
+                if (urandom.read((char*)&randomNum, sizeof(randomNum)) == sizeof(randomNum)) {
+                    int j = randomNum % (i + 1);
+                    qSwap(indexes[i], indexes[j]);
+                }
+            }
+            urandom.close();
         }
 #endif
         break;

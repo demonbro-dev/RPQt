@@ -120,8 +120,12 @@ void MainWindow::setupConnections()
 #endif
 #ifdef Q_OS_WIN
     QAction* actionBCrypt = new QAction("BCryptGenRandom", this);
+#elif defined Q_OS_LINUX
+    QAction* actionBCrypt = new QAction("/dev/urandom", this);
+#endif
+#if defined(Q_OS_WIN) || defined(Q_OS_LINUX)
     actionBCrypt->setCheckable(true);
-    actionBCrypt->setData(QVariant::fromValue(PickerLogic::RandomGeneratorType::BCryptGenRandom));
+    actionBCrypt->setData(QVariant::fromValue(PickerLogic::RandomGeneratorType::BCryptGenRandomOrURandom));
     randomImplGroup->addAction(actionBCrypt);
     ui->menuRandom_Impl->addAction(actionBCrypt);
 #endif

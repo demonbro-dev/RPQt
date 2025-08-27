@@ -17,7 +17,7 @@ public:
         minstd_rand,
         mt19937,
         RdRand,
-        BCryptGenRandom,
+        BCryptGenRandomOrURandom,
         RandomSelect
     };
 
