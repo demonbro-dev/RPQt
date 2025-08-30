@@ -293,14 +293,6 @@
     <property name="title">
      <string>Settings(&amp;S)</string>
     </property>
-    <widget class="QMenu" name="menuLanguage">
-     <property name="title">
-      <string>Language</string>
-     </property>
-     <addaction name="actionFollowSystem"/>
-     <addaction name="actionenUS"/>
-     <addaction name="actionzhCN"/>
-    </widget>
     <widget class="QMenu" name="menuRandom_Impl">
      <property name="title">
       <string>Random Implementation</string>
@@ -312,7 +304,6 @@
     <addaction name="menuRandom_Impl"/>
     <addaction name="actionVisualEditor"/>
     <addaction name="separator"/>
-    <addaction name="menuLanguage"/>
    </widget>
    <addaction name="menuFeatures"/>
    <addaction name="menuInPick"/>

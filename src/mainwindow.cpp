@@ -189,24 +189,6 @@ void MainWindow::setupConnections()
         about->setAttribute(Qt::WA_DeleteOnClose);
         about->show();
     });
-    connect(ui->actionFollowSystem, &QAction::triggered, this, [this]() {
-        QLocale locale = QLocale::system();
-        if (!loadTranslation(locale)) {
-            locale = QLocale(QLocale::English, QLocale::UnitedStates);
-        }
-        loadTranslation(locale);
-        if (nameManager) nameManager->onLanguageChanged(locale);
-    });
-    connect(ui->actionenUS, &QAction::triggered, this, [this]() {
-        QLocale locale(QLocale::English, QLocale::UnitedStates);
-        loadTranslation(locale);
-        if (nameManager) nameManager->onLanguageChanged(locale);
-    });
-    connect(ui->actionzhCN, &QAction::triggered, this, [this]() {
-        QLocale locale(QLocale::Chinese, QLocale::China);
-        loadTranslation(locale);
-        if (nameManager) nameManager->onLanguageChanged(locale);
-    });
     connect(ui->actionScheduledPick, &QAction::triggered, this, [this]() {
         ScheduledPickDialog *dialog = new ScheduledPickDialog(this);
         connect(dialog, &ScheduledPickDialog::timeElapsed, this, [this]() {
