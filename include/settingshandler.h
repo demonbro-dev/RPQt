@@ -27,14 +27,31 @@ public:
         ServerHost,
         ServerPort
     };
+    enum ListConfigType {
+        Language
+    };
+    struct ConfigItem {
+        QString section;
+        QString key;
+        QString name;
+        QVariant defaultValue;
+        QString type;
+        QStringList options;
+        QVariant enumValue;
+    };
 
     explicit SettingsHandler(QObject *parent = nullptr);
     ~SettingsHandler();
 
     static bool generateExampleConfig();
+    static QVector<ConfigItem> getConfigItems();
 
     bool getBoolConfig(BoolConfigType type) const;
     QString getStringConfig(StringConfigType type) const;
+    QString getListConfig(ListConfigType type) const;
+
+    QVariant getConfigValue(const QString &section, const QString &key) const;
+    QVariant getConfigValue(const ConfigItem &item) const;
 
 private:
     QSettings* m_settings;

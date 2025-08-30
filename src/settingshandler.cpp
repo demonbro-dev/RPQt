@@ -46,22 +46,33 @@ bool SettingsHandler::generateExampleConfig()
     return true;
 }
 
+QVector<SettingsHandler::ConfigItem> SettingsHandler::getConfigItems()
+{
+    return {
+        //{section, key, friendlyName, defaultValue, type, options, enumValue},
+        {"Window", "OpenRandMirageWhenClose", tr("Open RandMirage When Closing Program"), false, "bool", {}, OpenRandMirageWhenClose},
+        {"Window", "UseLightTheme", tr("Use Light Theme"), false, "bool", {}, UseLightTheme},
+        {"Window", "Language", tr("Language"), "Default", "list", {"Default", "en_US", "zh_CN"}, Language},
+        {"InPick", "InstantPickByDefault", tr("Enable Instant Pick by default"), false, "bool", {}, InstantPickByDefault},
+        {"InPick", "TopmostByDefault", tr("Enable Topmost by default"), false, "bool", {}, TopmostByDefault},
+        {"RPWeb", "RunAsClient", tr("Run as Client"), false, "bool", {}, RunAsClient},
+        {"RPWeb", "Server", tr("Server Host"), "localhost", "string", {}, ServerHost},
+        {"RPWeb", "Port", tr("Server Port"), "8080", "string", {}, ServerPort}
+    };
+}
+
 bool SettingsHandler::getBoolConfig(BoolConfigType type) const
 {
     if (!m_settings) return false;
 
-    switch (type) {
-    case OpenRandMirageWhenClose:
-        return m_settings->value("Window/OpenRandMirageWhenClose", false).toBool();
-    case UseLightTheme:
-        return m_settings->value("Window/UseLightTheme", false).toBool();
-    case RunAsClient:
-        return m_settings->value("RPWeb/RunAsClient", false).toBool();
-    case InstantPickByDefault:
-        return m_settings->value("InPick/InstantPickByDefault", false).toBool();
-    case TopmostByDefault:
-        return m_settings->value("InPick/TopmostByDefault", false).toBool();
+    QVector<ConfigItem> items = getConfigItems();
+    for (const auto &item : items) {
+        if (item.type == "bool" && item.enumValue.isValid() &&
+            item.enumValue.toInt() == type) {
+            return getConfigValue(item).toBool();
+        }
     }
+
     return false;
 }
 
@@ -69,11 +80,47 @@ QString SettingsHandler::getStringConfig(StringConfigType type) const
 {
     if (!m_settings) return QString();
 
-    switch (type) {
-    case ServerHost:
-        return m_settings->value("RPWeb/Server", "localhost").toString();
-    case ServerPort:
-        return m_settings->value("RPWeb/Port", "8080").toString();
+    QVector<ConfigItem> items = getConfigItems();
+    for (const auto &item : items) {
+        if ((item.type == "string" || item.type == "list") && item.enumValue.isValid() &&
+            item.enumValue.toInt() == type) {
+            return getConfigValue(item).toString();
+        }
     }
+
     return QString();
+}
+
+QString SettingsHandler::getListConfig(ListConfigType type) const
+{
+    if (!m_settings) return QString();
+
+    QVector<ConfigItem> items = getConfigItems();
+    for (const auto &item : items) {
+        if (item.type == "list" && item.enumValue.isValid() &&
+            item.enumValue.toInt() == type) {
+
+            QString value = getConfigValue(item).toString();
+
+            if (!item.options.contains(value)) {
+                return item.defaultValue.toString();
+            }
+
+            return value;
+        }
+    }
+
+    return QString();
+}
+
+QVariant SettingsHandler::getConfigValue(const QString &section, const QString &key) const
+{
+    if (!m_settings) return QVariant();
+    return m_settings->value(section + "/" + key);
+}
+
+QVariant SettingsHandler::getConfigValue(const ConfigItem &item) const
+{
+    if (!m_settings) return item.defaultValue;
+    return m_settings->value(item.section + "/" + item.key, item.defaultValue);
 }

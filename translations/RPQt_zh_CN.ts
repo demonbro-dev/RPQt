@@ -51,7 +51,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="183"/>
-        <location filename="../src/mainwindow.cpp" line="349"/>
+        <location filename="../src/mainwindow.cpp" line="354"/>
         <source>Start</source>
         <translation>开始抽选</translation>
     </message>
@@ -122,7 +122,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="332"/>
-        <location filename="../src/mainwindow.cpp" line="180"/>
+        <location filename="../src/mainwindow.cpp" line="185"/>
         <source>About Qt</source>
         <translation>关于 Qt</translation>
     </message>
@@ -192,135 +192,135 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="282"/>
+        <location filename="../src/mainwindow.cpp" line="287"/>
         <source>Info</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="282"/>
+        <location filename="../src/mainwindow.cpp" line="287"/>
         <source>Namelist not found. Default namelist will be created.</source>
         <translation>未发现名单文件，将创建默认名单文件.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="289"/>
-        <location filename="../src/mainwindow.cpp" line="323"/>
-        <location filename="../src/mainwindow.cpp" line="458"/>
-        <location filename="../src/mainwindow.cpp" line="469"/>
-        <location filename="../src/mainwindow.cpp" line="685"/>
+        <location filename="../src/mainwindow.cpp" line="294"/>
+        <location filename="../src/mainwindow.cpp" line="328"/>
+        <location filename="../src/mainwindow.cpp" line="463"/>
+        <location filename="../src/mainwindow.cpp" line="474"/>
+        <location filename="../src/mainwindow.cpp" line="690"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="268"/>
+        <location filename="../src/mainwindow.cpp" line="273"/>
         <source>In Client Mode,instant mode can&apos;t be disabled.</source>
         <translation>在客户端模式,立即抽选模式无法被禁用.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="289"/>
+        <location filename="../src/mainwindow.cpp" line="294"/>
         <source>Failed to create default namelist file: %1</source>
         <translation>创建默认名单文件失败: %1</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="300"/>
+        <location filename="../src/mainwindow.cpp" line="305"/>
         <source>Failed to load</source>
         <translation>加载失败</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="311"/>
-        <location filename="../src/mainwindow.cpp" line="362"/>
+        <location filename="../src/mainwindow.cpp" line="316"/>
+        <location filename="../src/mainwindow.cpp" line="367"/>
         <source>All Lists</source>
         <translation>全部名单</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="323"/>
+        <location filename="../src/mainwindow.cpp" line="328"/>
         <source>No list selected</source>
         <translation>没有选中的名单</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="342"/>
+        <location filename="../src/mainwindow.cpp" line="347"/>
         <source>Stop</source>
         <translation>停止抽选</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="450"/>
+        <location filename="../src/mainwindow.cpp" line="455"/>
         <source>Import Temporary Namelist</source>
         <translation>导入临时名单</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="458"/>
+        <location filename="../src/mainwindow.cpp" line="463"/>
         <source>Could not open file!</source>
         <translation>不能打开文件!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="477"/>
+        <location filename="../src/mainwindow.cpp" line="482"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="477"/>
+        <location filename="../src/mainwindow.cpp" line="482"/>
         <source>This list exists!</source>
         <translation>该名单已存在!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="711"/>
+        <location filename="../src/mainwindow.cpp" line="716"/>
         <source>Connection Error</source>
         <translation>连接错误</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="712"/>
+        <location filename="../src/mainwindow.cpp" line="717"/>
         <source>Failed to connect to server at %1
 Error: %2</source>
         <translation>连接服务器 %1 失败
 错误:%2</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="450"/>
+        <location filename="../src/mainwindow.cpp" line="455"/>
         <source>Text Files (*.txt)</source>
         <translation>文本文件 (*.txt)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="88"/>
+        <location filename="../src/mainwindow.cpp" line="93"/>
         <source>Random (Default)</source>
         <translation>随机使用 (默认)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="252"/>
-        <location filename="../src/mainwindow.cpp" line="423"/>
+        <location filename="../src/mainwindow.cpp" line="257"/>
+        <location filename="../src/mainwindow.cpp" line="428"/>
         <source>Topmost is not available on your system.</source>
         <translation>&quot;置于顶层&quot;当前在您的系统上不可用.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="469"/>
+        <location filename="../src/mainwindow.cpp" line="474"/>
         <source>No valid names found in the file.</source>
         <translation>未在文件中找到可用名单.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="489"/>
+        <location filename="../src/mainwindow.cpp" line="494"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="489"/>
+        <location filename="../src/mainwindow.cpp" line="494"/>
         <source>Imported %1 names as temporary list &apos;%2&apos;</source>
         <translation>已导入具有 %1 个名称的临时名单&quot;%2&quot;</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="235"/>
+        <location filename="../src/mainwindow.cpp" line="240"/>
         <source>Picked Names Cleared</source>
         <translation>已清理已抽选名称</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="521"/>
+        <location filename="../src/mainwindow.cpp" line="526"/>
         <source>Show</source>
         <translation>打开</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="525"/>
+        <location filename="../src/mainwindow.cpp" line="530"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="236"/>
+        <location filename="../src/mainwindow.cpp" line="241"/>
         <source>The list of picked names has been reset.
 All names are now available for picking again.</source>
         <translation>已抽选名称列表现已被重置.
@@ -715,6 +715,49 @@ Address: ws://%1:%2</source>
     </message>
 </context>
 <context>
+    <name>SettingsHandler</name>
+    <message>
+        <location filename="../src/settingshandler.cpp" line="53"/>
+        <source>Open RandMirage When Closing Program</source>
+        <translation>在关闭程序时打开RandMirage</translation>
+    </message>
+    <message>
+        <location filename="../src/settingshandler.cpp" line="54"/>
+        <source>Use Light Theme</source>
+        <translation>使用亮色主题</translation>
+    </message>
+    <message>
+        <location filename="../src/settingshandler.cpp" line="55"/>
+        <source>Language</source>
+        <translation>语言</translation>
+    </message>
+    <message>
+        <location filename="../src/settingshandler.cpp" line="56"/>
+        <source>Enable Instant Pick by default</source>
+        <translation>默认启用立即抽选</translation>
+    </message>
+    <message>
+        <location filename="../src/settingshandler.cpp" line="57"/>
+        <source>Enable Topmost by default</source>
+        <translation>默认启用置于顶层</translation>
+    </message>
+    <message>
+        <location filename="../src/settingshandler.cpp" line="58"/>
+        <source>Run as Client</source>
+        <translation>作为客户端运行</translation>
+    </message>
+    <message>
+        <location filename="../src/settingshandler.cpp" line="59"/>
+        <source>Server Host</source>
+        <translation>服务器地址</translation>
+    </message>
+    <message>
+        <location filename="../src/settingshandler.cpp" line="60"/>
+        <source>Server Port</source>
+        <translation>服务器端口</translation>
+    </message>
+</context>
+<context>
     <name>Updater</name>
     <message>
         <location filename="../ui/updater.ui" line="14"/>
@@ -796,82 +839,47 @@ Please check your internet connection and try again.</source>
 <context>
     <name>VisualEditor</name>
     <message>
-        <location filename="../src/visualeditor.cpp" line="16"/>
+        <location filename="../src/visualeditor.cpp" line="15"/>
         <source>RP Visualized Configurator</source>
         <translation>RP 可视化配置器</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="34"/>
-        <source>Open RandMirage When Closing Program</source>
-        <translation>在关闭程序时打开RandMirage</translation>
-    </message>
-    <message>
-        <location filename="../src/visualeditor.cpp" line="35"/>
-        <source>Use Light Theme</source>
-        <translation>使用亮色主题</translation>
-    </message>
-    <message>
-        <location filename="../src/visualeditor.cpp" line="36"/>
-        <source>Enable Instant Pick by default</source>
-        <translation>默认启用立即抽选</translation>
-    </message>
-    <message>
-        <location filename="../src/visualeditor.cpp" line="37"/>
-        <source>Enable Topmost by default</source>
-        <translation>默认启用置于顶层</translation>
-    </message>
-    <message>
-        <location filename="../src/visualeditor.cpp" line="38"/>
-        <source>Run as Client</source>
-        <translation>作为客户端运行</translation>
-    </message>
-    <message>
-        <location filename="../src/visualeditor.cpp" line="39"/>
-        <source>Server Host</source>
-        <translation>服务器地址</translation>
-    </message>
-    <message>
         <location filename="../src/visualeditor.cpp" line="40"/>
-        <source>Server Port</source>
-        <translation>服务器端口</translation>
-    </message>
-    <message>
-        <location filename="../src/visualeditor.cpp" line="50"/>
         <source>Properties</source>
         <translation>属性</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="50"/>
+        <location filename="../src/visualeditor.cpp" line="40"/>
         <source>Value</source>
         <translation>值</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="55"/>
+        <location filename="../src/visualeditor.cpp" line="45"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="56"/>
+        <location filename="../src/visualeditor.cpp" line="46"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="219"/>
+        <location filename="../src/visualeditor.cpp" line="218"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="220"/>
+        <location filename="../src/visualeditor.cpp" line="219"/>
         <source>Settings saved successfully. Please restart the application for changes to take effect.</source>
         <translation>配置已成功保存. 请重启程序以应用更改.</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="223"/>
+        <location filename="../src/visualeditor.cpp" line="222"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../src/visualeditor.cpp" line="224"/>
+        <location filename="../src/visualeditor.cpp" line="223"/>
         <source>Failed to save settings. Please check file permissions and try again.</source>
         <translation>配置保存失败. 请检查文件权限并重试.</translation>
     </message>

@@ -1,5 +1,4 @@
 #include "visualeditor.h"
-#include "settingshandler.h"
 #include <QCoreApplication>
 #include <QVBoxLayout>
 #include <QHeaderView>
@@ -29,16 +28,7 @@ VisualEditor::~VisualEditor()
 
 void VisualEditor::initializeConfigItems()
 {
-    configItems = {
-        //{section, key, friendlyName, defaultValue, type},
-        {"Window", "OpenRandMirageWhenClose", tr("Open RandMirage When Closing Program"), false, "bool"},
-        {"Window", "UseLightTheme", tr("Use Light Theme"), false, "bool"},
-        {"InPick", "InstantPickByDefault", tr("Enable Instant Pick by default"), false, "bool"},
-        {"InPick", "TopmostByDefault", tr("Enable Topmost by default"), false, "bool"},
-        {"RPWeb", "RunAsClient", tr("Run as Client"), false, "bool"},
-        {"RPWeb", "Server", tr("Server Host"), "localhost", "string"},
-        {"RPWeb", "Port", tr("Server Port"), "8080", "string"}
-    };
+    configItems = SettingsHandler::getConfigItems();
 }
 
 void VisualEditor::setupUI()
@@ -104,7 +94,7 @@ void VisualEditor::loadSettings()
     treeWidget->expandAll();
 }
 
-QWidget* VisualEditor::createEditorWidget(const ConfigItem &item, const QVariant &value)
+QWidget* VisualEditor::createEditorWidget(const SettingsHandler::ConfigItem &item, const QVariant &value)
 {
     if (item.type == "bool") {
         QCheckBox *editor = new QCheckBox();
@@ -114,6 +104,12 @@ QWidget* VisualEditor::createEditorWidget(const ConfigItem &item, const QVariant
     else if (item.type == "int") {
         QSpinBox *editor = new QSpinBox();
         editor->setValue(value.toInt());
+        return editor;
+    }
+    else if (item.type == "list") {
+        QComboBox *editor = new QComboBox();
+        editor->addItems(item.options);
+        editor->setCurrentText(value.toString());
         return editor;
     }
     else {
@@ -134,7 +130,7 @@ void VisualEditor::onItemDoubleClicked(QTreeWidgetItem *item, int column)
         QString key = item->data(0, Qt::UserRole).toString();
 
         auto it = std::find_if(configItems.begin(), configItems.end(),
-                               [&](const ConfigItem &ci) { return ci.section == section && ci.key == key; });
+                               [&](const SettingsHandler::ConfigItem &ci) { return ci.section == section && ci.key == key; });
 
         if (it != configItems.end()) {
             QWidget *editor = createEditorWidget(*it, item->text(1));
@@ -167,6 +163,9 @@ void VisualEditor::closeEditors()
                     }
                     else if (auto spinBox = qobject_cast<QSpinBox*>(editor)) {
                         child->setText(1, QString::number(spinBox->value()));
+                    }
+                    else if (auto comboBox = qobject_cast<QComboBox*>(editor)) {
+                        child->setText(1, comboBox->currentText());
                     }
                     treeWidget->removeItemWidget(child, 1);
                 }

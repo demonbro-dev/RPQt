@@ -36,8 +36,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    if (!loadTranslation(QLocale(QLocale::system()))) {
+    QString language = settingsHandler.getListConfig(SettingsHandler::Language);
+    if (language.isEmpty() || language == "Default") {
+        loadTranslation(QLocale(QLocale::system()));
+    } else if (language == "en_US") {
         loadTranslation(QLocale(QLocale::English, QLocale::UnitedStates));
+    } else if (language == "zh_CN") {
+        loadTranslation(QLocale(QLocale::Chinese, QLocale::China));
     }
 
     if (settingsHandler.getBoolConfig(SettingsHandler::RunAsClient)) {
