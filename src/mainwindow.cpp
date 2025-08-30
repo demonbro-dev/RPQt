@@ -242,11 +242,8 @@ void MainWindow::setupConnections()
         m_currentRandomType = action->data().value<PickerLogic::RandomGeneratorType>();
         pickerLogic->setRandomGeneratorType(m_currentRandomType);
     });
-    connect(ui->nameListCombo, &QComboBox::currentTextChanged,
-            this, [this](const QString &groupName){
-                currentNames = nameGroups.value(groupName);
-                pickerLogic->setNames(currentNames);
-            });
+    connect(ui->nameListCombo, QOverload<int>::of(&QComboBox::activated),
+            this, &MainWindow::onNameListComboActivated);
 #ifdef Q_OS_WIN
     connect(ui->topmostRadio, &QCheckBox::toggled,
             this, &MainWindow::onTopmostToggled);
@@ -310,6 +307,8 @@ void MainWindow::loadNameLists()
                 currentNames = nameGroups.first();
                 pickerLogic->setNames(currentNames);
                 ui->nameListCombo->addItems(nameGroups.keys());
+                ui->nameListCombo->insertSeparator(ui->nameListCombo->count());
+                ui->nameListCombo->addItem(tr("All Lists"));
             }
         }, Qt::BlockingQueuedConnection);
     });
@@ -360,12 +359,17 @@ void MainWindow::onPickButtonClicked()
 void MainWindow::onNameListComboActivated(int index)
 {
     QString groupName = ui->nameListCombo->itemText(index);
-    if (nameGroups.contains(groupName)) {
+    if (groupName == tr("All Lists")) {
+        QStringList allNames;
+        for (const auto& names : nameGroups) {
+            allNames.append(names);
+        }
+        currentNames = allNames;
+    } else if (nameGroups.contains(groupName)) {
         currentNames = nameGroups.value(groupName);
-        pickerLogic->setNames(currentNames);
-        pickerLogic->resetPickedNames();
-        ui->nameLabel->clear();
     }
+    pickerLogic->setNames(currentNames);
+    pickerLogic->resetPickedNames();
 }
 
 void MainWindow::onTopmostToggled(bool checked)
