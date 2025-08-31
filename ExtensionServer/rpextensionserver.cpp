@@ -46,7 +46,6 @@ void RPExtensionServer::readSocketData()
     QByteArray &buffer = m_bufferMap[socket];
     buffer.append(socket->readAll());
 
-    // Process complete messages (assuming messages are newline separated)
     while (buffer.contains('\n')) {
         int pos = buffer.indexOf('\n');
         QByteArray message = buffer.left(pos).trimmed();
@@ -72,18 +71,15 @@ void RPExtensionServer::processCommand(QLocalSocket *socket, const QByteArray &d
 {
     QString command = QString::fromUtf8(data);
 
-    // Simple command protocol: "COMMAND:DATA"
     if (command.startsWith("TTS:")) {
         QString text = command.mid(4);
         handleTTSCommand(text);
 
-        // Send acknowledgment
         if (socket && socket->state() == QLocalSocket::ConnectedState) {
             socket->write("TTS_ACK\n");
             socket->flush();
         }
     }
-    // Add more command handlers here for future extensions
     else {
         qWarning() << "Unknown command:" << command;
     }
