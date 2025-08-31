@@ -29,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent)
     historyDialog(nullptr),
     updater(nullptr),
     randMirage(nullptr),
+    m_extensionSocket(nullptr),
+    m_extensionServerAvailable(false),
     m_globalTrackingEnabled(false),
     m_parallelPickEnabled(true),
     m_isClientMode(false),
@@ -76,6 +78,13 @@ MainWindow::~MainWindow()
 
     if (sideButton) {
         sideButton->deleteLater();
+    }
+
+    if (m_extensionSocket) {
+        m_extensionSocket->disconnect();
+        m_extensionSocket->abort();
+        delete m_extensionSocket;
+        m_extensionSocket = nullptr;
     }
 
     delete ui;
@@ -238,6 +247,81 @@ void MainWindow::setupConnections()
     ui->topmostRadio->setCheckable(false);
     ui->topmostRadio->setToolTip(tr("Topmost is not available on your system."));
 #endif
+    connect(this, &MainWindow::extensionServerStatusChanged, this, [this](bool isRunning) {
+        m_extensionServerAvailable = isRunning;
+
+        if (isRunning) {
+            // 尝试连接扩展服务器
+            if (m_extensionSocket) {
+                m_extensionSocket->disconnect();
+                m_extensionSocket->abort();
+                delete m_extensionSocket;
+                m_extensionSocket = nullptr;
+            }
+
+            m_extensionSocket = new QLocalSocket(this);
+
+            QPointer<QLocalSocket> socketGuard(m_extensionSocket);
+
+            connect(m_extensionSocket, &QLocalSocket::connected, this, [socketGuard]() {
+                if (!socketGuard) return;
+                qDebug() << "Connected to RPExtensionServer";
+                if (socketGuard->state() == QLocalSocket::ConnectedState) {
+                    socketGuard->write("CLIENT_CONNECTED:MainWindow\n");
+                    socketGuard->flush();
+                }
+            });
+
+            connect(m_extensionSocket, &QLocalSocket::disconnected, this, [this, socketGuard]() {
+                if (!socketGuard) return;
+                qDebug() << "Disconnected from RPExtensionServer";
+
+                // 如果服务器仍然可用，尝试重新连接
+                if (m_extensionServerAvailable) {
+                    QTimer::singleShot(3000, this, [this]() {
+                        if (m_extensionServerAvailable) {
+                            emit extensionServerStatusChanged(true);
+                        }
+                    });
+                }
+            });
+
+            connect(m_extensionSocket, &QLocalSocket::errorOccurred, this, [this, socketGuard](QLocalSocket::LocalSocketError error) {
+                if (!socketGuard) return;
+                qWarning() << "Extension socket error:" << error << socketGuard->errorString();
+
+                if (error == QLocalSocket::ServerNotFoundError ||
+                    error == QLocalSocket::ConnectionRefusedError) {
+                    QTimer::singleShot(5000, this, [this]() {
+                        if (m_extensionServerAvailable) {
+                            emit extensionServerStatusChanged(true);
+                        }
+                    });
+                }
+            });
+
+            connect(m_extensionSocket, &QLocalSocket::readyRead, this, [socketGuard]() {
+                if (!socketGuard) return;
+
+                QByteArray data = socketGuard->readAll();
+                QString message = QString::fromUtf8(data).trimmed();
+
+                if (message == "TTS_ACK") {
+                    qDebug() << "TTS command acknowledged";
+                }
+            });
+
+            m_extensionSocket->connectToServer("RPExtensionServer");
+        } else {
+            // 断开连接
+            if (m_extensionSocket) {
+                m_extensionSocket->disconnect();
+                m_extensionSocket->abort();
+                delete m_extensionSocket;
+                m_extensionSocket = nullptr;
+            }
+        }
+    });
 }
 
 void MainWindow::setupClientUI()
@@ -320,6 +404,10 @@ void MainWindow::onPickButtonClicked()
         pickHistory.append(picked);
         if (historyDialog) {
             historyDialog->updateHistory(pickHistory);
+        }
+        if (m_extensionSocket && m_extensionSocket->state() == QLocalSocket::ConnectedState && settingsHandler.getBoolConfig(SettingsHandler::UseTTS)) {
+            QString spokenText = picked.join(", ");
+            speakText(spokenText);
         }
     } else {
         // 动态抽选模式
@@ -425,6 +513,11 @@ void MainWindow::onNamesPicked(const QStringList &names)
     if (historyDialog) {
         historyDialog->updateHistory(pickHistory);
     }
+
+    if (m_extensionSocket && m_extensionSocket->state() == QLocalSocket::ConnectedState && settingsHandler.getBoolConfig(SettingsHandler::UseTTS)) {
+        QString spokenText = names.join(", ");
+        speakText(spokenText);
+    }
 }
 
 void MainWindow::onImportTempList()
@@ -474,6 +567,17 @@ void MainWindow::onImportTempList()
     ui->nameLabel->clear();
 
     QMessageBox::information(this,tr("Success"),tr("Imported %1 names as temporary list '%2'").arg(names.size()).arg(listName));
+}
+
+void MainWindow::speakText(const QString &text)
+{
+    if (m_extensionSocket && m_extensionSocket->state() == QLocalSocket::ConnectedState) {
+        QString command = "TTS:" + text + "\n";
+        m_extensionSocket->write(command.toUtf8());
+        m_extensionSocket->flush();
+    } else {
+        qWarning() << "Cannot speak text - not connected to extension server";
+    }
 }
 
 void MainWindow::showSideButton(bool toRight)
@@ -704,6 +808,20 @@ void MainWindow::handleWebSocketRequest(WebSocketRequestType requestType, const 
     connect(webSocket, &QWebSocket::disconnected, webSocket, &QWebSocket::deleteLater);
 
     webSocket->open(QUrl(url));
+}
+
+void MainWindow::setExtensionServerStatus(bool isRunning)
+{
+    // 这里可以更新UI状态，比如启用/禁用TTS功能按钮
+    emit extensionServerStatusChanged(isRunning);
+
+    if (isRunning) {
+        qInfo() << "Extension server is running";
+        // 启用TTS功能
+    } else {
+        qWarning() << "Extension server is not available";
+        // 禁用TTS功能或显示警告
+    }
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

@@ -21,7 +21,8 @@ public:
         UseLightTheme,
         RunAsClient,
         InstantPickByDefault,
-        TopmostByDefault
+        TopmostByDefault,
+        UseTTS
     };
     enum StringConfigType {
         ServerHost,

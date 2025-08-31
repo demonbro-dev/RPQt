@@ -7,6 +7,7 @@
 #include <QTranslator>
 #include <QSystemTrayIcon>
 #include <QLabel>
+#include <QLocalSocket>
 #include "fbshandler.h"
 #include "settingshandler.h"
 #include "namemanager.h"
@@ -31,9 +32,13 @@ public:
     void showTrayIcon();
     void showRandMirage();
     void showMainWindow();
+    void setExtensionServerStatus(bool isRunning);
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
+
+signals:
+    void extensionServerStatusChanged(bool isRunning);
 
 private slots:
     void onPickButtonClicked();
@@ -58,6 +63,8 @@ private:
     QTranslator qtTranslator;
     QTranslator appTranslator;
     QList<QStringList> pickHistory;
+    QLocalSocket *m_extensionSocket;
+    bool m_extensionServerAvailable = false;
     bool m_globalTrackingEnabled = false;
     bool m_parallelPickEnabled = true;
     bool m_isClientMode = false;
@@ -78,6 +85,7 @@ private:
     void setupNameListCombo();
     void onNameListComboActivated(int index);
     void onImportTempList();
+    void speakText(const QString &text);
     void showBuildInfo();
     void handleWebSocketRequest(WebSocketRequestType requestType, const QString& listNameAndPickCount = QString());
     void mousePressEvent(QMouseEvent *event) override;

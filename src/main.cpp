@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QStyleFactory>
 #include <QPalette>
+#include <QProcess>
 #include <QTranslator>
 #include <QLibraryInfo>
 #include <QLocale>
@@ -12,6 +13,7 @@
 #include <QMessageBox>
 #include <QLocalSocket>
 #include <QLocalServer>
+#include <QtConcurrent>
 
 bool isAlreadyRunning(const QString &uniqueKey)
 {
@@ -30,6 +32,7 @@ bool isAlreadyRunning(const QString &uniqueKey)
     QLocalServer *server = new QLocalServer();
     if (!server->listen(uniqueKey)) {
         qWarning() << "Failed to create single-instance server:" << server->errorString();
+        delete server;
     } else {
         QObject::connect(server, &QLocalServer::newConnection, [server]() {
             QLocalSocket *clientConnection = server->nextPendingConnection();
@@ -49,6 +52,37 @@ bool isAlreadyRunning(const QString &uniqueKey)
         });
     }
     return false;
+}
+
+bool startRPExtensionServerAsync(QProcess* serverProcess, QObject* context, std::function<void(bool)> callback)
+{
+    QString serverPath;
+
+#ifdef Q_OS_WIN
+    serverPath = QCoreApplication::applicationDirPath() + "/RPExtensionServer.exe";
+#else
+    serverPath = QCoreApplication::applicationDirPath() + "/RPExtensionServer";
+#endif
+
+    if (!QFile::exists(serverPath)) {
+        qWarning() << "RPExtensionServer not found at:" << serverPath;
+        return false;
+    }
+
+    QObject::connect(serverProcess, &QProcess::started, context, [callback]() {
+        QTimer::singleShot(500, [callback]() {
+            callback(true);
+        });
+    });
+
+    QObject::connect(serverProcess, &QProcess::errorOccurred, context, [callback](QProcess::ProcessError error) {
+        qWarning() << "Failed to start RPExtensionServer:" << error;
+        callback(false);
+    });
+
+    serverProcess->start(serverPath);
+
+    return true;
 }
 
 int main(int argc, char *argv[])
@@ -148,5 +182,26 @@ int main(int argc, char *argv[])
         w.show();
     }
 
-    return a.exec();
+    std::unique_ptr<QProcess> extensionServerProcess = std::make_unique<QProcess>();
+
+    startRPExtensionServerAsync(extensionServerProcess.get(), &w, [&w](bool success) {
+        w.setExtensionServerStatus(success);
+        if (success) {
+            qDebug() << "Extension server started successfully";
+        } else {
+            qWarning() << "Failed to start extension server";
+        }
+    });
+
+    int ret = a.exec();
+
+    if (extensionServerProcess && extensionServerProcess->state() == QProcess::Running) {
+        extensionServerProcess->terminate();
+        if (!extensionServerProcess->waitForFinished(2000)) {
+            extensionServerProcess->kill();
+            extensionServerProcess->waitForFinished(1000);
+        }
+    }
+
+    return ret;
 }

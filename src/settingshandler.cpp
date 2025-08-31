@@ -57,7 +57,8 @@ QVector<SettingsHandler::ConfigItem> SettingsHandler::getConfigItems()
         {"InPick", "TopmostByDefault", tr("Enable Topmost by default"), false, "bool", {}, TopmostByDefault},
         {"RPWeb", "RunAsClient", tr("Run as Client"), false, "bool", {}, RunAsClient},
         {"RPWeb", "Server", tr("Server Host"), "localhost", "string", {}, ServerHost},
-        {"RPWeb", "Port", tr("Server Port"), "8080", "string", {}, ServerPort}
+        {"RPWeb", "Port", tr("Server Port"), "8080", "string", {}, ServerPort},
+        {"RPExtension", "UseTTS", tr("Use TTS to Read Pick Results"), false, "bool", {}, UseTTS}
     };
 }
 
