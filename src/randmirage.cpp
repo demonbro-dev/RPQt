@@ -23,6 +23,17 @@ RandMirage::RandMirage(QWidget *parent) : QWidget(parent), m_isDragging(false)
     m_scrollAnimation->setLoopCount(-1);
     m_scrollPos = 0;
     m_displayText = "";
+
+    m_opacityAnimation = new QPropertyAnimation(this, "opacityValue", this);
+    m_opacityAnimation->setDuration(300);
+    m_opacityAnimation->setEasingCurve(QEasingCurve::InOutQuad);
+    m_currentOpacity = 0x80000000;
+
+#ifdef Q_OS_WIN
+    if (QOperatingSystemVersion::current() >= QOperatingSystemVersion::Windows10) {
+        updateWindowTransparency(0x80000000);
+    }
+#endif
 }
 
 void RandMirage::setDisplayText(const QString &text)
@@ -52,10 +63,67 @@ qreal RandMirage::scrollPos() const
     return m_scrollPos;
 }
 
+int RandMirage::opacityValue() const
+{
+    return (m_currentOpacity >> 24) & 0xFF;
+}
+
 void RandMirage::setScrollPos(qreal pos)
 {
     m_scrollPos = pos;
     update();
+}
+
+void RandMirage::setOpacityValue(int opacityAlpha)
+{
+    unsigned int baseColor = 0x00000000;
+    unsigned int newOpacity = (opacityAlpha << 24) | (baseColor & 0x00FFFFFF);
+    m_currentOpacity = newOpacity;
+
+#ifdef Q_OS_WIN
+    if (QOperatingSystemVersion::current() >= QOperatingSystemVersion::Windows10) {
+        updateWindowTransparency(newOpacity);
+    }
+#endif
+    update();
+}
+
+void RandMirage::updateWindowTransparency(unsigned int opacity)
+{
+#ifdef Q_OS_WIN
+    if (QOperatingSystemVersion::current() >= QOperatingSystemVersion::Windows10) {
+        HWND hwnd = (HWND)winId();
+
+        typedef struct _ACCENTPOLICY
+        {
+            int nAccentState;
+            int nFlags;
+            unsigned int nColor;
+            int nAnimationId;
+        } ACCENTPOLICY;
+
+        typedef struct _WINCOMPATTRDATA
+        {
+            int nAttribute;
+            PVOID pData;
+            ULONG ulDataSize;
+        } WINCOMPATTRDATA;
+
+        typedef BOOL (WINAPI *pSetWindowCompositionAttribute)(HWND, WINCOMPATTRDATA*);
+
+        HMODULE hUser = GetModuleHandle(L"user32.dll");
+        if (hUser) {
+            pSetWindowCompositionAttribute SetWindowCompositionAttribute =
+                (pSetWindowCompositionAttribute)GetProcAddress(hUser, "SetWindowCompositionAttribute");
+
+            if (SetWindowCompositionAttribute) {
+                ACCENTPOLICY policy = { 4, 0, opacity, 0 };
+                WINCOMPATTRDATA data = { 19, &policy, sizeof(ACCENTPOLICY) };
+                SetWindowCompositionAttribute(hwnd, &data);
+            }
+        }
+    }
+#endif
 }
 
 void RandMirage::mousePressEvent(QMouseEvent *event)
@@ -105,43 +173,15 @@ void RandMirage::paintEvent(QPaintEvent *event)
 
 #ifdef Q_OS_WIN
     if (QOperatingSystemVersion::current() >= QOperatingSystemVersion::Windows10) {
-        HWND hwnd = (HWND)winId();
-
-        typedef struct _ACCENTPOLICY
-        {
-            int nAccentState;
-            int nFlags;
-            unsigned int nColor;
-            int nAnimationId;
-        } ACCENTPOLICY;
-
-        typedef struct _WINCOMPATTRDATA
-        {
-            int nAttribute;
-            PVOID pData;
-            ULONG ulDataSize;
-        } WINCOMPATTRDATA;
-
-        typedef BOOL (WINAPI *pSetWindowCompositionAttribute)(HWND, WINCOMPATTRDATA*);
-
-        HMODULE hUser = GetModuleHandle(L"user32.dll");
-        if (hUser) {
-            pSetWindowCompositionAttribute SetWindowCompositionAttribute =
-                (pSetWindowCompositionAttribute)GetProcAddress(hUser, "SetWindowCompositionAttribute");
-
-            if (SetWindowCompositionAttribute) {
-                ACCENTPOLICY policy = { 4, 0, 0x99000000, 0 };
-                WINCOMPATTRDATA data = { 19, &policy, sizeof(ACCENTPOLICY) };
-                SetWindowCompositionAttribute(hwnd, &data);
-            }
-        }
-        painter.setBrush(QColor(0, 0, 0, 32));
+        unsigned int alpha = (m_currentOpacity >> 24) & 0xFF;
+        painter.setBrush(QColor(0, 0, 0, alpha));
     } else {
         painter.setBrush(QColor(0, 0, 0, 204));
     }
 #else
     painter.setBrush(QColor(0, 0, 0, 204));
 #endif
+
     painter.setPen(Qt::NoPen);
     painter.drawRect(rect());
 
@@ -175,4 +215,36 @@ void RandMirage::paintEvent(QPaintEvent *event)
 
         painter.drawText(m_scrollPos, yPos, m_displayText);
     }
+}
+
+void RandMirage::enterEvent(QEnterEvent *event)
+{
+    Q_UNUSED(event);
+    m_isHovered = true;
+
+#ifdef Q_OS_WIN
+    if (QOperatingSystemVersion::current() >= QOperatingSystemVersion::Windows10) {
+        m_opacityAnimation->stop();
+        m_opacityAnimation->setStartValue((m_currentOpacity >> 24) & 0xFF);
+        m_opacityAnimation->setEndValue(77);
+        m_opacityAnimation->start();
+    }
+#endif
+    update();
+}
+
+void RandMirage::leaveEvent(QEvent *event)
+{
+    Q_UNUSED(event);
+    m_isHovered = false;
+
+#ifdef Q_OS_WIN
+    if (QOperatingSystemVersion::current() >= QOperatingSystemVersion::Windows10) {
+        m_opacityAnimation->stop();
+        m_opacityAnimation->setStartValue((m_currentOpacity >> 24) & 0xFF);
+        m_opacityAnimation->setEndValue(128);
+        m_opacityAnimation->start();
+    }
+#endif
+    update();
 }
