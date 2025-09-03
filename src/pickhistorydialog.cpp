@@ -1,5 +1,6 @@
 #include "pickhistorydialog.h"
 #include "ui_pickhistorydialog.h"
+#include <QFileDialog>
 
 PickHistoryDialog::PickHistoryDialog(const QList<QStringList> &history, QWidget *parent)
     : QDialog(parent),
@@ -10,6 +11,7 @@ PickHistoryDialog::PickHistoryDialog(const QList<QStringList> &history, QWidget 
     populateList(history);
 
     connect(ui->ClearButton, &QPushButton::clicked, this, &PickHistoryDialog::clearHistory);
+    connect(ui->ExportButton, &QPushButton::clicked, this, &PickHistoryDialog::exportHistory);
 }
 
 PickHistoryDialog::~PickHistoryDialog()
@@ -42,4 +44,26 @@ void PickHistoryDialog::clearHistory()
     historyListWidget->clear();
     historyListWidget->addItem(tr("No history entries yet"));
     emit ClearHistory();
+}
+
+void PickHistoryDialog::exportHistory()
+{
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Export History"), "",
+                                                    tr("Text Files (*.txt)"));
+
+    if (fileName.isEmpty())
+        return;
+
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return;
+
+    QTextStream out(&file);
+    for (int i = 0; i < historyListWidget->count(); ++i) {
+        QListWidgetItem *item = historyListWidget->item(i);
+        out << item->text() << "\n";
+    }
+
+    file.close();
 }

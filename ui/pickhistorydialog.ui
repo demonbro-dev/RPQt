@@ -18,11 +18,22 @@
     <widget class="QListWidget" name="historyListWidget"/>
    </item>
    <item>
-    <widget class="QPushButton" name="ClearButton">
-     <property name="text">
-      <string>Clear History</string>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="ClearButton">
+       <property name="text">
+        <string>Clear History</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="ExportButton">
+       <property name="text">
+        <string>Export History Data</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

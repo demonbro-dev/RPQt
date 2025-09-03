@@ -17,6 +17,7 @@ public:
     ~PickHistoryDialog();
     void updateHistory(const QList<QStringList> &history);
     void clearHistory();
+    void exportHistory();
 
 private:
     void populateList(const QList<QStringList> &history);
