@@ -3,9 +3,9 @@
         <file>data/RandPickerLogo.ico</file>
         <file>translations/RPQt_en_US.qm</file>
         <file>translations/RPQt_zh_CN.qm</file>
-        <file>data/license.md</file>
         <file>data/commit.md</file>
         <file>data/styleDark.qss</file>
         <file>data/styleLight.qss</file>
+        <file>data/license.txt</file>
     </qresource>
 </RCC>

@@ -11,11 +11,11 @@ AboutDialog::AboutDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // 加载 license.md 文件并设置到 licenseTextEdit
+    // 加载 license.txt 文件并设置到 licenseTextEdit
     ui->licenseTextEdit->setPlainText("Loading License, please wait...");
 
     QThreadPool::globalInstance()->start([this]() {
-        QFile licenseFile(":/data/license.md");
+        QFile licenseFile(":/data/license.txt");
         QString licenseText;
 
         if (licenseFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -23,12 +23,12 @@ AboutDialog::AboutDialog(QWidget *parent) :
             licenseText = stream.readAll();
             licenseFile.close();
         } else {
-            licenseText = "Failed to load license file.\nThis software uses GPLv3.";
+            licenseText = "Failed to load license file.\nThis software uses MIT License.";
             qWarning() << "Failed to open license file:" << licenseFile.errorString();
         }
 
         QMetaObject::invokeMethod(this, [this, licenseText]() {
-            ui->licenseTextEdit->setMarkdown(licenseText);
+            ui->licenseTextEdit->setText(licenseText);
         }, Qt::QueuedConnection);
     });
 
