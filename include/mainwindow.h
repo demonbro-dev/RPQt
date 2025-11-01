@@ -80,6 +80,7 @@ private:
 
     void setupClientUI();
     void loadNameLists();
+    void enableImmersiveDarkMode();
     void setupConnections();
     void updateFontSize();
     void setupNameListCombo();

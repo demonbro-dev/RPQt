@@ -17,6 +17,7 @@
 
 #ifdef Q_OS_WIN
 #include <windows.h>
+#include <dwmapi.h>
 #endif
 
 MainWindow::MainWindow(QWidget *parent)
@@ -53,6 +54,9 @@ MainWindow::MainWindow(QWidget *parent)
         handleWebSocketRequest(WebSocketRequestType::FetchAvailableLists);
     } else {
         loadNameLists();
+    }
+    if (!settingsHandler.getBoolConfig(SettingsHandler::UseLightTheme)) {
+        enableImmersiveDarkMode();
     }
     setupConnections();
     showBuildInfo();
@@ -339,6 +343,15 @@ void MainWindow::setupClientUI()
     ui->instantModeRadio->setToolTip(tr("In Client Mode,instant mode can't be disabled."));
 
     setWindowTitle(windowTitle() + " [Client Mode]");
+}
+
+void MainWindow::enableImmersiveDarkMode()
+{
+#ifdef Q_OS_WIN
+    HWND hwnd = reinterpret_cast<HWND>(winId());
+    BOOL useDarkMode = TRUE;
+    DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &useDarkMode, sizeof(useDarkMode));
+#endif
 }
 
 void MainWindow::loadNameLists()

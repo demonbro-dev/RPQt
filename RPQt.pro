@@ -70,7 +70,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 TRANSLATIONS += translations/RPQt_zh_CN.ts \
                 translations/RPQt_en_US.ts
 win32 {
-    LIBS += -luser32 -lbcrypt
+    LIBS += -luser32 -lbcrypt -ldwmapi
 }
 win32:release {
     QMAKE_EXTRA_TARGETS += write_git_commit
