@@ -860,6 +860,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     if (m_globalTrackingEnabled && event->button() == Qt::LeftButton) {
         m_dragPosition = event->globalPosition().toPoint() - frameGeometry().topLeft();
+        setCursor(Qt::ClosedHandCursor);
         event->accept();
     }
     QMainWindow::mousePressEvent(event);
@@ -872,6 +873,15 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         event->accept();
     }
     QMainWindow::mouseMoveEvent(event);
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+    if (m_globalTrackingEnabled && event->button() == Qt::LeftButton) {
+        unsetCursor(); // 恢复默认光标
+        event->accept();
+    }
+    QMainWindow::mouseReleaseEvent(event);
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)

@@ -91,6 +91,7 @@ private:
     void handleWebSocketRequest(WebSocketRequestType requestType, const QString& listNameAndPickCount = QString());
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
     void closeEvent(QCloseEvent *event) override;
 };
 
