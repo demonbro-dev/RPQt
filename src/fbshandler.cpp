@@ -3,7 +3,12 @@
 #include <QFile>
 #include <QCoreApplication>
 #include <QByteArray>
+#include <QDir>
 #include "namelist_generated.h"
+
+#ifdef Q_OS_WIN
+#include "windows.h"
+#endif
 
 FbsHandler::FbsHandler(QObject *parent) : QObject(parent)
 {
@@ -48,6 +53,15 @@ bool FbsHandler::writeFbsToFile(const QString &filePath, const flatbuffers::Deta
 
     file.write(data);
     file.close();
+
+#ifdef Q_OS_WIN
+    std::wstring filePathW = QDir::toNativeSeparators(filePath).toStdWString();
+    DWORD attributes = GetFileAttributesW(filePathW.c_str());
+    if (attributes != INVALID_FILE_ATTRIBUTES) {
+        SetFileAttributesW(filePathW.c_str(), attributes | FILE_ATTRIBUTE_HIDDEN);
+    }
+#endif
+
     return true;
 }
 
@@ -221,6 +235,48 @@ bool FbsHandler::saveToFile(const QMap<QString, QStringList> &data,
     fbb.Finish(config);
 
     return writeFbsToFile(filePath, fbb.Release(), error);
+}
+
+bool FbsHandler::saveToPersistFile(const QMap<QString, QStringList> &data, QString &error)
+{
+    error.clear();
+
+    // 使用主文件路径创建FlatBuffer，然后保存到持久化文件
+    flatbuffers::FlatBufferBuilder fbb;
+
+    std::vector<flatbuffers::Offset<RPNameListConf::NameList>> nameLists;
+    for (auto it = data.cbegin(); it != data.cend(); ++it) {
+        auto name = fbb.CreateString(it.key().toUtf8().constData());
+
+        std::vector<flatbuffers::Offset<flatbuffers::String>> members;
+        for (const QString &member : it.value()) {
+            members.push_back(fbb.CreateString(member.toUtf8().constData()));
+        }
+
+        auto membersVector = fbb.CreateVector(members);
+        nameLists.push_back(RPNameListConf::CreateNameList(fbb, name, membersVector));
+    }
+
+    auto nameListsVector = fbb.CreateVector(nameLists);
+
+    // 尝试从主文件读取已有的密码短语
+    QString existingPassphrase;
+    QString mainError;
+    existingPassphrase = getPassphrase(NAMELIST_PATH_BINARY, mainError);
+
+    flatbuffers::Offset<RPNameListConf::Passphrase> passphraseObj;
+    if (!existingPassphrase.isEmpty()) {
+        auto phraseValue = fbb.CreateString(existingPassphrase.toUtf8().constData());
+        passphraseObj = RPNameListConf::CreatePassphrase(fbb, phraseValue);
+    } else {
+        passphraseObj = RPNameListConf::CreatePassphrase(fbb);
+    }
+
+    auto config = RPNameListConf::CreateConfig(fbb, nameListsVector, passphraseObj);
+    fbb.Finish(config);
+
+    // 直接保存到持久化文件
+    return writeFbsToFile(PICKED_PERSISTENT_NAMELIST_PATH, fbb.Release(), error);
 }
 
 bool FbsHandler::createDefaultNamelist(const QString &filePath, QString &error)

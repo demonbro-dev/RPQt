@@ -344,11 +344,20 @@ void NameManager::changePassphrase()
 void NameManager::saveChanges()
 {
     QString error;
-    if (!fbsHandler.saveToFile(nameGroups,currentFilePath, error)) {
+
+    // 首先保存到主文件
+    if (!fbsHandler.saveToFile(nameGroups, currentFilePath, error)) {
         QMessageBox::warning(this, tr("Failed to save."), error);
-    } else {
-        QMessageBox::information(this, tr("Success"), tr("The namelist has been saved!"));
+        return;
     }
+
+    // 然后保存到持久化路径
+    if (!fbsHandler.saveToPersistFile(nameGroups, error)) {
+        QMessageBox::warning(this, tr("Warning"),
+                             tr("Failed to save namelist to persistent path: %1").arg(error));
+    }
+
+    QMessageBox::information(this, tr("Success"), tr("The namelist has been saved!"));
 }
 
 void NameManager::importFromTxt()

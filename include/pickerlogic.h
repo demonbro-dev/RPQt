@@ -24,6 +24,7 @@ public:
     void setNames(const QStringList &names);
     QStringList pickNames(int count, bool parallelPick, RandomGeneratorType generatorType);
     QString formatNamesWithLineBreak(const QStringList &names);
+    QStringList getPickedNames() const;
 
     bool isRunning() const;
     void startPicking(bool parallelPick);

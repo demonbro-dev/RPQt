@@ -307,6 +307,11 @@ void PickerLogic::setRandomGeneratorType(RandomGeneratorType type)
     m_currentRandomType = type;
 }
 
+QStringList PickerLogic::getPickedNames() const
+{
+    return pickedNames;
+}
+
 bool PickerLogic::cpuHasRdRand()
 {
 #if defined(__x86_64__) || defined(__i386__) || defined(_M_IX86) || defined(_M_X64)

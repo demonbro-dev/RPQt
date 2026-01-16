@@ -11,8 +11,10 @@
 
 #ifdef Q_OS_WIN
 #define NAMELIST_PATH_BINARY QCoreApplication::applicationDirPath() + "/namelist.bin"
+#define PICKED_PERSISTENT_NAMELIST_PATH QCoreApplication::applicationDirPath() + "/.nlpersist"
 #else
 #define NAMELIST_PATH_BINARY QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/namelist.bin"
+#define PICKED_PERSISTENT_NAMELIST_PATH QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/.nlpersist"
 #endif
 
 class FbsHandler : public QObject
@@ -29,6 +31,7 @@ public:
 
     QMap<QString, QStringList> loadFromFile(const QString &filePath, QString &error);
     bool saveToFile(const QMap<QString, QStringList> &data, const QString &filePath, QString &error);
+    bool saveToPersistFile(const QMap<QString, QStringList> &data, QString &error);
     bool createDefaultNamelist(const QString &filePath, QString &error);
 };
 

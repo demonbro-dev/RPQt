@@ -356,46 +356,68 @@ void MainWindow::enableImmersiveDarkMode()
 
 void MainWindow::loadNameLists()
 {
-    QFuture<void> future = QtConcurrent::run([this]() {
-        QString error;
-        QString filePath = NAMELIST_PATH_BINARY;
+    QString error;
 
-        QFile file(filePath);
-        if (!file.exists()) {
-            QMetaObject::invokeMethod(this, [this]() {
-                QMessageBox::information(this, tr("Info"), QString(tr("Namelist not found. Default namelist will be created.")));
-            }, Qt::BlockingQueuedConnection);
+    auto loadedGroups = fbsHandler.loadFromFile(PICKED_PERSISTENT_NAMELIST_PATH, error);
 
-            // 使用JsonHandler创建默认文件
-            bool createDefaultNamelist = fbsHandler.createDefaultNamelist(filePath, error);
+    if (error.isEmpty() && !loadedGroups.isEmpty()) {
+        // 持久化文件读取成功，直接使用
+        nameGroups = loadedGroups;
+    } else {
+        error.clear();
+
+        // 检查主文件是否存在
+        QFile mainFile(NAMELIST_PATH_BINARY);
+        if (!mainFile.exists()) {
+            // 主文件不存在，创建默认文件
+            QMessageBox::information(this, tr("Info"),
+                                     QString(tr("Namelist not found. Default namelist will be created.")));
+
+            bool createDefaultNamelist = fbsHandler.createDefaultNamelist(NAMELIST_PATH_BINARY, error);
             if (!createDefaultNamelist) {
-                QMetaObject::invokeMethod(this, [this, error]() {
-                    QMessageBox::warning(this, tr("Error"), QString(tr("Failed to create default namelist file: %1")).arg(error));
-                }, Qt::BlockingQueuedConnection);
+                QMessageBox::warning(this, tr("Error"),
+                                     QString(tr("Failed to create default namelist file: %1")).arg(error));
                 nameGroups["Default1"] = {"12", "34", "56"};
-                return;
+                goto update_ui;
             }
         }
 
-        auto loadedGroups = fbsHandler.loadFromFile(filePath, error);
+        // 尝试从主文件读取
+        loadedGroups = fbsHandler.loadFromFile(NAMELIST_PATH_BINARY, error);
 
-        QMetaObject::invokeMethod(this, [this, loadedGroups, error]() {
-            if (!error.isEmpty()) {
-                QMessageBox::warning(this, tr("Failed to load"), error);
-                nameGroups["Default1"] = {"12", "34", "56"};
-            } else {
+        if (error.isEmpty() && !loadedGroups.isEmpty()) {
+            // 主文件读取成功，使用新方法保存到持久化路径
+            if (!fbsHandler.saveToPersistFile(loadedGroups, error)) {
+                QMessageBox::warning(this, tr("Warning"),
+                                     tr("Failed to save namelist to persistent path: %1").arg(error));
+            }
+
+            error.clear();
+            loadedGroups = fbsHandler.loadFromFile(PICKED_PERSISTENT_NAMELIST_PATH, error);
+
+            if (error.isEmpty() && !loadedGroups.isEmpty()) {
                 nameGroups = loadedGroups;
+            } else {
+                nameGroups["Default1"] = {"12", "34", "56"};
+                QMessageBox::warning(this, tr("Failed to load"),
+                                     tr("Failed to load namelist from both files. Using default names."));
             }
+        } else {
+            nameGroups["Default1"] = {"12", "34", "56"};
+            QMessageBox::warning(this, tr("Failed to load"),
+                                 tr("Failed to load namelist. Using default names."));
+        }
+    }
 
-            if (!nameGroups.isEmpty()) {
-                currentNames = nameGroups.first();
-                pickerLogic->setNames(currentNames);
-                ui->nameListCombo->addItems(nameGroups.keys());
-                ui->nameListCombo->insertSeparator(ui->nameListCombo->count());
-                ui->nameListCombo->addItem(tr("All Lists"));
-            }
-        }, Qt::BlockingQueuedConnection);
-    });
+update_ui:
+    // 更新UI
+    if (!nameGroups.isEmpty()) {
+        currentNames = nameGroups.first();
+        pickerLogic->setNames(currentNames);
+        ui->nameListCombo->addItems(nameGroups.keys());
+        ui->nameListCombo->insertSeparator(ui->nameListCombo->count());
+        ui->nameListCombo->addItem(tr("All Lists"));
+    }
 }
 
 void MainWindow::onPickButtonClicked()
@@ -825,15 +847,12 @@ void MainWindow::handleWebSocketRequest(WebSocketRequestType requestType, const 
 
 void MainWindow::setExtensionServerStatus(bool isRunning)
 {
-    // 这里可以更新UI状态，比如启用/禁用TTS功能按钮
     emit extensionServerStatusChanged(isRunning);
 
     if (isRunning) {
         qInfo() << "Extension server is running";
-        // 启用TTS功能
     } else {
         qWarning() << "Extension server is not available";
-        // 禁用TTS功能或显示警告
     }
 }
 
@@ -857,6 +876,32 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
+    if (!m_isClientMode) {
+        QMap<QString, QStringList> dataToSave = nameGroups;
+
+        QString currentList = ui->nameListCombo->currentText();
+        if (currentList != tr("All Lists") && nameGroups.contains(currentList)) {
+            // 获取已抽选的名字
+            QStringList pickedNames = pickerLogic->getPickedNames();
+
+            // 构建当前名单的顺序：已抽选的在前，剩余的在后
+            QStringList allNamesInOrder = pickedNames;
+            for (const QString &name : nameGroups[currentList]) {
+                if (!pickedNames.contains(name)) {
+                    allNamesInOrder.append(name);
+                }
+            }
+
+            dataToSave[currentList] = allNamesInOrder;
+        }
+
+        // 保存到持久化文件
+        QString error;
+        if (!fbsHandler.saveToPersistFile(dataToSave, error)) {
+            qWarning() << "Failed to save data on close:" << error;
+        }
+    }
+
     if (settingsHandler.getBoolConfig(SettingsHandler::OpenRandMirageWhenClose)) {
         showRandMirage();
         event->ignore();
