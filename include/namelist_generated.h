@@ -9,8 +9,8 @@
 // Ensure the included flatbuffers.h is the same version as when this file was
 // generated, otherwise it may not be compatible.
 static_assert(FLATBUFFERS_VERSION_MAJOR == 25 &&
-              FLATBUFFERS_VERSION_MINOR == 2 &&
-              FLATBUFFERS_VERSION_REVISION == 10,
+              FLATBUFFERS_VERSION_MINOR == 12 &&
+              FLATBUFFERS_VERSION_REVISION == 19,
              "Non-compatible flatbuffers version included");
 
 namespace RPNameListConf {
@@ -32,7 +32,8 @@ struct Passphrase FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   const ::flatbuffers::String *phrasevalue() const {
     return GetPointer<const ::flatbuffers::String *>(VT_PHRASEVALUE);
   }
-  bool Verify(::flatbuffers::Verifier &verifier) const {
+  template <bool B = false>
+  bool Verify(::flatbuffers::VerifierTemplate<B> &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_PHRASEVALUE) &&
            verifier.VerifyString(phrasevalue()) &&
@@ -87,7 +88,8 @@ struct NameList FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   const ::flatbuffers::Vector<::flatbuffers::Offset<::flatbuffers::String>> *members() const {
     return GetPointer<const ::flatbuffers::Vector<::flatbuffers::Offset<::flatbuffers::String>> *>(VT_MEMBERS);
   }
-  bool Verify(::flatbuffers::Verifier &verifier) const {
+  template <bool B = false>
+  bool Verify(::flatbuffers::VerifierTemplate<B> &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_NAME) &&
            verifier.VerifyString(name()) &&
@@ -153,7 +155,8 @@ struct Config FLATBUFFERS_FINAL_CLASS : private ::flatbuffers::Table {
   const RPNameListConf::Passphrase *passphrase() const {
     return GetPointer<const RPNameListConf::Passphrase *>(VT_PASSPHRASE);
   }
-  bool Verify(::flatbuffers::Verifier &verifier) const {
+  template <bool B = false>
+  bool Verify(::flatbuffers::VerifierTemplate<B> &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_NAME_LISTS) &&
            verifier.VerifyVector(name_lists()) &&
@@ -214,14 +217,16 @@ inline const RPNameListConf::Config *GetSizePrefixedConfig(const void *buf) {
   return ::flatbuffers::GetSizePrefixedRoot<RPNameListConf::Config>(buf);
 }
 
+template <bool B = false>
 inline bool VerifyConfigBuffer(
-    ::flatbuffers::Verifier &verifier) {
-  return verifier.VerifyBuffer<RPNameListConf::Config>(nullptr);
+    ::flatbuffers::VerifierTemplate<B> &verifier) {
+  return verifier.template VerifyBuffer<RPNameListConf::Config>(nullptr);
 }
 
+template <bool B = false>
 inline bool VerifySizePrefixedConfigBuffer(
-    ::flatbuffers::Verifier &verifier) {
-  return verifier.VerifySizePrefixedBuffer<RPNameListConf::Config>(nullptr);
+    ::flatbuffers::VerifierTemplate<B> &verifier) {
+  return verifier.template VerifySizePrefixedBuffer<RPNameListConf::Config>(nullptr);
 }
 
 inline void FinishConfigBuffer(
